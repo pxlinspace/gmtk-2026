@@ -5,4 +5,5 @@
 [node name="LevelMap" type="GridMap" unique_id=2083219110]
 mesh_library = ExtResource("1_u31um")
 cell_size = Vector3(1, 1, 1)
+cell_center_y = false
 metadata/_editor_floor_ = Vector3(0, 0, 0)

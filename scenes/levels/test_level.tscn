@@ -1,10 +1,36 @@
 [gd_scene format=3 uid="uid://wkmhgdfsfhqj"]
 
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="1_jbqir"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_fr1um"]
+sky_material = SubResource("ProceduralSkyMaterial_yautc")
+
+[sub_resource type="Environment" id="Environment_v45ci"]
+background_mode = 2
+sky = SubResource("Sky_fr1um")
 
 [node name="TestLevel" type="Node3D" unique_id=1990532022]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1325903831]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=2124536568]
+environment = SubResource("Environment_v45ci")
+
 [node name="LevelMap" parent="." unique_id=2083219110 instance=ExtResource("1_jbqir")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
 data = {
 "cells": PackedInt32Array(0, 65535, 655360, 65535, 65535, 655360, 0, 0, 655360, 65535, 0, 655360, 65535, 1, 655360, 0, 1, 655360, 0, 2, 655360, 65535, 2, 655360, 0, 3, 655360, 65535, 3, 655360, 1, 65535, 655360, 1, 0, 655360, 1, 1, 655360, 1, 2, 655360, 65534, 2, 655360, 65534, 1, 655360, 65534, 0, 655360, 65534, 65535, 655360, 2, 65535, 655360, 2, 0, 655360, 2, 1, 655360, 2, 2, 655360, 65533, 1, 655360, 65533, 2, 655360, 65533, 0, 655360, 65533, 65535, 655360, 65534, 65534, 655360, 65535, 65534, 655360, 0, 65534, 655360, 1, 65534, 655360)
 }
+
+[node name="Player" parent="." unique_id=289280773 instance=ExtResource("2_yautc")]
+
+[node name="Camera3D" type="Camera3D" parent="Player" unique_id=790985369]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0.5, 2.98, 3.08)
+current = true
