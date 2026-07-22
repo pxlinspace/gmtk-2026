@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://he48rm1gv7tx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2rtx1"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lg3a2"]
+material = SubResource("StandardMaterial3D_2rtx1")
+size = Vector3(0.8, 0.2, 0.8)
+
+[node name="LevelMapMeshLibrarySource" type="Node3D" unique_id=1072811025]
+
+[node name="Default" type="MeshInstance3D" parent="." unique_id=2066266910]
+mesh = SubResource("BoxMesh_lg3a2")

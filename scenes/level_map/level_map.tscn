@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cmp5g26ur71hr"]
+
+[ext_resource type="MeshLibrary" uid="uid://crv8nsf28aseq" path="res://resources/mesh_libraries/level_map_mesh_library.tres" id="1_u31um"]
+
+[node name="LevelMap" type="GridMap" unique_id=2083219110]
+mesh_library = ExtResource("1_u31um")
+cell_size = Vector3(1, 1, 1)
+metadata/_editor_floor_ = Vector3(0, 0, 0)
