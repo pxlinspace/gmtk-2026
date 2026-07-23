@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_5cp4c")
-color_1 = Color(3.657937e-06, 0.7640975, 0.78451645, 1)
-color_2 = Color(0.3254902, 0.85882354, 0.5411765, 1)
-color_3 = Color(0.56078434, 0.61960787, 1, 1)
-color_4 = Color(0.8666667, 0.25882354, 0.9607843, 1)
-color_5 = Color(0.4745098, 0, 0.7882353, 1)
+color_1 = Color(0, 0.9529412, 0.9882353, 1)
+color_2 = Color(0, 0.5921569, 0.9254902, 1)
+color_3 = Color(0, 0.29411766, 0.7529412, 1)
+color_4 = Color(0.8352941, 0.4117647, 0.9647059, 1)
+color_5 = Color(0.42352942, 0.12156863, 0.827451, 1)
 color_infinity = Color(0, 0, 0, 1)
 metadata/_custom_type_script = "uid://bmykvmfowt23b"
