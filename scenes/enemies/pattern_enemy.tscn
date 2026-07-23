@@ -6,6 +6,7 @@
 
 [node name="PatternEnemy" unique_id=1295660293 instance=ExtResource("1_mtoyf")]
 script = ExtResource("2_2rwsl")
+pattern = Array[Vector3i]([])
 
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1440443172) index="0" unique_id=2049415869]
 flip_h = true

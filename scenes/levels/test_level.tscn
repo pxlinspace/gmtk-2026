@@ -31,6 +31,18 @@ adjustment_contrast = 0.75
 [node name="TestLevel" type="Node3D" unique_id=1990532022]
 script = ExtResource("1_fr1um")
 
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=775466758]
+
+[node name="Flashbang" type="ColorRect" parent="HudLayer" unique_id=226712831]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)
+
+[node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
+
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1325903831]
 transform = Transform3D(-1, 7.5710346e-08, -4.3711385e-08, 0, 0.49999997, 0.86602545, 8.742278e-08, 0.86602545, -0.49999997, 0, 2, 0)
 shadow_enabled = true
@@ -46,6 +58,13 @@ data = {
 
 [node name="Player" parent="." unique_id=289280773 instance=ExtResource("2_yautc")]
 
+[node name="TimeLabel" type="Label3D" parent="Player" unique_id=1047470890]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0.5)
+billboard = 1
+text = "asdfasdf"
+
 [node name="PatternEnemy" parent="." unique_id=1295660293 instance=ExtResource("4_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
+
+[connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]
