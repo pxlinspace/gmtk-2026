@@ -20,6 +20,22 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("6_75vfm")
 region = Rect2(256, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(384, 256, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_7sbn2"]
 animations = [{
 "frames": [{
@@ -35,6 +51,23 @@ animations = [{
 "loop": 1,
 "name": &"default",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lvxji")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p47bc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}],
+"loop": 1,
+"name": &"panic",
+"speed": 30.0
 }]
 
 [node name="Player" type="Area3D" unique_id=343958966]
