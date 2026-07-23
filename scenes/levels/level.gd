@@ -3,7 +3,7 @@ class_name Level extends Node3D
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 ## how long before the time automatically steps
-@export var level_countdown_time: float = 1.0
+@export var level_countdown_time: float = 2.0
 
 @onready var level_map: GridMap = $LevelMap
 @onready var level_timer: Timer = $LevelTimer
@@ -37,6 +37,7 @@ func _on_timestep(_curr_timestep: int) -> void:
 
 func _on_level_timer_timeout() -> void:
 	Clock.advance_time()
+	Events.move_missed.emit()
 
 	var flashbang_tween := create_tween()
 	flashbang.color.a = 0.6
