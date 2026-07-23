@@ -15,7 +15,7 @@ func _ready() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
 
-	await get_tree().create_timer(0.2).timeout
+	await get_tree().physics_frame
 
 	curr_tile = check_tile(grid_pos)
 	prev_tile = curr_tile
@@ -90,6 +90,7 @@ func fall_down() -> void:
 
 
 func win() -> void:
+	can_move = false
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	#tile_sprite.material_override.set_shader_parameter("offset", 0.0)
 	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5).as_relative()
