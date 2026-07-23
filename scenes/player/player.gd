@@ -8,13 +8,15 @@ var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var curr_flag: Flag
-var can_move = true
+var can_move: bool = false
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
 
+
+func _ready() -> void:
 	await get_tree().physics_frame
 
 	curr_tile = check_tile(grid_pos)
@@ -121,7 +123,9 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
-func _on_timestep(_curr_timestep: int) -> void:
+func _on_timestep(curr_timestep: int) -> void:
+	if curr_timestep == 0:
+		can_move = true
 	# 1. check current tile for any items
 	# 2. emit stepped on for current tile
 	check_curr_tile()

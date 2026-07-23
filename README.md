@@ -14,7 +14,6 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [x] better tile system
 - [ ] infinity tiles
 - [ ] item pickup display
 - [ ] treasure collection
@@ -22,6 +21,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] more enemy types
 - [ ] timer in the corner
 - [ ] level design
+- [x] better tile system
 
 ### later
 - [ ] tutorial with npc
