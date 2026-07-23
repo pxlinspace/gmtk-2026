@@ -3,7 +3,6 @@
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dpjwq53uqumd" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="2_lvxji"]
-[ext_resource type="Texture2D" uid="uid://du16n75yhd6sx" path="res://assets/images/player/player.png" id="5_p47bc"]
 [ext_resource type="Texture2D" uid="uid://odp7y6fbpjp8" path="res://assets/images/placeholders/item.png" id="6_0owmy"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
 
@@ -22,19 +21,23 @@ region = Rect2(128, 0, 128, 128)
 atlas = ExtResource("6_75vfm")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_lvxji"]
-atlas = ExtResource("6_75vfm")
-region = Rect2(0, 256, 128, 128)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_p47bc"]
 atlas = ExtResource("6_75vfm")
-region = Rect2(128, 256, 128, 128)
+region = Rect2(0, 128, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_75vfm"]
 atlas = ExtResource("6_75vfm")
-region = Rect2(256, 256, 128, 128)
+region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h17s1"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_je7p5"]
+atlas = ExtResource("6_75vfm")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fm80t"]
 atlas = ExtResource("6_75vfm")
 region = Rect2(384, 256, 128, 128)
 
@@ -56,11 +59,28 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_p47bc")
+"texture": SubResource("AtlasTexture_p47bc")
 }],
 "loop": 1,
 "name": &"item_gotten",
 "speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_75vfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h17s1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_je7p5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fm80t")
+}],
+"loop": 1,
+"name": &"panic",
+"speed": 25.0
 }]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]

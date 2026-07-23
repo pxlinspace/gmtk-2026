@@ -21,7 +21,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	item_sprite.hide()
-	item_sprite.position = Vector3(0.9, 0.6, 0.5)
+	item_sprite.position = Vector3(0.3, 1.4, 0.5)
 
 	await get_tree().physics_frame
 
@@ -49,6 +49,7 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	prev_tile.stepped_off.emit()
 
 	Clock.advance_time()
+	tile_sprite.play("default")
 
 
 func check_tile(pos: Vector3i) -> Tile:
@@ -94,6 +95,8 @@ func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
 
 
 func uh_oh() -> void:
+	tile_sprite.play("panic")
+	tile_sprite.animation_player.play("panic")
 	print("uh oh")
 
 
@@ -128,10 +131,10 @@ func win() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if can_move:
 		if event.is_action_pressed("left"):
-			tile_sprite.flip_h = false
+			tile_sprite.flip_h = true
 			move_to_pos(grid_pos + Vector3i(-1, 0, 0))
 		elif event.is_action_pressed("right"):
-			tile_sprite.flip_h = true
+			tile_sprite.flip_h = false
 			move_to_pos(grid_pos + Vector3i(1, 0, 0))
 		elif event.is_action_pressed("up"):
 			move_to_pos(grid_pos + Vector3i(0, 0, -1))
@@ -179,6 +182,7 @@ func _on_item_gotten(_tile_item: TileItem, _item_resource: ItemResource) -> void
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	can_move = false
+	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
 	await get_tree().create_timer(1.0).timeout
 	tile_sprite.play("default")
