@@ -1,6 +1,7 @@
 [gd_scene format=4 uid="uid://dvilxcl0kjgsv"]
 
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="1_72il1"]
+[ext_resource type="Script" uid="uid://c8xutrhvbnv4o" path="res://scenes/the_holy_light/the_holy_light.gd" id="1_arjr5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_30gms"]
 
@@ -35,6 +36,7 @@ height = 10.0
 radial_segments = 8
 
 [node name="TheHolyLight" type="Area3D" unique_id=696309230]
+script = ExtResource("1_arjr5")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1267865424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)

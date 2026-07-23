@@ -1,0 +1,1 @@
+class_name TheHolyLight extends Area3D

@@ -58,6 +58,8 @@ func check_curr_tile() -> void:
 		if collider is Flag:
 			curr_flag = collider
 			collider.grab()
+		if collider is TheHolyLight and curr_flag:
+			print("you win!!!!!!!")
 
 
 func shapecast_at_pos(pos: Vector3i) -> Array[Dictionary]:
