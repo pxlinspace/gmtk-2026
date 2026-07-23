@@ -96,6 +96,7 @@ _data = {
 
 [node name="TileSprite" type="AnimatedSprite3D" unique_id=765592719]
 transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 0.5, 0, 0.5)
+cast_shadow = 0
 offset = Vector2(0, 64)
 pixel_size = 0.0078125
 billboard = 1

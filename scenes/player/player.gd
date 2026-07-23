@@ -5,101 +5,111 @@ extends Node3D
 @onready var anchor: Node3D = $Anchor
 
 var position_tween: Tween
+var prev_tile: Tile
 var curr_tile: Tile
 var curr_flag: Flag
+var can_move = true
 
 
 func _ready() -> void:
 	Events.move_missed.connect(_on_move_missed)
+	Events.timestep.connect(_on_timestep)
+
+	await get_tree().physics_frame
+
+	curr_tile = check_tile(grid_pos)
+	prev_tile = curr_tile
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
+	# 3. check validity of tile in that direction
+	# 4. move player to that tile
+	# 5. emit stepped off for previous tile
+	# 6. next timestep
+
 	var new_tile := check_tile(new_pos)
-	if not new_tile:
-		if new_pos == grid_pos:
-			fall_down()
-		return
-	else:
-		if curr_tile: curr_tile.stepped_off.emit()
-		curr_tile = new_tile
-		curr_tile.stepped_on.emit()
+	if not new_tile: return
+
+	prev_tile = curr_tile
+	curr_tile = new_tile
 
 	# move to new position
-	var last_pos := grid_pos
 	grid_pos = new_pos
 	global_position = new_pos
 	animate_to_grid_position()
 
-	check_curr_tile()
-	if curr_flag:
-		curr_flag.change_flag_pos(new_pos)
+	prev_tile.stepped_off.emit()
 
 	Clock.advance_time()
 
-	var tile := check_tile(new_pos)
-	if last_pos == grid_pos and tile.countdown <= 1:
-		print("ahhh im falling")
-
 
 func check_tile(pos: Vector3i) -> Tile:
-	var results := shapecast_at_pos(pos - grid_pos)
-	if results.size() == 0: return null
-	for item in results:
-		var collider := item.collider as Object
-		if collider is Tile:
-			return collider
+	var areas := shapecast_at_pos(pos)
+	if areas.size() == 0: return null
+	for area in areas:
+		if area is Tile and not area.is_disabled:
+			return area
 
 	return null
 
 
 func check_curr_tile() -> void:
-	var results := shapecast_at_pos(Vector3i.ZERO)
-	for item in results:
-		var collider := item.collider as Object
-		if collider is Flag:
-			curr_flag = collider
-			collider.grab()
-		if collider is TheHolyLight and curr_flag:
+	var areas := shapecast_at_pos(grid_pos)
+	for area in areas:
+		if area is Flag:
+			curr_flag = area
+			area.grab()
+		if area is TheHolyLight and curr_flag:
 			win()
 			Events.win.emit()
 
 
-func shapecast_at_pos(pos: Vector3i) -> Array[Dictionary]:
-	var cast_pos := Vector3(pos) + Vector3(0.5, 0, 0.5)
+func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
+	var cast_pos := Vector3(pos) + Vector3(0.5, 0.0, 0.5)
 	var space_state := get_world_3d().direct_space_state
-	var shape := SphereShape3D.new()
-	shape.radius = 0.2
-	var query := PhysicsShapeQueryParameters3D.new()
+	var query := PhysicsPointQueryParameters3D.new()
+	query.position = Vector3(cast_pos)
 	query.collide_with_areas = true
 	query.collide_with_bodies = false
-	query.shape = shape
-	query.transform = global_transform
-	query.transform.origin += Vector3(cast_pos)
-	return space_state.intersect_shape(query)
+
+	var results := space_state.intersect_point(query)
+	var overlapping_areas: Array[Area3D] = []
+	for result in results:
+		if result.collider is Area3D:
+			overlapping_areas.append(result.collider)
+	return overlapping_areas
+
+
+func uh_oh() -> void:
+	print("uh oh")
 
 
 func fall_down() -> void:
+	can_move = false
 	print("you died!")
 
 
 func win() -> void:
+	can_move = false
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	#tile_sprite.material_override.set_shader_parameter("offset", 0.0)
 	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5).as_relative()
 	# fade_tween.tween_property(tile_sprite.material_override, "shader_parameter/offset", 6.0, 1.5)
 	fade_tween.chain().tween_property(tile_sprite, "visible", false, 0.0)
 
+
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("left"):
-		tile_sprite.flip_h = false
-		move_to_pos(grid_pos + Vector3i(-1, 0, 0))
-	elif event.is_action_pressed("right"):
-		tile_sprite.flip_h = true
-		move_to_pos(grid_pos + Vector3i(1, 0, 0))
-	elif event.is_action_pressed("up"):
-		move_to_pos(grid_pos + Vector3i(0, 0, -1))
-	elif event.is_action_pressed("down"):
-		move_to_pos(grid_pos + Vector3i(0, 0, 1))
+	if can_move:
+		if event.is_action_pressed("left"):
+			tile_sprite.flip_h = false
+			move_to_pos(grid_pos + Vector3i(-1, 0, 0))
+		elif event.is_action_pressed("right"):
+			tile_sprite.flip_h = true
+			move_to_pos(grid_pos + Vector3i(1, 0, 0))
+		elif event.is_action_pressed("up"):
+			move_to_pos(grid_pos + Vector3i(0, 0, -1))
+		elif event.is_action_pressed("down"):
+			move_to_pos(grid_pos + Vector3i(0, 0, 1))
 
 
 func animate_to_grid_position() -> void:
@@ -110,5 +120,27 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 
+
+func _on_timestep(_curr_timestep: int) -> void:
+	# 1. check current tile for any items
+	# 2. emit stepped on for current tile
+	check_curr_tile()
+	if curr_flag: curr_flag.change_flag_pos(grid_pos)
+
+	curr_tile.stepped_on.emit()
+
+
 func _on_move_missed() -> void:
-	move_to_pos(grid_pos)
+	# 3. emit stepped off for current tile
+	# 4. check current tile validity again for uh oh check
+	# 5. next timestep
+	if curr_tile.is_disabled:
+		fall_down()
+		return
+
+	curr_tile.stepped_off.emit()
+
+	if curr_tile.is_disabled:
+		uh_oh()
+
+	Clock.advance_time()

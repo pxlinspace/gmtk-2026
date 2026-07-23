@@ -8,6 +8,7 @@ signal stepped_off
 
 var countdown: int = 0
 var step_tween: Tween
+var is_disabled: bool = false
 
 func _ready() -> void:
 	stepped_on.connect(_on_stepped_on)
@@ -16,7 +17,8 @@ func _ready() -> void:
 func set_countdown(new_value: int) -> void:
 	countdown = new_value
 	if countdown <= 0:
-		queue_free()
+		is_disabled = true
+		hide()
 		return
 
 	label.text = str(countdown)
