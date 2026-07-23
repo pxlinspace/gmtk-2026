@@ -1,15 +1,13 @@
 [gd_scene format=4 uid="uid://bsw2ikj51rfc8"]
 
 [ext_resource type="Script" uid="uid://bprt5nu31ouj5" path="res://scenes/tile/tile.gd" id="1_vb0sl"]
+[ext_resource type="Material" uid="uid://clv3e7xdx6tva" path="res://assets/materials/standard.tres" id="2_bibkx"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="2_dvver"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vb0sl"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvver"]
-shading_mode = 2
-
 [sub_resource type="BoxMesh" id="BoxMesh_vb0sl"]
-material = SubResource("StandardMaterial3D_dvver")
+material = ExtResource("2_bibkx")
 size = Vector3(0.8, 0.5, 0.8)
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bibkx"]
