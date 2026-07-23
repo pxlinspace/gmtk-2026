@@ -19,15 +19,19 @@ func move_to_pos(new_pos: Vector3i) -> void:
 		if new_pos == grid_pos:
 			fall_down()
 		return
-
-	if curr_tile: curr_tile.stepped_off.emit()
-	curr_tile = new_tile
-	curr_tile.stepped_on.emit()
+	else:
+		if curr_tile: curr_tile.stepped_off.emit()
+		curr_tile = new_tile
+		curr_tile.stepped_on.emit()
 
 	# move to new position
+	var last_pos := grid_pos
 	grid_pos = new_pos
 	global_position = new_pos
 	animate_to_grid_position()
+
+	if last_pos == grid_pos:
+		print("im scared")
 
 	check_curr_tile()
 	if curr_flag:
