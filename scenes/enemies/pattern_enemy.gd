@@ -8,7 +8,6 @@ var position_tween: Tween
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
-	move(0)
 
 
 func move_to_pos(new_pos: Vector3i) -> void:

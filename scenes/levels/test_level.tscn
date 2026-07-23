@@ -113,6 +113,10 @@ text = "asdfasdf"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
 
+[node name="PatternEnemy2" parent="." unique_id=948316300 instance=ExtResource("4_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
+
 [node name="Flag" parent="." unique_id=1229724056 instance=ExtResource("5_48ne7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 
