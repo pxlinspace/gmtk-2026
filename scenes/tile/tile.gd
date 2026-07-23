@@ -24,12 +24,17 @@ func _ready() -> void:
 func set_countdown(new_value: int) -> void:
 	countdown = new_value
 	if countdown <= 0:
-		is_disabled = true
-		hide()
+		fall_the_tile()
 		return
 
 	label.text = str(countdown)
 	change_tile_color(palette.get("color_" + str(new_value)))
+
+
+func fall_the_tile() -> void:
+	is_disabled = true
+	var fall_tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN)
+	fall_tween.tween_property(self, "position:y", -20.0, 0.75)
 
 
 func set_infinity() -> void:
@@ -63,6 +68,9 @@ func _on_stepped_on() -> void:
 
 func _on_stepped_off() -> void:
 	if not is_infinity: set_countdown(countdown - 1)
+
+	if is_disabled:
+		return
 
 	if step_tween: step_tween.kill()
 	step_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

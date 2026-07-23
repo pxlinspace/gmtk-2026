@@ -22,6 +22,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] more enemy types
 - [ ] timer in the corner
 - [ ] level design
+- [x] make the tiles fall
 - [x] infinity tiles
 - [x] better tile system
 
