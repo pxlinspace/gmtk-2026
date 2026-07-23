@@ -2,18 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://dblkhnpovbp5m" path="res://scenes/enemies/base_enemy.tscn" id="1_mtoyf"]
 [ext_resource type="Script" uid="uid://ba42a53fjqx7x" path="res://scenes/enemies/pattern_enemy.gd" id="2_2rwsl"]
-[ext_resource type="Texture2D" uid="uid://dhq2c46vsclpu" path="res://assets/images/placeholders/player.png" id="3_281a8"]
+[ext_resource type="Texture2D" uid="uid://chyhkh8rgsjx4" path="res://assets/images/enemies/slug-Sheet.png" id="3_oo6x1"]
 [ext_resource type="Texture2D" uid="uid://cipuww3r0qjrq" path="res://assets/images/arrow.png" id="4_oo6x1"]
+[ext_resource type="Texture2D" uid="uid://jdfsuvubomok" path="res://assets/images/next_square.png" id="5_nq8yl"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_281a8"]
-atlas = ExtResource("3_281a8")
-region = Rect2(0, 0, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_nq8yl"]
+atlas = ExtResource("3_oo6x1")
+region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_cmiad"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_012e4"]
+atlas = ExtResource("3_oo6x1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_20v65"]
+atlas = ExtResource("3_oo6x1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lkvl6"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_281a8")
+"texture": SubResource("AtlasTexture_nq8yl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_012e4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_20v65")
 }],
 "loop": 1,
 "name": &"default",
@@ -25,10 +40,7 @@ script = ExtResource("2_2rwsl")
 pattern = Array[Vector3i]([])
 
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(889524288) index="0" unique_id=2049415869]
-offset = Vector2(0, 50)
-flip_h = true
-pixel_size = 0.01
-sprite_frames = SubResource("SpriteFrames_cmiad")
+sprite_frames = SubResource("SpriteFrames_lkvl6")
 
 [node name="Arrow" type="Sprite3D" parent="." index="2" unique_id=1676522077]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
@@ -37,3 +49,12 @@ cast_shadow = 0
 modulate = Color(1, 0, 0, 1)
 texture_filter = 2
 texture = ExtResource("4_oo6x1")
+
+[node name="NextSquare" type="Sprite3D" parent="." index="3" unique_id=1434440814]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+top_level = true
+cast_shadow = 0
+modulate = Color(1, 0, 0, 0.5019608)
+pixel_size = 0.0078125
+texture_filter = 2
+texture = ExtResource("5_nq8yl")
