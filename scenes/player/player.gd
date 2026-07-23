@@ -59,7 +59,8 @@ func check_curr_tile() -> void:
 			curr_flag = collider
 			collider.grab()
 		if collider is TheHolyLight and curr_flag:
-			print("you win!!!!!!!")
+			win()
+			Events.win.emit()
 
 
 func shapecast_at_pos(pos: Vector3i) -> Array[Dictionary]:
@@ -79,6 +80,13 @@ func shapecast_at_pos(pos: Vector3i) -> Array[Dictionary]:
 func fall_down() -> void:
 	print("you died!")
 
+
+func win() -> void:
+	var fade_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
+	tile_sprite.material_override.set_shader_parameter("offset", 0.0)
+	fade_tween.tween_property(tile_sprite, "position:y", 2, 1.5)
+	fade_tween.tween_property(tile_sprite.material_override, "shader_parameter/offset", 6.0, 1.5)
+	fade_tween.chain().tween_property(tile_sprite, "visible", false, 0.0)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left"):
