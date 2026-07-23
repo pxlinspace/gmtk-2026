@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://dblkhnpovbp5m" path="res://scenes/enemies/base_enemy.tscn" id="1_mtoyf"]
 [ext_resource type="Script" uid="uid://ba42a53fjqx7x" path="res://scenes/enemies/pattern_enemy.gd" id="2_2rwsl"]
 [ext_resource type="Texture2D" uid="uid://dhq2c46vsclpu" path="res://assets/images/placeholders/player.png" id="3_281a8"]
+[ext_resource type="Texture2D" uid="uid://cipuww3r0qjrq" path="res://assets/images/arrow.png" id="4_oo6x1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_281a8"]
 atlas = ExtResource("3_281a8")
@@ -26,6 +27,13 @@ pattern = Array[Vector3i]([])
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(889524288) index="0" unique_id=2049415869]
 offset = Vector2(0, 50)
 flip_h = true
-modulate = Color(1, 0.45999998, 0.45999998, 1)
 pixel_size = 0.01
 sprite_frames = SubResource("SpriteFrames_cmiad")
+
+[node name="Arrow" type="Sprite3D" parent="." index="2" unique_id=1676522077]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 0, 0)
+top_level = true
+modulate = Color(1, 0, 0, 1)
+alpha_cut = 2
+texture_filter = 2
+texture = ExtResource("4_oo6x1")

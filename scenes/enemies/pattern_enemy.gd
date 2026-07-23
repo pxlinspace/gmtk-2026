@@ -2,10 +2,13 @@ class_name PatternEnemy extends BaseEnemy
 
 @export var pattern: Array[Vector3i] = []
 
+@onready var arrow: Sprite3D = $Arrow
+
 var position_tween: Tween
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
+	move(0)
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
@@ -16,7 +19,11 @@ func move_to_pos(new_pos: Vector3i) -> void:
 
 func move(curr_timestep: int) -> void:
 	var curr_move := pattern[curr_timestep % pattern.size()]
+	var next_move := pattern[(curr_timestep + 1) % pattern.size()]
 	move_to_pos(grid_position + curr_move)
+	arrow.position = Vector3(grid_position) + Vector3(0.5, 0, 0.5)
+	arrow.position += Vector3(next_move * 0.5)
+	arrow.rotation.y = atan2(curr_move.x, curr_move.z)
 
 
 func animate_to_grid_position() -> void:
