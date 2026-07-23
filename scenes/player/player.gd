@@ -85,8 +85,8 @@ func fall_down() -> void:
 func win() -> void:
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	#tile_sprite.material_override.set_shader_parameter("offset", 0.0)
-	fade_tween.tween_property(tile_sprite, "position:y", 2, 1.5)
-	fade_tween.tween_property(tile_sprite.material_override, "shader_parameter/offset", 6.0, 1.5)
+	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5).as_relative()
+	# fade_tween.tween_property(tile_sprite.material_override, "shader_parameter/offset", 6.0, 1.5)
 	fade_tween.chain().tween_property(tile_sprite, "visible", false, 0.0)
 
 func _unhandled_input(event: InputEvent) -> void:
