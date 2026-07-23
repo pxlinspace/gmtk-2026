@@ -44,12 +44,15 @@ shape = SubResource("BoxShape3D_30gms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1610933109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 0.5)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_30gms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=874016586]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_30gms")
 surface_material_override/0 = ExtResource("1_72il1")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=188552169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 5, 0.5)
+cast_shadow = 0
 mesh = SubResource("CylinderMesh_72il1")
