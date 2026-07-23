@@ -35,6 +35,7 @@ script = ExtResource("1_fr1um")
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=775466758]
 
 [node name="Flashbang" type="ColorRect" parent="HudLayer" unique_id=226712831]
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
