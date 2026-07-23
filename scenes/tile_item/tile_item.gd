@@ -8,4 +8,5 @@ func _ready() -> void:
 
 
 func _on_collect() -> void:
-	queue_free()
+	# queue_free()
+	Events.item_gotten.emit()

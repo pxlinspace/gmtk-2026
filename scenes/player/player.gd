@@ -15,6 +15,7 @@ var can_move: bool = false
 func _enter_tree() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
+	Events.item_gotten.connect(_on_item_gotten)
 
 
 func _ready() -> void:
@@ -168,3 +169,14 @@ func _on_move_missed() -> void:
 		uh_oh()
 
 	Clock.advance_time()
+
+func _on_item_gotten() -> void:
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	can_move = false
+	tile_sprite.play("item_gotten")
+	await get_tree().create_timer(1.0).timeout
+	tile_sprite.play("default")
+	can_move = true
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
