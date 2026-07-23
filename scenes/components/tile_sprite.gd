@@ -1,3 +1,3 @@
-class_name TileSprite extends Sprite3D
+class_name TileSprite extends AnimatedSprite3D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer

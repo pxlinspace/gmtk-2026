@@ -7,6 +7,21 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3330e"]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_3330e"]
+atlas = ExtResource("2_n4lsa")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lvxji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3330e")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="Flag" type="Area3D" unique_id=1229724056]
 script = ExtResource("1_n4lsa")
 
@@ -17,4 +32,6 @@ shape = SubResource("BoxShape3D_3330e")
 [node name="Anchor" parent="." unique_id=889524288 instance=ExtResource("4_3330e")]
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_h3dxe")]
-texture = ExtResource("2_n4lsa")
+offset = Vector2(0, 50)
+pixel_size = 0.01
+sprite_frames = SubResource("SpriteFrames_lvxji")

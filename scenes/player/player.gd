@@ -82,8 +82,10 @@ func fall_down() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left"):
+		tile_sprite.flip_h = false
 		move_to_pos(grid_pos + Vector3i(-1, 0, 0))
 	elif event.is_action_pressed("right"):
+		tile_sprite.flip_h = true
 		move_to_pos(grid_pos + Vector3i(1, 0, 0))
 	elif event.is_action_pressed("up"):
 		move_to_pos(grid_pos + Vector3i(0, 0, -1))

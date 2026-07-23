@@ -63,6 +63,7 @@ data = {
 
 [node name="TimeLabel" type="Label3D" parent="Player" unique_id=1047470890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0.5)
+visible = false
 billboard = 1
 text = "asdfasdf"
 
