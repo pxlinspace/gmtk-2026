@@ -14,6 +14,15 @@ sky_material = SubResource("ProceduralSkyMaterial_yautc")
 [sub_resource type="Environment" id="Environment_v45ci"]
 background_mode = 2
 sky = SubResource("Sky_fr1um")
+glow_bloom = 1.0
+glow_hdr_threshold = 1.12
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+fog_enabled = true
+fog_light_color = Color(1, 1, 1, 1)
+fog_height = -0.05
+fog_height_density = 4.0
+adjustment_contrast = 0.75
 
 [node name="TestLevel" type="Node3D" unique_id=1990532022]
 script = ExtResource("1_fr1um")

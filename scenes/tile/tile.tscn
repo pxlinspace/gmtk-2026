@@ -1,11 +1,29 @@
-[gd_scene format=3 uid="uid://bsw2ikj51rfc8"]
+[gd_scene format=4 uid="uid://bsw2ikj51rfc8"]
 
 [ext_resource type="Script" uid="uid://bprt5nu31ouj5" path="res://scenes/tile/tile.gd" id="1_vb0sl"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vb0sl"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_vb0sl"]
-size = Vector3(0.8, 0.2, 0.8)
+size = Vector3(0.8, 1, 0.8)
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vb0sl"]
+_surfaces = [{
+"aabb": AABB(-0.44618803, -0.546188, -0.44618803, 0.89237607, 1.092376, 0.89237607),
+"attribute_data": PackedByteArray("AAAAAAAAAACrqio/AAAAAKuqqj4AAAAAAACAPwAAAAAAAAAAAAAAP6uqKj8AAAA/q6qqPgAAAD8AAIA/AAAAP6uqqj4AAAAAAAAAAAAAAD+rqio/AAAAAKuqqj4AAAA/q6qqPgAAAD8AAAAAAACAP6uqKj8AAAA/q6qqPgAAgD+rqqo+AAAAP6uqKj8AAAA/q6oqPwAAAD8AAIA/AAAAP6uqqj4AAIA/q6oqPwAAgD+rqio/AACAPwAAgD8AAIA/"),
+"format": 34359742487,
+"index_count": 36,
+"index_data": PackedByteArray("AAAEAAIAAgAEAAYAAQAFAAMAAwAFAAcACAAMAAoACgAMAA4ACQANAAsACwANAA8AEAAUABIAEgAUABYAEQAVABMAEwAVABcA"),
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 24,
+"vertex_data": PackedByteArray("wnLkvvrSCz/CcuQ+wnLkPvrSCz/CcuS+wnLkPvrSCz/CcuQ+wnLkvvrSCz/CcuS+wnLkvvrSC7/CcuQ+wnLkPvrSC7/CcuS+wnLkPvrSC7/CcuQ+wnLkvvrSC7/CcuS+wnLkPvrSCz/CcuQ+wnLkvvrSCz/CcuS+wnLkPvrSCz/CcuS+wnLkvvrSCz/CcuQ+wnLkPvrSC7/CcuQ+wnLkvvrSC7/CcuS+wnLkPvrSC7/CcuS+wnLkvvrSC7/CcuQ+wnLkPvrSCz/CcuQ+wnLkvvrSC7/CcuQ+wnLkvvrSCz/CcuQ+wnLkPvrSC7/CcuQ+wnLkPvrSCz/CcuS+wnLkvvrSC7/CcuS+wnLkvvrSCz/CcuS+wnLkPvrSC7/CcuS+/3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
+}]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dvver"]
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(0.18000498, 0.18000484, 0.18000486, 1)
 
 [node name="Tile" type="Area3D" unique_id=1558390590]
 script = ExtResource("1_vb0sl")
@@ -15,10 +33,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
 shape = SubResource("BoxShape3D_vb0sl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2030621483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.099999994, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.49999997, -0.5)
 mesh = SubResource("BoxMesh_vb0sl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=725726997]
+mesh = SubResource("ArrayMesh_vb0sl")
+surface_material_override/0 = SubResource("StandardMaterial3D_dvver")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=126902231]
 transform = Transform3D(1, 4.371139e-08, 4.3711392e-08, -4.371139e-08, -4.371139e-08, 1, 4.3711392e-08, -1, -4.3711385e-08, 0.5, 0.05, -0.5)
+modulate = Color(0, 0, 0, 1)
 text = "3"
 font_size = 64
