@@ -3,4 +3,4 @@
 [resource]
 shading_mode = 0
 disable_fog = true
-albedo_color = Color(0.26475334, 0.26475334, 0.26475334, 1)
+albedo_color = Color(0, 0, 0, 1)
