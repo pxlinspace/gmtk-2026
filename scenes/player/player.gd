@@ -68,6 +68,8 @@ func check_curr_tile() -> void:
 			Events.win.emit()
 		if area is BaseEnemy:
 			die()
+		if area is TileItem:
+			area.collect.emit()
 
 
 func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:

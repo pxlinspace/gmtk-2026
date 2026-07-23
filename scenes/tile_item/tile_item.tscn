@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://bs6ah8pia0x8m"]
+
+[ext_resource type="Script" uid="uid://dlybp6pmpaf0n" path="res://scenes/tile_item/tile_item.gd" id="1_de8ui"]
+[ext_resource type="Script" uid="uid://bdb0coopdhydc" path="res://scenes/components/anchor.gd" id="2_7avdm"]
+[ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="3_mtboy"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_de8ui"]
+
+[node name="TileItem" type="Area3D" unique_id=831780269]
+script = ExtResource("1_de8ui")
+
+[node name="CollisionShape" type="CollisionShape3D" parent="." unique_id=1073515463]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_de8ui")
+
+[node name="Anchor" type="Node3D" parent="." unique_id=1314168185]
+script = ExtResource("2_7avdm")
+metadata/_custom_type_script = "uid://bdb0coopdhydc"
+
+[node name="TileSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("3_mtboy")]
