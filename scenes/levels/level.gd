@@ -17,4 +17,4 @@ func spawn_tiles() -> void:
 		tile.set_countdown(int(level_map.mesh_library.get_item_name(idx)))
 		tile_container.add_child(tile)
 		tile.global_position = level_map.to_global(cell_pos)
-		level_map.set_cell_item(cell_pos, GridMap.INVALID_CELL_ITEM)
+	level_map.queue_free()
