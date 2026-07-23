@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="PaletteResource" format=3 uid="uid://dbok604mefuiy"]
+
+[ext_resource type="Script" uid="uid://bmykvmfowt23b" path="res://scripts/palette_resource.gd" id="1_5rced"]
+
+[resource]
+script = ExtResource("1_5rced")
+color_1 = Color(0.65223044, 0.87909496, 0.951454, 1)
+color_2 = Color(0.54, 0.9, 0.576, 1)
+color_3 = Color(0.96, 0.8088, 0.528, 1)
+color_4 = Color(0.89, 0.5607, 0.66497827, 1)
+color_5 = Color(0.5767663, 0.5295932, 0.8836704, 1)
+color_infinity = Color(0.60867023, 0.68032765, 0.82023364, 1)
+metadata/_custom_type_script = "uid://bmykvmfowt23b"

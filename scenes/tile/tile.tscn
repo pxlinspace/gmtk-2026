@@ -1,7 +1,7 @@
 [gd_scene format=4 uid="uid://bsw2ikj51rfc8"]
 
 [ext_resource type="Script" uid="uid://bprt5nu31ouj5" path="res://scenes/tile/tile.gd" id="1_vb0sl"]
-[ext_resource type="Resource" uid="uid://dsgbcv5id8qd2" path="res://main_palette.tres" id="2_2jaqc"]
+[ext_resource type="Resource" uid="uid://dsgbcv5id8qd2" path="res://resources/palettes/main_palette.tres" id="2_2jaqc"]
 [ext_resource type="Material" uid="uid://clv3e7xdx6tva" path="res://assets/materials/standard.tres" id="2_bibkx"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="2_dvver"]
 
@@ -36,6 +36,7 @@ shape = SubResource("BoxShape3D_vb0sl")
 
 [node name="MeshInstance" type="MeshInstance3D" parent="Anchor" unique_id=2030621483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.24999997, 0.5)
+cast_shadow = 0
 mesh = SubResource("BoxMesh_vb0sl")
 
 [node name="MeshOutline" type="MeshInstance3D" parent="Anchor/MeshInstance" unique_id=1678736582]

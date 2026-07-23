@@ -48,7 +48,7 @@ func set_infinity() -> void:
 
 
 func change_tile_color(new_color: Color) -> void:
-	var lighter_color := new_color.lightened(0.6)
+	var lighter_color := Color.WHITE if is_infinity else new_color
 	label.modulate = new_color
 	label.outline_modulate = new_color
 	change_mesh_color(outline_mesh, new_color)
