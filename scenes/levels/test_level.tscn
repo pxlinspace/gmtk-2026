@@ -57,7 +57,7 @@ _surfaces = [{
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_cyt5c"]
 emission_shape = 2
-emission_sphere_radius = 40.0
+emission_sphere_radius = 30.0
 use_rotation_velocity_3d = true
 rotation_velocity_3d_min = Vector3(0, 0, -50)
 rotation_velocity_3d_max = Vector3(0, 0, 50)
