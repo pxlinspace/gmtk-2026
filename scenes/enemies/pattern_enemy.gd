@@ -8,6 +8,7 @@ var position_tween: Tween
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
+	update_arrow(Clock.curr_timestep)
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
@@ -18,8 +19,13 @@ func move_to_pos(new_pos: Vector3i) -> void:
 
 func move(curr_timestep: int) -> void:
 	var curr_move := pattern[curr_timestep % pattern.size()]
-	var next_move := pattern[(curr_timestep + 1) % pattern.size()]
 	move_to_pos(grid_position + curr_move)
+	update_arrow(curr_timestep)
+
+
+func update_arrow(curr_timestep: int) -> void:
+	var curr_move := pattern[curr_timestep % pattern.size()]
+	var next_move := pattern[(curr_timestep + 1) % pattern.size()]
 	arrow.position = Vector3(grid_position) + Vector3(0.5, 0, 0.5)
 	arrow.position += Vector3(next_move * 0.5)
 	arrow.rotation.y = atan2(curr_move.x, curr_move.z)
