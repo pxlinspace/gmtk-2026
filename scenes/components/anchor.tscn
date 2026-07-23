@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://s2fwise1g0sf"]
+
+[ext_resource type="Script" uid="uid://bdb0coopdhydc" path="res://scenes/components/anchor.gd" id="1_e4c8w"]
+
+[node name="Anchor" type="Node3D" unique_id=889524288]
+script = ExtResource("1_e4c8w")

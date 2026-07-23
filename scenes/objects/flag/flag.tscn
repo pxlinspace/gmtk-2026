@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="1_h3dxe"]
 [ext_resource type="Script" uid="uid://sb7beys7ca2f" path="res://scenes/objects/flag/flag.gd" id="1_n4lsa"]
 [ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="2_n4lsa"]
+[ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="4_3330e"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3330e"]
 
@@ -13,8 +14,7 @@ script = ExtResource("1_n4lsa")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 shape = SubResource("BoxShape3D_3330e")
 
-[node name="Anchor" type="Node3D" parent="." unique_id=49474019]
-top_level = true
+[node name="Anchor" parent="." unique_id=889524288 instance=ExtResource("4_3330e")]
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_h3dxe")]
 texture = ExtResource("2_n4lsa")
