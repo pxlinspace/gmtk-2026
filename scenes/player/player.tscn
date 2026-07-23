@@ -14,5 +14,5 @@ top_level = true
 texture = ExtResource("3_gmlin")
 
 [node name="Camera3D" type="Camera3D" parent="Anchor" unique_id=2023232318]
-transform = Transform3D(1, 0, 0, 0, 0.6427876, 0.7660445, 0, -0.7660445, 0.6427876, 1, 4.9641, 4.098074)
+transform = Transform3D(1, 0, 0, 0, 0.6427876, 0.7660445, 0, -0.7660445, 0.6427876, 0.5, 4.964, 4.098)
 current = true

@@ -1,11 +1,12 @@
 extends Node3D
 
-@onready var grid_position: Vector3i = Vector3i(position)
+@onready var grid_position: Vector3i = Vector3i(position) #idk how grid_position is gonna matter now but maybe it'll come in use??
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
 
 var position_tween: Tween
 var curr_tile: Tile
+var curr_flag: Flag
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
@@ -27,12 +28,14 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	var is_valid := false
 	for item in results:
 		var collider := item.collider as Object
-		if not collider is Tile: continue
-		if curr_tile: curr_tile.stepped_off.emit()
-		is_valid = true
-		curr_tile = collider
-		curr_tile.stepped_on.emit()
-		break
+		if collider is Tile:
+			if curr_tile: curr_tile.stepped_off.emit()
+			is_valid = true
+			curr_tile = collider
+			curr_tile.stepped_on.emit()
+		elif collider is Flag:
+			curr_flag = collider
+			collider.grab()
 
 	if not is_valid: return
 
@@ -40,6 +43,8 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	grid_position = new_pos
 	global_position = new_pos
 	animate_to_grid_position()
+	if curr_flag:
+		curr_flag.change_flag_pos(new_pos)
 
 	Clock.advance_time()
 

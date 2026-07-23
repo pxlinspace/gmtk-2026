@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="4_v45ci"]
+[ext_resource type="PackedScene" uid="uid://ctdwqhbselgah" path="res://scenes/objects/flag/flag.tscn" id="5_48ne7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
@@ -49,3 +50,6 @@ data = {
 [node name="PatternEnemy" parent="." unique_id=1295660293 instance=ExtResource("4_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
+
+[node name="Flag" parent="." unique_id=1229724056 instance=ExtResource("5_48ne7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
