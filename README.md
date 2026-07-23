@@ -14,13 +14,15 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] infinity tiles
+- [ ] coloring the tiles
+- [ ] making enemies fall
 - [ ] item pickup display
 - [ ] treasure collection
 - [ ] usable items
 - [ ] more enemy types
 - [ ] timer in the corner
 - [ ] level design
+- [x] infinity tiles
 - [x] better tile system
 
 ### later

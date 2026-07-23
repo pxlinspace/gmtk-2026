@@ -75,6 +75,7 @@ cast_shadow = 0
 mesh = SubResource("CylinderMesh_30gms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=120060357]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_rvg4a")
 surface_material_override/0 = ExtResource("1_72il1")
 
