@@ -39,12 +39,11 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 1. check current tile for any items
 2. emit stepped on for current tile
   if player presses move:
-    3. check validity of tile in that direction
-    4. move player to that tile
-    5. emit stepped off for previous tile
-    6. next timestep
+	3. check validity of tile in that direction
+	4. move player to that tile
+	5. emit stepped off for previous tile
+	6. next timestep
   if player waits until countdown runs out:
-    3. emit stepped off for current tile
-    4. check current tile validity again for fall check
-    5. next timestep
-
+	3. emit stepped off for current tile
+	4. check current tile validity again for fall check
+	5. next timestep

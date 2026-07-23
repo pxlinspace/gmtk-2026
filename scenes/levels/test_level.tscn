@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://b168csfnfxnn1" path="res://scenes/levels/level.gd" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="1_jbqir"]
-[ext_resource type="Texture2D" uid="uid://by23eh5w7bi6y" path="res://assets/images/timer/timer.png" id="2_hfwtw"]
+[ext_resource type="PackedScene" uid="uid://2w7f1pr0125g" path="res://scenes/hud/timer_bar.tscn" id="2_hfwtw"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="4_v45ci"]
 [ext_resource type="PackedScene" uid="uid://ctdwqhbselgah" path="res://scenes/objects/flag/flag.tscn" id="5_48ne7"]
@@ -87,13 +87,8 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(1, 1, 1, 0)
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="HudLayer" unique_id=938473234]
-offset_left = 860.0
-offset_top = 36.0
-offset_right = 988.0
-offset_bottom = 164.0
-fill_mode = 4
-texture_under = ExtResource("2_hfwtw")
+[node name="TimerBar" parent="HudLayer" unique_id=673752016 instance=ExtResource("2_hfwtw")]
+position = Vector2(932, 91)
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
 
@@ -114,6 +109,7 @@ data = {
 
 [node name="TimeLabel" type="Label3D" parent="Player" unique_id=1047470890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0.5)
+visible = false
 billboard = 1
 text = "asdfasdf"
 

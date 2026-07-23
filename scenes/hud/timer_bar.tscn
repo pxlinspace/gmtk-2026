@@ -1,0 +1,76 @@
+[gd_scene format=3 uid="uid://2w7f1pr0125g"]
+
+[ext_resource type="Texture2D" uid="uid://cun1rdugwey0f" path="res://assets/images/timer/timer_under.png" id="1_xhe6g"]
+[ext_resource type="Texture2D" uid="uid://by23eh5w7bi6y" path="res://assets/images/timer/timer.png" id="2_cbisb"]
+[ext_resource type="Script" uid="uid://dvik4vxmtf5yg" path="res://scenes/hud/timer_bar.gd" id="3_cbisb"]
+[ext_resource type="Texture2D" uid="uid://b804uqqbbuyc1" path="res://assets/images/timer/timer_hands-Sheet.png" id="3_l7in1"]
+
+[sub_resource type="Animation" id="Animation_cbisb"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xhe6g"]
+resource_name = "bounce"
+length = 0.39999999999999997
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(0.43527532, 1),
+"update": 0,
+"values": [Vector2(1.15, 0.9), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cbisb"]
+_data = {
+&"RESET": SubResource("Animation_cbisb"),
+&"bounce": SubResource("Animation_xhe6g")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhe6g"]
+atlas = ExtResource("2_cbisb")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vknqg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhe6g")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TimerBar" type="Node2D" unique_id=1720615051]
+script = ExtResource("3_cbisb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=629656005]
+libraries/ = SubResource("AnimationLibrary_cbisb")
+
+[node name="UnderSprite" type="Sprite2D" parent="." unique_id=703587152]
+texture = ExtResource("1_xhe6g")
+
+[node name="HandSprite" type="Sprite2D" parent="." unique_id=1496797578]
+modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
+texture = ExtResource("3_l7in1")
+hframes = 12
+frame = 3
+
+[node name="TopSprite" type="AnimatedSprite2D" parent="." unique_id=1123578540]
+sprite_frames = SubResource("SpriteFrames_vknqg")

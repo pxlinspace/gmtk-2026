@@ -7,7 +7,7 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 @onready var level_map: GridMap = $LevelMap
 @onready var level_timer: Timer = $LevelTimer
-@onready var timer_label: Label3D = $Player/TimeLabel
+@onready var timer_bar: TimerBar = $HudLayer/TimerBar
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 
 func _ready() -> void:
@@ -18,7 +18,7 @@ func _ready() -> void:
 	level_timer.start()
 
 func _process(dt: float) -> void:
-	timer_label.text = str(level_timer.time_left)
+	timer_bar.set_progress(1.0 - level_timer.time_left / level_timer.wait_time)
 
 func spawn_tiles() -> void:
 	var cells: Array[Vector3i] = level_map.get_used_cells()
