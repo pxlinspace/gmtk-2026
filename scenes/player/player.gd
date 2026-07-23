@@ -30,14 +30,15 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	global_position = new_pos
 	animate_to_grid_position()
 
-	if last_pos == grid_pos:
-		print("im scared")
-
 	check_curr_tile()
 	if curr_flag:
 		curr_flag.change_flag_pos(new_pos)
 
 	Clock.advance_time()
+
+	var tile := check_tile(new_pos)
+	if last_pos == grid_pos and tile.countdown <= 1:
+		print("ahhh im falling")
 
 
 func check_tile(pos: Vector3i) -> Tile:
