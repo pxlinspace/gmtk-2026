@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://d3gdof6yra3ql"]
+
+[ext_resource type="PackedScene" uid="uid://dblkhnpovbp5m" path="res://scenes/enemies/base_enemy.tscn" id="1_mtoyf"]
+[ext_resource type="Script" uid="uid://ba42a53fjqx7x" path="res://scenes/enemies/pattern_enemy.gd" id="2_2rwsl"]
+[ext_resource type="Texture2D" uid="uid://dhq2c46vsclpu" path="res://assets/images/placeholders/player.png" id="3_281a8"]
+
+[node name="PatternEnemy" unique_id=1295660293 instance=ExtResource("1_mtoyf")]
+script = ExtResource("2_2rwsl")
+
+[node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1440443172) index="0" unique_id=2049415869]
+flip_h = true
+modulate = Color(1, 0.45999998, 0.45999998, 1)
+texture = ExtResource("3_281a8")

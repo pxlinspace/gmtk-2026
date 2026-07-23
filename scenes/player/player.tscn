@@ -11,8 +11,6 @@ script = ExtResource("1_dovo2")
 top_level = true
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_8afob")]
-billboard = 1
-texture_filter = 2
 texture = ExtResource("3_gmlin")
 
 [node name="Camera3D" type="Camera3D" parent="Anchor" unique_id=2023232318]

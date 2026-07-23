@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dblkhnpovbp5m"]
+
+[ext_resource type="Script" uid="uid://m3lgfd1oucjw" path="res://scenes/enemies/base_enemy.gd" id="1_qf3h2"]
+[ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="2_qf3h2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bibkx"]
+
+[node name="BaseEnemy" type="Area3D" unique_id=1295660293]
+script = ExtResource("1_qf3h2")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1368015053]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
+shape = SubResource("BoxShape3D_bibkx")
+
+[node name="Anchor" type="Node3D" parent="." unique_id=1440443172]
+
+[node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("2_qf3h2")]

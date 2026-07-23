@@ -41,6 +41,8 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	global_position = new_pos
 	animate_to_grid_position()
 
+	Clock.advance_time()
+
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("left"):
