@@ -15,6 +15,10 @@ func _ready() -> void:
 
 func set_countdown(new_value: int) -> void:
 	countdown = new_value
+	if countdown <= 0:
+		queue_free()
+		return
+
 	label.text = str(countdown)
 
 func _on_stepped_on() -> void:
@@ -23,6 +27,8 @@ func _on_stepped_on() -> void:
 	step_tween.tween_property(anchor, "position:y", -0.2, 0.2)
 
 func _on_stepped_off() -> void:
+	set_countdown(countdown - 1)
+
 	if step_tween: step_tween.kill()
 	step_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	step_tween.tween_property(anchor, "position:y", 0.0, 0.2)
