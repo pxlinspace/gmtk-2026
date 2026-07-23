@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://7atd1cmyjx3y" path="res://assets/materials/tile_placeholder/3.tres" id="2_t763h"]
 [ext_resource type="Material" uid="uid://c385q20dto43j" path="res://assets/materials/tile_placeholder/4.tres" id="3_cmolx"]
 [ext_resource type="Material" uid="uid://5tlx21uo1bdy" path="res://assets/materials/tile_placeholder/5.tres" id="4_5rrr5"]
+[ext_resource type="Material" uid="uid://ce7fc1a5mc440" path="res://assets/materials/tile_placeholder/infinity.tres" id="5_5rekq"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_lg3a2"]
 material = ExtResource("1_v4pdb")
@@ -24,6 +25,10 @@ size = Vector3(0.8, 0.2, 0.8)
 
 [sub_resource type="BoxMesh" id="BoxMesh_5rrr5"]
 material = ExtResource("4_5rrr5")
+size = Vector3(0.8, 0.2, 0.8)
+
+[sub_resource type="BoxMesh" id="BoxMesh_5rekq"]
+material = ExtResource("5_5rekq")
 size = Vector3(0.8, 0.2, 0.8)
 
 [node name="LevelMapMeshLibrarySource" type="Node3D" unique_id=1072811025]
@@ -46,3 +51,7 @@ mesh = SubResource("BoxMesh_t763h")
 [node name="5" type="MeshInstance3D" parent="." unique_id=1634904334]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
 mesh = SubResource("BoxMesh_5rrr5")
+
+[node name="infinity" type="MeshInstance3D" parent="." unique_id=1818578705]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 0)
+mesh = SubResource("BoxMesh_5rekq")

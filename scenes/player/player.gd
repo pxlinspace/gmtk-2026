@@ -1,20 +1,23 @@
-extends Node3D
+extends Area3D
 
 @onready var grid_pos: Vector3i = Vector3i(position) #idk how grid_pos is gonna matter now but maybe it'll come in use??
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
+@onready var cam: Camera3D = $Anchor/Camera3D
 
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var curr_flag: Flag
-var can_move = true
+var can_move: bool = false
 
 
-func _ready() -> void:
+func _enter_tree() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
 
+
+func _ready() -> void:
 	await get_tree().physics_frame
 
 	curr_tile = check_tile(grid_pos)
@@ -54,6 +57,7 @@ func check_tile(pos: Vector3i) -> Tile:
 
 
 func check_curr_tile() -> void:
+	await get_tree().physics_frame
 	var areas := shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is Flag:
@@ -62,6 +66,8 @@ func check_curr_tile() -> void:
 		if area is TheHolyLight and curr_flag:
 			win()
 			Events.win.emit()
+		if area is BaseEnemy:
+			die()
 
 
 func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
@@ -86,6 +92,20 @@ func uh_oh() -> void:
 
 func fall_down() -> void:
 	can_move = false
+	print("you died!")
+
+
+func die() -> void:
+	await get_tree().create_timer(0.1).timeout
+	can_move = false
+
+	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	tile_sprite.look_at(cam.global_position)
+
+	var die_tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel()
+	die_tween.tween_property(tile_sprite, "global_position:x", 5.0, 2.0).as_relative()
+	die_tween.tween_property(tile_sprite, "global_position:y", 5.0, 2.0).as_relative()
+	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0).as_relative()
 	print("you died!")
 
 
@@ -121,7 +141,9 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
-func _on_timestep(_curr_timestep: int) -> void:
+func _on_timestep(curr_timestep: int) -> void:
+	if curr_timestep == 0:
+		can_move = true
 	# 1. check current tile for any items
 	# 2. emit stepped on for current tile
 	check_curr_tile()
