@@ -5,6 +5,7 @@ extends Node3D
 @onready var anchor: Node3D = $Anchor
 
 var position_tween: Tween
+var curr_tile: Tile
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
@@ -26,11 +27,16 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	var is_valid := false
 	for item in results:
 		var collider := item.collider as Object
-		if collider is Tile:
-			is_valid = true
-			break
+		if not collider is Tile: continue
+		if curr_tile: curr_tile.stepped_off.emit()
+		is_valid = true
+		curr_tile = collider
+		curr_tile.stepped_on.emit()
+		break
+
 	if not is_valid: return
 
+	# move to new position
 	grid_position = new_pos
 	global_position = new_pos
 	animate_to_grid_position()

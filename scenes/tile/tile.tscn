@@ -30,15 +30,17 @@ script = ExtResource("1_vb0sl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, -0.5)
 shape = SubResource("BoxShape3D_vb0sl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2030621483]
+[node name="Anchor" type="Node3D" parent="." unique_id=768223360]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchor" unique_id=2030621483]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.24999997, -0.5)
 mesh = SubResource("BoxMesh_vb0sl")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=1678736582]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Anchor/MeshInstance3D" unique_id=1678736582]
 mesh = SubResource("ArrayMesh_bibkx")
 surface_material_override/0 = ExtResource("2_dvver")
 
-[node name="Label3D" type="Label3D" parent="." unique_id=126902231]
+[node name="Label3D" type="Label3D" parent="Anchor" unique_id=126902231]
 transform = Transform3D(1, 4.371139e-08, 4.3711392e-08, -4.371139e-08, -4.371139e-08, 1, 4.3711392e-08, -1, -4.3711385e-08, 0.5, 0.05, -0.5)
 modulate = Color(0, 0, 0, 1)
 text = "3"
