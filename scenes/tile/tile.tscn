@@ -37,6 +37,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.24999997, 0.5)
 mesh = SubResource("BoxMesh_vb0sl")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Anchor/MeshInstance3D" unique_id=1678736582]
+cast_shadow = 0
 mesh = SubResource("ArrayMesh_bibkx")
 surface_material_override/0 = ExtResource("2_dvver")
 
