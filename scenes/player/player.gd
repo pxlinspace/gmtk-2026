@@ -4,6 +4,7 @@ extends Area3D
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
 @onready var cam: Camera3D = $Anchor/Camera3D
+@onready var item_sprite: TileSprite = $Anchor/ItemSprite
 
 var position_tween: Tween
 var prev_tile: Tile
@@ -19,6 +20,9 @@ func _enter_tree() -> void:
 
 
 func _ready() -> void:
+	item_sprite.hide()
+	item_sprite.position = Vector3(0.9, 0.6, 0.5)
+
 	await get_tree().physics_frame
 
 	curr_tile = check_tile(grid_pos)
@@ -170,7 +174,8 @@ func _on_move_missed() -> void:
 
 	Clock.advance_time()
 
-func _on_item_gotten() -> void:
+func _on_item_gotten(_tile_item: TileItem, _item_resource: ItemResource) -> void:
+	item_sprite.show()
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	can_move = false
@@ -180,3 +185,4 @@ func _on_item_gotten() -> void:
 	can_move = true
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
+	item_sprite.hide()
