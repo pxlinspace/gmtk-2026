@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="6_6xh4u"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="7_cyt5c"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="8_7x1jh"]
+[ext_resource type="PackedScene" uid="uid://j1sh726yb6tn" path="res://scenes/tile_item/test_item.tscn" id="9_hfwtw"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -145,5 +146,8 @@ transform_align = 1
 transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_cyt5c")
 draw_pass_1 = SubResource("QuadMesh_cyt5c")
+
+[node name="TestItem" parent="." unique_id=831780269 instance=ExtResource("9_hfwtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

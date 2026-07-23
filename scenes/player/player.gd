@@ -4,6 +4,7 @@ extends Area3D
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
 @onready var cam: Camera3D = $Anchor/Camera3D
+@onready var item_sprite: TileSprite = $Anchor/ItemSprite
 
 var position_tween: Tween
 var prev_tile: Tile
@@ -15,9 +16,13 @@ var can_move: bool = false
 func _enter_tree() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
+	Events.item_gotten.connect(_on_item_gotten)
 
 
 func _ready() -> void:
+	item_sprite.hide()
+	item_sprite.position = Vector3(0.9, 0.6, 0.5)
+
 	await get_tree().physics_frame
 
 	curr_tile = check_tile(grid_pos)
@@ -68,6 +73,8 @@ func check_curr_tile() -> void:
 			Events.win.emit()
 		if area is BaseEnemy:
 			die()
+		if area is TileItem:
+			area.collect.emit()
 
 
 func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
@@ -166,3 +173,16 @@ func _on_move_missed() -> void:
 		uh_oh()
 
 	Clock.advance_time()
+
+func _on_item_gotten(_tile_item: TileItem, _item_resource: ItemResource) -> void:
+	item_sprite.show()
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	can_move = false
+	tile_sprite.play("item_gotten")
+	await get_tree().create_timer(1.0).timeout
+	tile_sprite.play("default")
+	can_move = true
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	item_sprite.hide()

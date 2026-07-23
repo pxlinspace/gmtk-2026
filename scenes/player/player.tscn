@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dpjwq53uqumd" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://du16n75yhd6sx" path="res://assets/images/player/player.png" id="5_p47bc"]
+[ext_resource type="Texture2D" uid="uid://odp7y6fbpjp8" path="res://assets/images/placeholders/item.png" id="6_0owmy"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
@@ -54,20 +56,22 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_lvxji")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p47bc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_75vfm")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h17s1")
+"texture": ExtResource("5_p47bc")
 }],
 "loop": 1,
-"name": &"panic",
-"speed": 30.0
+"name": &"item_gotten",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_0owmy")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
 }]
 
 [node name="Player" type="Area3D" unique_id=343958966]
@@ -80,9 +84,15 @@ shape = SubResource("SphereShape3D_lvxji")
 [node name="Anchor" parent="." unique_id=889524288 instance=ExtResource("2_lvxji")]
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_8afob")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.5, 0, 0.5)
 sprite_frames = SubResource("SpriteFrames_7sbn2")
+animation = &"item_gotten"
 
 [node name="Camera3D" type="Camera3D" parent="Anchor" unique_id=2023232318]
 transform = Transform3D(1, 0, 0, 0, 0.6427876, 0.7660445, 0, -0.7660445, 0.6427876, 0.5, 4.964, 4.098)
 current = true
+
+[node name="ItemSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("1_8afob")]
+sorting_offset = 1.0
+offset = Vector2(0, 0)
+sprite_frames = SubResource("SpriteFrames_qek5x")
+frame_progress = 0.90525734
