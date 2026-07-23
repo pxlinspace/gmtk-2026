@@ -1,5 +1,7 @@
 extends Area3D
 
+const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
+
 @onready var grid_pos: Vector3i = Vector3i(position) #idk how grid_pos is gonna matter now but maybe it'll come in use??
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
@@ -108,9 +110,14 @@ func fall_down() -> void:
 func die() -> void:
 	await get_tree().create_timer(0.1).timeout
 	can_move = false
+	
+	var explosion := EXPLOSION_EFFECT.instantiate()
+	anchor.add_child(explosion)
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
+	
+	tile_sprite.animation_player.play("panic")
 
 	var die_tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel()
 	die_tween.tween_property(tile_sprite, "global_position:x", 5.0, 2.0).as_relative()
