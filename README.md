@@ -42,16 +42,17 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## ideas
 
-### player timestep order of operations
+### clock/timestep order of operations
 
-1. check current tile for any items
-2. emit stepped on for current tile
-  if player presses move:
-	3. check validity of tile in that direction
-	4. move player to that tile
-	5. emit stepped off for previous tile
-	6. next timestep
-  if player waits until countdown runs out:
-	3. emit stepped off for current tile
-	4. check current tile validity again for fall check
-	5. next timestep
+1. pre_timestep: runs after clock advances
+	- enemies move first
+	- bomb goes off
+2. timestep: runs one process frame after clock advances
+	- player steps on current tile
+	- player checks current tile for panic
+	- everything else that happens every timestep
+3. pre_move_missed: runs after timer reaches zero
+	- player falls down if current tile is disabled
+	- player steps off current tile
+4. move_missed: runs after timer reaches zero and clock advances
+	- lowkey nothing

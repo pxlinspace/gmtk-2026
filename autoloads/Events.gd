@@ -1,7 +1,10 @@
 extends Node
 
+signal pre_timestep(curr_timestep: int)
 signal timestep(curr_timestep: int)
+signal pre_move_missed
 signal move_missed
+
 signal win
 signal item_gotten(tile_item: TileItem)
 signal item_received(item_resource: ItemResource)

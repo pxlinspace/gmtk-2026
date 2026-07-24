@@ -22,4 +22,5 @@ func set_button(button_name: String) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if InputMap.has_action(button) and event.is_action_pressed(button):
+		Clock.advance_time()
 		item.use_item(get_tree().current_scene, get_tree().get_nodes_in_group("player")[0].grid_pos)

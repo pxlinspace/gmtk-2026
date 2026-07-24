@@ -13,7 +13,12 @@ func _ready() -> void:
 
 func advance_time() -> void:
 	curr_timestep += 1
+	Events.pre_timestep.emit(curr_timestep)
+	print("pretimestep")
+	await get_tree().process_frame
+	# await get_tree().create_timer(1.0).timeout
 	Events.timestep.emit(curr_timestep)
+	print("timestep")
 
 
 func _on_restart_level() -> void:

@@ -73,6 +73,8 @@ func _on_timestep(_curr_timestep: int) -> void:
 
 
 func _on_level_timer_timeout() -> void:
+	Events.pre_move_missed.emit()
+	Clock.advance_time()
 	Events.move_missed.emit()
 
 	var flashbang_tween := create_tween()

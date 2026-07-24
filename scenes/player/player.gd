@@ -17,6 +17,7 @@ var can_move: bool = true
 
 
 func _enter_tree() -> void:
+	Events.pre_move_missed.connect(_on_pre_move_missed)
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
 	Events.item_gotten.connect(_on_item_gotten)
@@ -25,7 +26,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	item_sprite.hide()
 
-	await get_tree().physics_frame
+	await get_tree().process_frame
 
 	curr_tile = check_tile(grid_pos)
 	prev_tile = curr_tile
@@ -34,11 +35,6 @@ func _ready() -> void:
 
 
 func move_to_pos(new_pos: Vector3i) -> void:
-	# 3. check validity of tile in that direction
-	# 4. move player to that tile
-	# 5. emit stepped off for previous tile
-	# 6. next timestep
-
 	var new_tile := check_tile(new_pos)
 	if not new_tile: return
 
@@ -66,7 +62,6 @@ func check_tile(pos: Vector3i) -> Tile:
 
 
 func check_curr_tile() -> void:
-	await get_tree().physics_frame
 	var areas := Utils.shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is TheHolyLight and area.is_active:
@@ -197,28 +192,24 @@ func show_item(sprite: SpriteFrames) -> void:
 
 
 func _on_timestep(_curr_timestep: int) -> void:
-	# 1. check current tile for any items
-	# 2. emit stepped on for current tile
 	check_curr_tile()
 
 	curr_tile.stepped_on.emit()
 
+	if curr_tile.is_disabled:
+		uh_oh()
 
-func _on_move_missed() -> void:
-	# 3. emit stepped off for current tile
-	# 4. check current tile validity again for uh oh check
-	# 5. next timestep
+
+func _on_pre_move_missed() -> void:
 	if curr_tile.is_disabled:
 		fall_down()
 		return
 
 	curr_tile.stepped_off.emit()
 
-	if curr_tile.is_disabled:
-		uh_oh()
 
-	Clock.advance_time()
-
+func _on_move_missed() -> void:
+	pass
 
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource

@@ -23,7 +23,7 @@ var explosion_damage: int = 1
 
 
 func _ready() -> void:
-	Events.timestep.connect(_on_timestep)
+	Events.pre_timestep.connect(_on_timestep)
 
 
 func set_countdown(new_value: int) -> void:
@@ -36,6 +36,7 @@ func set_countdown(new_value: int) -> void:
 
 
 func explode() -> void:
+	print("explode")
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.position = global_position
@@ -43,7 +44,7 @@ func explode() -> void:
 
 	for dir in explode_dirs:
 		for i in explosion_radius:
-			var check_pos := Vector3i(global_position) + dir
+			var check_pos := Vector3i(global_position) + dir * i
 			var areas := Utils.shapecast_at_pos(check_pos)
 			for area in areas:
 				if area is Tile and not area.is_disabled:

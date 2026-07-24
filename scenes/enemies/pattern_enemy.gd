@@ -10,7 +10,7 @@ var position_tween: Tween
 var is_dead: bool = false
 
 func _ready() -> void:
-	Events.timestep.connect(_on_timestep)
+	Events.pre_timestep.connect(_on_timestep)
 	arrow.top_level = true
 	next_square.top_level = true
 	update_arrow(Clock.curr_timestep)
@@ -52,7 +52,6 @@ func animate_to_grid_position() -> void:
 
 
 func check_curr_tile() -> void:
-	await get_tree().physics_frame
 	var areas := Utils.shapecast_at_pos(grid_position)
 	var is_on_tile := areas.any(func(a: Area3D) -> bool: return a is Tile and not a.is_disabled)
 	if not is_on_tile:

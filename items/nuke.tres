@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://bmm270uoe4vdl"]
 
-[ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_tur60"]
-[ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="2_0xhi2"]
+[ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_xtfc1"]
+[ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="2_xdglp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_0xhi2")
+"texture": ExtResource("2_xdglp")
 }],
 "loop": 1,
 "name": &"default",
@@ -15,7 +15,9 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_tur60")
+script = ExtResource("1_xtfc1")
+explosion_radius = 10
+explosion_damage = 5
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"
 sprite_frames = SubResource("SpriteFrames_0xhi2")
