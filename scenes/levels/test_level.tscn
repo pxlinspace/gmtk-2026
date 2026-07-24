@@ -4,12 +4,15 @@
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://2w7f1pr0125g" path="res://scenes/hud/timer_bar.tscn" id="2_hfwtw"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
+[ext_resource type="PackedScene" uid="uid://di2go0e71r7vo" path="res://scenes/hud/item_bar.tscn" id="3_eaa0b"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="4_v45ci"]
 [ext_resource type="PackedScene" uid="uid://ctdwqhbselgah" path="res://scenes/objects/flag/flag.tscn" id="5_48ne7"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="6_6xh4u"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="7_cyt5c"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="8_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://j1sh726yb6tn" path="res://scenes/tile_item/test_item.tscn" id="9_hfwtw"]
+[ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://items/test.tres" id="11_jmx14"]
+[ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://items/test_2.tres" id="13_a5rnb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -108,6 +111,9 @@ offset_right = -32.0
 offset_bottom = 160.0
 grow_horizontal = 0
 
+[node name="ItemBar" parent="HudLayer" unique_id=1517495826 instance=ExtResource("3_eaa0b")]
+position = Vector2(96, 472)
+
 [node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1325903831]
@@ -166,5 +172,14 @@ draw_pass_1 = SubResource("QuadMesh_cyt5c")
 
 [node name="TestItem" parent="." unique_id=831780269 instance=ExtResource("9_hfwtw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
+item_resource = ExtResource("11_jmx14")
+
+[node name="TestItem2" parent="." unique_id=30082926 instance=ExtResource("9_hfwtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
+item_resource = ExtResource("13_a5rnb")
+
+[node name="TestItem3" parent="." unique_id=151582730 instance=ExtResource("9_hfwtw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
+item_resource = ExtResource("13_a5rnb")
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

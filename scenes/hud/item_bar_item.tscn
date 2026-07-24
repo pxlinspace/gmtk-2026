@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dv023dsmp1w0o"]
+
+[ext_resource type="Script" uid="uid://cirld1a2m0wf4" path="res://scenes/hud/item_bar_item.gd" id="1_kisor"]
+[ext_resource type="Texture2D" uid="uid://odp7y6fbpjp8" path="res://assets/images/placeholders/item.png" id="2_v6m41"]
+[ext_resource type="Texture2D" uid="uid://mpjua0kku3t3" path="res://assets/images/placeholders/button-q.png" id="3_0pln1"]
+[ext_resource type="Texture2D" uid="uid://b4qxethepbnlv" path="res://assets/images/placeholders/button-e.png" id="3_pnx7m"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kisor"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_v6m41")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="ItemBarItem" type="Node2D" unique_id=1400741693]
+script = ExtResource("1_kisor")
+button_e = ExtResource("3_pnx7m")
+button_q = ExtResource("3_0pln1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=871240244]
+scale = Vector2(0.75, 0.75)
+sprite_frames = SubResource("SpriteFrames_kisor")
+
+[node name="Button" type="Sprite2D" parent="." unique_id=1470720253]
+position = Vector2(0, 16)
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("3_pnx7m")

@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://6ipvgouoqsus"]
+
+[ext_resource type="Script" uid="uid://3pvnakr78le3" path="res://scripts/item_resource.gd" id="1_7otys"]
+[ext_resource type="Texture2D" uid="uid://du16n75yhd6sx" path="res://assets/images/player/player.png" id="2_j27aw"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j27aw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_j27aw")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_7otys")
+item_name = "lil guy"
+item_desc = "clonse"
+sprite_frames = SubResource("SpriteFrames_j27aw")
+metadata/_custom_type_script = "uid://3pvnakr78le3"

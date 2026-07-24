@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://dpjwq53uqumd" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="5_75vfm"]
-[ext_resource type="Texture2D" uid="uid://odp7y6fbpjp8" path="res://assets/images/placeholders/item.png" id="6_0owmy"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
@@ -84,17 +83,6 @@ animations = [{
 "speed": 25.0
 }]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_qek5x"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("6_0owmy")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
-
 [node name="Player" type="Area3D" unique_id=343958966]
 script = ExtResource("1_dovo2")
 
@@ -116,7 +104,5 @@ script = ExtResource("5_75vfm")
 
 [node name="ItemSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("1_8afob")]
 sorting_offset = 2.0
-offset = Vector2(0, 0)
-pixel_size = 0.0138125
-sprite_frames = SubResource("SpriteFrames_qek5x")
-frame_progress = 0.90525734
+offset = Vector2(-53.06, 199.99)
+pixel_size = 0.0058125

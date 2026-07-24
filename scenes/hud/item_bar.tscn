@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://di2go0e71r7vo"]
+
+[ext_resource type="Script" uid="uid://cqsnna5qj81tk" path="res://scenes/hud/item_bar.gd" id="1_0gdgc"]
+
+[node name="ItemBar" type="Node2D" unique_id=804566892]
+script = ExtResource("1_0gdgc")

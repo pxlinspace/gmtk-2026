@@ -18,4 +18,3 @@ script = ExtResource("2_7avdm")
 metadata/_custom_type_script = "uid://bdb0coopdhydc"
 
 [node name="TileSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("3_mtboy")]
-offset = Vector2(0, 0)

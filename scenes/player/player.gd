@@ -23,7 +23,6 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	item_sprite.hide()
-	item_sprite.position = Vector3(0.3, 1.5, 0.5)
 
 	await get_tree().physics_frame
 
@@ -190,7 +189,11 @@ func _on_move_missed() -> void:
 
 	Clock.advance_time()
 
-func _on_item_gotten(_tile_item: TileItem, _item_resource: ItemResource) -> void:
+func _on_item_gotten(tile_item: TileItem) -> void:
+	var item_resource := tile_item.item_resource
+	item_sprite.sprite_frames = item_resource.sprite_frames
+	item_sprite.animation_player.stop()
+	item_sprite.animation_player.play("bounce")
 	item_sprite.show()
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
@@ -203,3 +206,4 @@ func _on_item_gotten(_tile_item: TileItem, _item_resource: ItemResource) -> void
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
+	Events.item_received.emit(item_resource)

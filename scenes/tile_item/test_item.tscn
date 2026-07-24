@@ -17,6 +17,4 @@ animations = [{
 [node name="TestItem" unique_id=831780269 instance=ExtResource("1_kcbyp")]
 
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1314168185) index="0" unique_id=765592719]
-offset = Vector2(0, 32)
-pixel_size = 0.0128125
 sprite_frames = SubResource("SpriteFrames_kcbyp")
