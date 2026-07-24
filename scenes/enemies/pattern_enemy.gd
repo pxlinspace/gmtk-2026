@@ -79,4 +79,5 @@ func die() -> void:
 	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5)
+	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
 	fall_tween.chain().tween_callback(queue_free)

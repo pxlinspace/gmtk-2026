@@ -16,6 +16,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 - [ ] more enemy types
 - [ ] level design
+- [ ] tutorial with npc
 - [x] making enemies fall
 - [x] treasure collection
 - [x] timer in the corner
@@ -30,7 +31,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [x] better tile system
 
 ### later
-- [ ] tutorial with npc
+
 - [ ] level select
 - [ ] main menu
 - [ ] settings
