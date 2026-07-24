@@ -10,8 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="6_6xh4u"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="7_cyt5c"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="8_7x1jh"]
-[ext_resource type="PackedScene" uid="uid://j1sh726yb6tn" path="res://scenes/tile_item/test_item.tscn" id="9_hfwtw"]
-[ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://items/test.tres" id="11_jmx14"]
+[ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="11_jmx14"]
+[ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://items/test.tres" id="12_eaa0b"]
 [ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://items/test_2.tres" id="13_a5rnb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
@@ -170,15 +170,15 @@ transform_align_channel_filter = 1
 process_material = SubResource("ParticleProcessMaterial_cyt5c")
 draw_pass_1 = SubResource("QuadMesh_cyt5c")
 
-[node name="TestItem" parent="." unique_id=831780269 instance=ExtResource("9_hfwtw")]
+[node name="TileItem" parent="." unique_id=831780269 instance=ExtResource("11_jmx14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 2)
-item_resource = ExtResource("11_jmx14")
+item_resource = ExtResource("12_eaa0b")
 
-[node name="TestItem2" parent="." unique_id=30082926 instance=ExtResource("9_hfwtw")]
+[node name="TileItem2" parent="." unique_id=475344652 instance=ExtResource("11_jmx14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 6)
 item_resource = ExtResource("13_a5rnb")
 
-[node name="TestItem3" parent="." unique_id=151582730 instance=ExtResource("9_hfwtw")]
+[node name="TileItem3" parent="." unique_id=868122214 instance=ExtResource("11_jmx14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
 item_resource = ExtResource("13_a5rnb")
 
