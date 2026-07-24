@@ -7,10 +7,16 @@ const explode_dirs: Array[Vector3i] = [
 	Vector3i(-1, 0, 0),
 	Vector3i(0, 0, 1),
 	Vector3i(0, 0, -1),
+
+	Vector3i(-1, 0, -1),
+	Vector3i(1, 0, -1),
+	Vector3i(1, 0, 1),
+	Vector3i(-1, 0, 1),
 ]
 
 var explosion_radius: int = 1
 var curr_countdown: int = 0
+var explosion_damage: int = 1
 
 
 @onready var label: Label3D = $Label3D
@@ -41,7 +47,8 @@ func explode() -> void:
 			var areas := Utils.shapecast_at_pos(check_pos)
 			for area in areas:
 				if area is Tile and not area.is_disabled:
-					area.stepped_off.emit()
+					for x in range(explosion_damage):
+						area.stepped_off.emit()
 
 	queue_free()
 

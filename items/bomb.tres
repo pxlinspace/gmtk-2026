@@ -17,6 +17,6 @@ animations = [{
 [resource]
 script = ExtResource("1_tur60")
 item_name = "bomb"
-item_desc = "its a nuke"
+item_desc = "now i have become death destroyer of worlds"
 sprite_frames = SubResource("SpriteFrames_0xhi2")
 metadata/_custom_type_script = "uid://bl8flmcvknn7m"
