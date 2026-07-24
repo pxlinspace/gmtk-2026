@@ -219,9 +219,7 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
 
-	Events.toggle_pause.emit(true)
 	await show_item(item_resource.sprite_frames)
-	Events.toggle_pause.emit(false)
 
 	if is_treasure:
 		Events.treasure_received.emit()
