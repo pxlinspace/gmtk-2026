@@ -112,14 +112,15 @@ func die() -> void:
 	Events.cam_shake.emit(0.6)
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	tile_sprite.center()
 	tile_sprite.look_at(cam.global_position)
 
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
 
 	var die_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel()
-	die_tween.tween_property(tile_sprite, "global_position:x", 4.0, 2.0)
-	die_tween.tween_property(tile_sprite, "global_position:y", 4.0, 2.0)
+	die_tween.tween_property(tile_sprite, "global_position:x", 5.0, 2.5)
+	die_tween.tween_property(tile_sprite, "global_position:y", 5.0, 2.5)
 	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0)
 	print("you died!")
 
