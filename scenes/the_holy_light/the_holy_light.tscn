@@ -117,6 +117,11 @@ _surfaces = [{
 "vertex_data": PackedByteArray("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")
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e8188"]
+shading_mode = 0
+disable_fog = true
+albedo_color = Color(0.18168, 0.1752, 0.24, 1)
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_e8188"]
 _surfaces = [{
 "aabb": AABB(-1.0387592, -1.0393199, -1.0387592, 2.077618, 2.0786393, 2.077618),
@@ -138,9 +143,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 shape = SubResource("BoxShape3D_30gms")
 
 [node name="Beam" type="Node3D" parent="." unique_id=81024720]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Beam" unique_id=1610933109]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_30gms")
@@ -152,7 +158,7 @@ mesh = SubResource("ArrayMesh_rvg4a")
 surface_material_override/0 = SubResource("StandardMaterial3D_rvg4a")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Beam" unique_id=188552169]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.75, 0)
 sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_72il1")
@@ -175,7 +181,7 @@ cast_shadow = 0
 [node name="MeshInstance3D" type="MeshInstance3D" parent="UfoOrigin/ufo/Sphere_001" index="0" unique_id=1334907236]
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_arjr5")
-surface_material_override/0 = ExtResource("1_72il1")
+surface_material_override/0 = SubResource("StandardMaterial3D_e8188")
 
 [node name="Sphere" parent="UfoOrigin/ufo" index="1" unique_id=144401760]
 cast_shadow = 0

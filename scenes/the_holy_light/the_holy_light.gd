@@ -24,8 +24,10 @@ func _process(delta: float) -> void:
 func set_active(new_value: bool) -> void:
 	is_active = new_value
 	collider.disabled = not new_value
-	beam.visible = new_value
-
+	var beam_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel()
+	var target_scale := 1.0 if new_value else 0.0
+	beam_tween.tween_property(beam, "scale:x", target_scale, 1.0)
+	beam_tween.tween_property(beam, "scale:z", target_scale, 1.0)
 
 func _on_all_treasure_gotten() -> void:
 	set_active(true)

@@ -107,6 +107,7 @@ shape = SubResource("SphereShape3D_lvxji")
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_8afob")]
 sorting_offset = 2.0
+no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_7sbn2")
 animation = &"item_gotten"
 
