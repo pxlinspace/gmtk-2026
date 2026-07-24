@@ -21,4 +21,3 @@ signal toggle_pause(paused: bool)
 signal all_treasure_gotten
 signal all_enemies_killed
 signal enemy_died(enemy: BaseEnemy)
-
