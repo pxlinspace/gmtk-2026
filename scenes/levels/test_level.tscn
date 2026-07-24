@@ -107,10 +107,10 @@ position = Vector2(932, 91)
 position = Vector2(96, 472)
 
 [node name="RestartProgressBar" type="TextureProgressBar" parent="HudLayer" unique_id=1532985065]
-offset_left = 416.0
-offset_top = 24.0
-offset_right = 456.0
-offset_bottom = 64.0
+offset_left = 16.0
+offset_top = 16.0
+offset_right = 144.0
+offset_bottom = 144.0
 max_value = 1.0
 step = 0.01
 fill_mode = 4
