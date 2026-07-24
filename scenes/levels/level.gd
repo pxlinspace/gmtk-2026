@@ -14,6 +14,8 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
 
+	timer_bar.set_speed_up(false)
+
 	spawn_tiles()
 	level_timer.wait_time = level_countdown_time
 	level_timer.start()
@@ -55,8 +57,10 @@ func _on_level_timer_timeout() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("shift"):
 		Engine.time_scale = 3.0
+		timer_bar.set_speed_up(true)
 	if event.is_action_released("shift"):
 		Engine.time_scale = 1.0
+		timer_bar.set_speed_up(false)
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 		Events.restart_level.emit()

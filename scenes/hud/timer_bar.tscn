@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dvik4vxmtf5yg" path="res://scenes/hud/timer_bar.gd" id="3_cbisb"]
 [ext_resource type="Texture2D" uid="uid://b804uqqbbuyc1" path="res://assets/images/timer/timer_hands-Sheet.png" id="3_l7in1"]
 [ext_resource type="Texture2D" uid="uid://cqjvfdncsw8bi" path="res://assets/images/timer/timer-Sheet.png" id="4_l7in1"]
+[ext_resource type="Texture2D" uid="uid://ducukuxg6wqah" path="res://assets/images/placeholders/speed-up.png" id="5_32sy1"]
 
 [sub_resource type="Animation" id="Animation_cbisb"]
 length = 0.001
@@ -90,3 +91,8 @@ frame = 3
 sprite_frames = SubResource("SpriteFrames_vknqg")
 autoplay = "default"
 frame_progress = 0.8009366
+
+[node name="SpeedUpSprite" type="Sprite2D" parent="." unique_id=1141126644]
+position = Vector2(-10, 21)
+scale = Vector2(0.49999997, 0.33333334)
+texture = ExtResource("5_32sy1")

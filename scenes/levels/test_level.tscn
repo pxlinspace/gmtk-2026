@@ -98,6 +98,16 @@ color = Color(1, 1, 1, 0)
 [node name="TimerBar" parent="HudLayer" unique_id=673752016 instance=ExtResource("2_hfwtw")]
 position = Vector2(932, 91)
 
+[node name="TextureRect" type="TextureRect" parent="HudLayer" unique_id=797485492]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -160.0
+offset_top = 32.0
+offset_right = -32.0
+offset_bottom = 160.0
+grow_horizontal = 0
+
 [node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1325903831]
