@@ -10,15 +10,23 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var timer_bar: TimerBar = $HudLayer/TimerBar
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 
+var collectable_treasure: Array[TreasureItem] = []
+
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
+	Events.treasure_received.connect(_on_treasure_received)
+	Events.toggle_pause.connect(_on_paused)
 
 	timer_bar.set_speed_up(false)
 
 	spawn_tiles()
 	level_timer.wait_time = level_countdown_time
 	level_timer.start()
+
+	for node in get_tree().get_nodes_in_group("treasure"):
+		if node is TreasureItem:
+			collectable_treasure.append(node)
 
 
 func _process(dt: float) -> void:
@@ -40,6 +48,10 @@ func spawn_tiles() -> void:
 		else:
 			tile.set_countdown(int(tile_name))
 	level_map.queue_free()
+
+
+func _on_paused(paused: bool) -> void:
+	level_timer.paused = paused
 
 
 func _on_timestep(_curr_timestep: int) -> void:
@@ -64,3 +76,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("restart"):
 		get_tree().reload_current_scene()
 		Events.restart_level.emit()
+
+
+func _on_treasure_received() -> void:
+	pass

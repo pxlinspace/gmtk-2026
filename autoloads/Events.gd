@@ -8,3 +8,4 @@ signal item_received(item_resource: ItemResource)
 signal treasure_received
 signal cam_shake(amount: float)
 signal restart_level
+signal toggle_pause(paused: bool)

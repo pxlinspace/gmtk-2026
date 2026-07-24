@@ -3,7 +3,22 @@
 [ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="1_ko1n8"]
 [ext_resource type="Script" uid="uid://bknx5ts48sfc6" path="res://scenes/tile_item/treasure_item.gd" id="2_yq8up"]
 [ext_resource type="Resource" uid="uid://bymljr2vl6dec" path="res://items/treasure.tres" id="3_6qobp"]
+[ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="3_s760d"]
 
-[node name="TreasureItem" unique_id=831780269 instance=ExtResource("1_ko1n8")]
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mmdh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_s760d")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="TreasureItem" unique_id=831780269 groups=["treasure"] instance=ExtResource("1_ko1n8")]
 script = ExtResource("2_yq8up")
 item_resource = ExtResource("3_6qobp")
+
+[node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1314168185) index="0" unique_id=765592719]
+sprite_frames = SubResource("SpriteFrames_8mmdh")

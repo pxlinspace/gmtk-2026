@@ -199,11 +199,13 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	can_move = false
+	Events.toggle_pause.emit(true)
 	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
 	await get_tree().create_timer(1.0).timeout
 	tile_sprite.play("default")
 	can_move = true
+	Events.toggle_pause.emit(false)
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
