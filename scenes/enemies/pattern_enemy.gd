@@ -4,6 +4,7 @@ class_name PatternEnemy extends BaseEnemy
 
 @onready var arrow: Sprite3D = $Arrow
 @onready var next_square: Sprite3D = $NextSquare
+@onready var collider: CollisionShape3D = $CollisionShape3D
 
 var position_tween: Tween
 
@@ -41,7 +42,6 @@ func update_arrow(curr_timestep: int) -> void:
 	next_square.position = Vector3(grid_position + next_move) + Vector3(0.5, 0, 0.5)
 
 
-
 func animate_to_grid_position() -> void:
 	if position_tween: position_tween.kill()
 	position_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
@@ -49,3 +49,29 @@ func animate_to_grid_position() -> void:
 	position_tween.tween_property(anchor, "global_position", target_pos, 0.2)
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
+
+
+func check_curr_tile() -> void:
+	await get_tree().physics_frame
+	var areas := Utils.shapecast_at_pos(grid_position)
+	var is_on_tile := areas.any(func(a) -> bool: return a is Tile and not a.is_disabled)
+	if not is_on_tile:
+		die()
+
+
+func _on_timestep(curr_timestep: int) -> void:
+	super._on_timestep(curr_timestep)
+	check_curr_tile()
+
+
+func die() -> void:
+	collider.disabled = true
+	await get_tree().create_timer(0.2).timeout
+
+	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	tile_sprite.look_at(get_viewport().get_camera_3d().global_position)
+
+	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
+	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
+	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5)
+	fall_tween.chain().tween_callback(queue_free)

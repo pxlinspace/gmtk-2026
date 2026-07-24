@@ -57,7 +57,7 @@ func move_to_pos(new_pos: Vector3i) -> void:
 
 
 func check_tile(pos: Vector3i) -> Tile:
-	var areas := shapecast_at_pos(pos)
+	var areas := Utils.shapecast_at_pos(pos)
 	if areas.size() == 0: return null
 	for area in areas:
 		if area is Tile and not area.is_disabled:
@@ -68,7 +68,7 @@ func check_tile(pos: Vector3i) -> Tile:
 
 func check_curr_tile() -> void:
 	await get_tree().physics_frame
-	var areas := shapecast_at_pos(grid_pos)
+	var areas := Utils.shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is TheHolyLight and area.is_active:
 			win()
@@ -79,20 +79,20 @@ func check_curr_tile() -> void:
 			area.collect.emit()
 
 
-func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
-	var cast_pos := Vector3(pos) + Vector3(0.5, 0.0, 0.5)
-	var space_state := get_world_3d().direct_space_state
-	var query := PhysicsPointQueryParameters3D.new()
-	query.position = Vector3(cast_pos)
-	query.collide_with_areas = true
-	query.collide_with_bodies = false
+# func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
+# 	var cast_pos := Vector3(pos) + Vector3(0.5, 0.0, 0.5)
+# 	var space_state := get_world_3d().direct_space_state
+# 	var query := PhysicsPointQueryParameters3D.new()
+# 	query.position = Vector3(cast_pos)
+# 	query.collide_with_areas = true
+# 	query.collide_with_bodies = false
 
-	var results := space_state.intersect_point(query)
-	var overlapping_areas: Array[Area3D] = []
-	for result in results:
-		if result.collider is Area3D:
-			overlapping_areas.append(result.collider)
-	return overlapping_areas
+# 	var results := space_state.intersect_point(query)
+# 	var overlapping_areas: Array[Area3D] = []
+# 	for result in results:
+# 		if result.collider is Area3D:
+# 			overlapping_areas.append(result.collider)
+# 	return overlapping_areas
 
 
 func uh_oh() -> void:
@@ -108,8 +108,7 @@ func fall_down() -> void:
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
-	tile_sprite.position.y += 0.5
-	tile_sprite.offset.y = 0.0
+	tile_sprite.center()
 
 	var fall_tween := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)

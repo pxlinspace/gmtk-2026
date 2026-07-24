@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 Events="*uid://lf0djwxwl325"
 Clock="*uid://bdl75y8oravhb"
+Utils="*uid://de46b2eme8wen"
 
 [debug]
 
