@@ -33,12 +33,11 @@ func move(curr_timestep: int) -> void:
 
 
 func update_arrow(curr_timestep: int) -> void:
-	var curr_move := pattern[curr_timestep % pattern.size()]
 	var next_move := pattern[(curr_timestep + 1) % pattern.size()]
 
 	arrow.position = Vector3(grid_position) + Vector3(0.5, 0, 0.5)
 	arrow.position += Vector3(next_move * 0.5)
-	arrow.rotation.y = atan2(curr_move.x, curr_move.z)
+	arrow.rotation.y = atan2(next_move.x, next_move.z) - PI/2
 	next_square.position = Vector3(grid_position + next_move) + Vector3(0.5, 0, 0.5)
 
 
@@ -66,6 +65,8 @@ func _on_timestep(curr_timestep: int) -> void:
 
 func die() -> void:
 	collider.disabled = true
+	arrow.hide()
+	next_square.hide()
 	await get_tree().create_timer(0.2).timeout
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
