@@ -9,6 +9,8 @@ var position_tween: Tween
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
+	arrow.top_level = true
+	next_square.top_level = true
 	update_arrow(Clock.curr_timestep)
 
 
@@ -24,7 +26,7 @@ func move(curr_timestep: int) -> void:
 		tile_sprite.flip_h = false
 	elif curr_move.x < 0:
 		tile_sprite.flip_h = true
-	
+
 	move_to_pos(grid_position + curr_move)
 	update_arrow(curr_timestep)
 
@@ -32,12 +34,12 @@ func move(curr_timestep: int) -> void:
 func update_arrow(curr_timestep: int) -> void:
 	var curr_move := pattern[curr_timestep % pattern.size()]
 	var next_move := pattern[(curr_timestep + 1) % pattern.size()]
-	
+
 	arrow.position = Vector3(grid_position) + Vector3(0.5, 0, 0.5)
 	arrow.position += Vector3(next_move * 0.5)
 	arrow.rotation.y = atan2(curr_move.x, curr_move.z)
 	next_square.position = Vector3(grid_position + next_move) + Vector3(0.5, 0, 0.5)
-	
+
 
 
 func animate_to_grid_position() -> void:
