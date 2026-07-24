@@ -14,6 +14,8 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
+- [ ] press r to restart
+- [ ] hold shift to speed up
 - [ ] item pickup display
 - [ ] treasure collection
 - [ ] coloring the tiles

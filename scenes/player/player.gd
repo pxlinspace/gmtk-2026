@@ -12,7 +12,7 @@ var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var curr_flag: Flag
-var can_move: bool = false
+var can_move: bool = true
 
 
 func _enter_tree() -> void:

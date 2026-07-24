@@ -10,6 +10,7 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var timer_bar: TimerBar = $HudLayer/TimerBar
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 
+
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
 
@@ -17,8 +18,10 @@ func _ready() -> void:
 	level_timer.wait_time = level_countdown_time
 	level_timer.start()
 
+
 func _process(dt: float) -> void:
 	timer_bar.set_progress(1.0 - level_timer.time_left / level_timer.wait_time)
+
 
 func spawn_tiles() -> void:
 	var cells: Array[Vector3i] = level_map.get_used_cells()
@@ -36,8 +39,10 @@ func spawn_tiles() -> void:
 			tile.set_countdown(int(tile_name))
 	level_map.queue_free()
 
+
 func _on_timestep(_curr_timestep: int) -> void:
 	level_timer.start()
+
 
 func _on_level_timer_timeout() -> void:
 	Events.move_missed.emit()
@@ -45,3 +50,13 @@ func _on_level_timer_timeout() -> void:
 	var flashbang_tween := create_tween()
 	flashbang.color.a = 0.6
 	flashbang_tween.tween_property(flashbang, "color:a", 0.0, 0.75)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shift"):
+		Engine.time_scale = 3.0
+	if event.is_action_released("shift"):
+		Engine.time_scale = 1.0
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+		Events.restart_level.emit()

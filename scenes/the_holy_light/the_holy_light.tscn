@@ -8,6 +8,7 @@
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_30gms"]
 transparency = 1
+cull_mode = 1
 shading_mode = 0
 albedo_color = Color(1, 1, 1, 0.8117647)
 
@@ -139,16 +140,19 @@ shape = SubResource("BoxShape3D_30gms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1610933109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
+sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_30gms")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=120060357]
+sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_rvg4a")
 surface_material_override/0 = SubResource("StandardMaterial3D_rvg4a")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=188552169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
+sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_72il1")
 
@@ -157,12 +161,12 @@ libraries/ = SubResource("AnimationLibrary_e8188")
 autoplay = &"idle"
 
 [node name="UfoOrigin" type="Node3D" parent="." unique_id=668523592]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.8, 0.5)
 
 [node name="ufo" parent="UfoOrigin" unique_id=1607744177 instance=ExtResource("3_rvg4a")]
 transform = Transform3D(1, 0, 0, 0, 1.0530432, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="Sphere_002" parent="UfoOrigin/ufo" index="0" unique_id=737855244]
+[node name="Sphere_002" parent="UfoOrigin/ufo" index="0" unique_id=537026957]
 cast_shadow = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="UfoOrigin/ufo/Sphere_002" index="0" unique_id=857226501]
@@ -170,7 +174,7 @@ cast_shadow = 0
 mesh = SubResource("ArrayMesh_e8188")
 surface_material_override/0 = ExtResource("1_72il1")
 
-[node name="Sphere" parent="UfoOrigin/ufo" index="1" unique_id=161948403]
+[node name="Sphere" parent="UfoOrigin/ufo" index="1" unique_id=1976355042]
 cast_shadow = 0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="UfoOrigin/ufo/Sphere" index="0" unique_id=270774443]
