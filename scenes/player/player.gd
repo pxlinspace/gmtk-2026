@@ -13,7 +13,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
-var can_move: bool = true
+var can_move: bool = false
 
 
 func _enter_tree() -> void:
@@ -21,6 +21,7 @@ func _enter_tree() -> void:
 	Events.move_missed.connect(_on_move_missed)
 	Events.timestep.connect(_on_timestep)
 	Events.item_gotten.connect(_on_item_gotten)
+	Events.restart_level.connect(_on_restart_level)
 
 
 func _ready() -> void:
@@ -46,7 +47,8 @@ func move_to_pos(new_pos: Vector3i) -> void:
 	global_position = new_pos
 	animate_to_grid_position()
 
-	prev_tile.stepped_off.emit()
+	if prev_tile:
+		prev_tile.stepped_off.emit()
 
 	Clock.advance_time()
 	tile_sprite.play("default")
@@ -225,3 +227,7 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 		Events.treasure_received.emit()
 	else:
 		Events.item_received.emit(item_resource)
+
+
+func _on_restart_level() -> void:
+	can_move = false

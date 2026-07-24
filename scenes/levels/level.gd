@@ -109,8 +109,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func restart_level() -> void:
 	is_restarting = false
-	get_tree().reload_current_scene()
 	Events.restart_level.emit()
+	SceneTransition.reload_current_scene()
 
 
 func _on_treasure_received() -> void:

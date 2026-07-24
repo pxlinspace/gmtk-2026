@@ -1,5 +1,16 @@
 [gd_scene format=3 uid="uid://vqba6ya4gtfx"]
 
+[ext_resource type="Script" uid="uid://crodi7rjg5ews" path="res://scenes/screens/level_select.gd" id="1_r8gmh"]
+[ext_resource type="PackedScene" uid="uid://bm5es1irsp5cc" path="res://scenes/ui/scene_button.tscn" id="2_0ycd8"]
+
 [node name="LevelSelect" type="Node3D" unique_id=295417097]
+script = ExtResource("1_r8gmh")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509956800]
+
+[node name="BackButton" parent="CanvasLayer" unique_id=1810188404 instance=ExtResource("2_0ycd8")]
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 216.0
+offset_bottom = 72.0
+text = "back to menu"

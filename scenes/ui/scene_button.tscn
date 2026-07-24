@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://bm5es1irsp5cc"]
+
+[ext_resource type="Script" uid="uid://b5381ksy67l2y" path="res://scenes/ui/scene_button.gd" id="1_v3saj"]
+
+[node name="SceneButton" type="Button" unique_id=1810188404]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_v3saj")
+scene_path = "uid://c4214qv11sf8m"
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

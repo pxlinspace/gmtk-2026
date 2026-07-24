@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://ca3t7ly4ngjp0"]
+
+[ext_resource type="Script" uid="uid://jyrjemqehoi2" path="res://scenes/screens/settings_screen.gd" id="1_thgee"]
+[ext_resource type="PackedScene" uid="uid://bm5es1irsp5cc" path="res://scenes/ui/scene_button.tscn" id="2_huve1"]
+
+[node name="SettingsScreen" type="Node3D" unique_id=1232031065]
+script = ExtResource("1_thgee")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=548822005]
+
+[node name="BackButton" parent="CanvasLayer" unique_id=1810188404 instance=ExtResource("2_huve1")]
+offset_left = 24.0
+offset_top = 32.0
+offset_right = 216.0
+offset_bottom = 72.0
+text = "back to menu"

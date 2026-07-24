@@ -1,10 +1,13 @@
 [gd_resource type="Theme" format=3 uid="uid://tujl158183jq"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nads"]
+expand_margin_top = 8.0
+expand_margin_bottom = 8.0
 
 [resource]
-default_font_size = 48
-Button/styles/hover = null
-Button/styles/hover_pressed = null
+default_font_size = 32
+Button/styles/hover = SubResource("StyleBoxFlat_4nads")
+Button/styles/hover_pressed = SubResource("StyleBoxFlat_4nads")
 Button/styles/normal = SubResource("StyleBoxFlat_4nads")
-Button/styles/pressed = null
+Button/styles/pressed = SubResource("StyleBoxFlat_4nads")
+VBoxContainer/constants/separation = 24
