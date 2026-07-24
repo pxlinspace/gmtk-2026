@@ -22,13 +22,15 @@ func _ready() -> void:
 
 
 func set_countdown(new_value: int) -> void:
-	countdown = new_value
-	if countdown <= 0:
-		fall_the_tile()
+	if new_value < 0:
 		return
-
+		
+	countdown = new_value
 	label.text = str(countdown)
 	change_tile_color(palette.get("color_" + str(new_value)))
+	
+	if countdown == 0:
+		fall_the_tile()
 
 
 func fall_the_tile() -> void:

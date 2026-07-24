@@ -117,7 +117,7 @@ func die() -> void:
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
 	
-	tile_sprite.animation_player.play("panic")
+	tile_sprite.play("panic")
 
 	var die_tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel()
 	die_tween.tween_property(tile_sprite, "global_position:x", 5.0, 2.0).as_relative()
