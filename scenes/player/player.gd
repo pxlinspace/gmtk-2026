@@ -79,22 +79,6 @@ func check_curr_tile() -> void:
 			area.collect.emit()
 
 
-# func shapecast_at_pos(pos: Vector3i) -> Array[Area3D]:
-# 	var cast_pos := Vector3(pos) + Vector3(0.5, 0.0, 0.5)
-# 	var space_state := get_world_3d().direct_space_state
-# 	var query := PhysicsPointQueryParameters3D.new()
-# 	query.position = Vector3(cast_pos)
-# 	query.collide_with_areas = true
-# 	query.collide_with_bodies = false
-
-# 	var results := space_state.intersect_point(query)
-# 	var overlapping_areas: Array[Area3D] = []
-# 	for result in results:
-# 		if result.collider is Area3D:
-# 			overlapping_areas.append(result.collider)
-# 	return overlapping_areas
-
-
 func uh_oh() -> void:
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
@@ -202,12 +186,10 @@ func show_item(sprite: SpriteFrames) -> void:
 	item_sprite.show()
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
-	can_move = false
 	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
-	await get_tree().create_timer(1.0).timeout
+	await Events.timestep
 	tile_sprite.play("default")
-	can_move = true
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
