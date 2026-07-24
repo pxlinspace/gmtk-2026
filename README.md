@@ -14,16 +14,16 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] press r to restart
-- [ ] hold shift to speed up
-- [ ] item pickup display
 - [ ] treasure collection
-- [ ] coloring the tiles
 - [ ] making enemies fall
-- [ ] usable items
 - [ ] more enemy types
-- [ ] timer in the corner
 - [ ] level design
+- [x] timer in the corner
+- [x] usable items
+- [x] coloring the tiles
+- [x] press r to restart
+- [x] hold shift to speed up
+- [x] item pickup display
 - [x] die when hitting enemy
 - [x] make the tiles fall
 - [x] infinity tiles
