@@ -110,13 +110,14 @@ func fall_down() -> void:
 func die() -> void:
 	await get_tree().create_timer(0.1).timeout
 	can_move = false
-	
+
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	anchor.add_child(explosion)
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
-	
+
+	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
 
 	var die_tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel()
