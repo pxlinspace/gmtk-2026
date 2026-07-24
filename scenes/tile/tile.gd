@@ -24,11 +24,11 @@ func _ready() -> void:
 func set_countdown(new_value: int) -> void:
 	if new_value < 0:
 		return
-		
+
 	countdown = new_value
 	label.text = str(countdown)
 	change_tile_color(palette.get("color_" + str(new_value)))
-	
+
 	if countdown == 0:
 		fall_the_tile()
 
@@ -44,7 +44,7 @@ func set_infinity() -> void:
 	countdown = INF
 	is_infinity = true
 	label.position.x = 0.5
-	label.font_size = 140
+	label.font_size = 150
 	label.text = "∞"
 
 	change_tile_color(palette.color_infinity)
