@@ -6,4 +6,4 @@ class_name ItemResource extends Resource
 
 
 func use_item() -> void:
-	print(item_name)
+	print(item_name + " used!")
