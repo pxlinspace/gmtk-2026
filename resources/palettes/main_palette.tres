@@ -4,6 +4,7 @@
 
 [resource]
 script = ExtResource("1_koec5")
+color_0 = Color(0.6420905, 0.66885936, 0.7294891, 1)
 color_1 = Color(0.632, 0.76893336, 0.79, 1)
 color_2 = Color(0.574, 0.82, 0.5986, 1)
 color_3 = Color(0.96, 0.8088, 0.528, 1)
