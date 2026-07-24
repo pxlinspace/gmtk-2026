@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://j1owud46mu7c"]
+
+[ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_fiq81"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_l37oo"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_qpwj6"]
+[ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="4_ibugp"]
+
+[node name="Level" unique_id=1990532022 instance=ExtResource("1_fiq81")]
+
+[node name="LevelMap" parent="." index="4" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(2, 1, 1310720, 2, 2, 1310720, 2, 3, 1310720, 2, 4, 1310720, 5, 5, 1310720, 4, 5, 1310720, 3, 5, 1310720, 8, 6, 1441792, 4, 7, 1310721, 4, 6, 1310720, 1, 3, 1310720, 0, 3, 1310720, 0, 4, 1310720, 0, 5, 1310720, 0, 6, 1310720, 6, 4, 1310720, 6, 3, 1310720, 6, 2, 1310720, 6, 1, 1310720, 5, 1, 1310720, 4, 1, 1310721, 3, 1, 1310720, 8, 5, 1310720, 8, 4, 1310720, 8, 3, 1310720, 7, 3, 1310720, 4, 3, 1310725, 4, 2, 1310721, 3, 4, 1310720, 5, 4, 1310720, 2, 7, 1310720, 3, 7, 1310720, 5, 7, 1310720, 6, 7, 1310720, 1, 6, 1441792, 2, 6, 1441792, 6, 6, 1441792, 7, 6, 1441792)
+}
+
+[node name="Player" parent="." index="7" unique_id=343958966 instance=ExtResource("2_l37oo")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="TheHolyLight" parent="." index="8" unique_id=696309230 instance=ExtResource("3_qpwj6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 3)
+
+[node name="TreasureItem" parent="." index="9" unique_id=831780269 instance=ExtResource("4_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+
+[node name="TreasureItem2" parent="." index="10" unique_id=979020688 instance=ExtResource("4_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 5)
+
+[node name="TreasureItem3" parent="." index="11" unique_id=1890595547 instance=ExtResource("4_ibugp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 6)

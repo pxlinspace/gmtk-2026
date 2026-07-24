@@ -11,7 +11,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("WatchSprites:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,12 +27,12 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("WatchSprites:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(0.43527532, 1),
+"transitions": PackedFloat32Array(0.435, 1),
 "update": 0,
 "values": [Vector2(1.15, 0.9), Vector2(1, 1)]
 }
@@ -72,27 +72,42 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="LabelSettings" id="LabelSettings_32sy1"]
+font_size = 32
+shadow_size = 4
+shadow_color = Color(0.5132329, 0.51323295, 0.51323277, 1)
+
 [node name="TimerBar" type="Node2D" unique_id=1720615051]
 script = ExtResource("3_cbisb")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=629656005]
 libraries/ = SubResource("AnimationLibrary_cbisb")
 
-[node name="UnderSprite" type="Sprite2D" parent="." unique_id=703587152]
+[node name="WatchSprites" type="Node2D" parent="." unique_id=855443243]
+
+[node name="UnderSprite" type="Sprite2D" parent="WatchSprites" unique_id=703587152]
 texture = ExtResource("1_xhe6g")
 
-[node name="HandSprite" type="Sprite2D" parent="." unique_id=1496797578]
+[node name="HandSprite" type="Sprite2D" parent="WatchSprites" unique_id=1496797578]
 modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
 texture = ExtResource("3_l7in1")
 hframes = 12
 frame = 3
 
-[node name="TopSprite" type="AnimatedSprite2D" parent="." unique_id=1123578540]
+[node name="TopSprite" type="AnimatedSprite2D" parent="WatchSprites" unique_id=1123578540]
 sprite_frames = SubResource("SpriteFrames_vknqg")
 autoplay = "default"
 frame_progress = 0.8009366
 
-[node name="SpeedUpSprite" type="Sprite2D" parent="." unique_id=1141126644]
+[node name="SpeedUpSprite" type="Sprite2D" parent="WatchSprites" unique_id=1141126644]
 position = Vector2(-10, 21)
-scale = Vector2(0.49999997, 0.33333334)
+scale = Vector2(0.49999997, 0.33333337)
 texture = ExtResource("5_32sy1")
+
+[node name="SpeedUpLabel" type="Label" parent="." unique_id=676057735]
+offset_left = -69.0
+offset_top = 65.0
+offset_right = 98.0
+offset_bottom = 98.0
+text = "SPEEDING UP"
+label_settings = SubResource("LabelSettings_32sy1")

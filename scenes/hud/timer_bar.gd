@@ -1,8 +1,9 @@
 class_name TimerBar extends Node2D
 
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var hand_sprite: Sprite2D = $HandSprite
-@onready var speed_up_sprite: Sprite2D = $SpeedUpSprite
+@onready var hand_sprite: Sprite2D = $WatchSprites/HandSprite
+@onready var speed_up_sprite: Sprite2D = $WatchSprites/SpeedUpSprite
+@onready var speed_up_label: Label = $SpeedUpLabel
 
 
 func _ready() -> void:
@@ -15,6 +16,7 @@ func set_progress(value: float) -> void:
 
 func set_speed_up(value: bool) -> void:
 	speed_up_sprite.visible = value
+	speed_up_label.visible = value
 
 
 func _on_timestep(_curr_timestep: int) -> void:
