@@ -93,7 +93,7 @@ shape = SubResource("SphereShape3D_lvxji")
 [node name="Anchor" parent="." unique_id=889524288 instance=ExtResource("2_lvxji")]
 
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_8afob")]
-sorting_offset = 1.0
+sorting_offset = 2.0
 sprite_frames = SubResource("SpriteFrames_7sbn2")
 animation = &"item_gotten"
 
@@ -103,6 +103,6 @@ current = true
 script = ExtResource("5_75vfm")
 
 [node name="ItemSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("1_8afob")]
-sorting_offset = 2.0
+sorting_offset = 3.0
 offset = Vector2(-53.06, 199.99)
 pixel_size = 0.0058125

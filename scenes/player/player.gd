@@ -11,7 +11,6 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
-var curr_flag: Flag
 var can_move: bool = true
 
 
@@ -67,10 +66,7 @@ func check_curr_tile() -> void:
 	await get_tree().physics_frame
 	var areas := shapecast_at_pos(grid_pos)
 	for area in areas:
-		if area is Flag:
-			curr_flag = area
-			area.grab()
-		if area is TheHolyLight and curr_flag:
+		if area is TheHolyLight and area.is_active:
 			win()
 			Events.win.emit()
 		if area is BaseEnemy:
@@ -169,7 +165,6 @@ func _on_timestep(curr_timestep: int) -> void:
 	# 1. check current tile for any items
 	# 2. emit stepped on for current tile
 	check_curr_tile()
-	if curr_flag: curr_flag.change_flag_pos(grid_pos)
 
 	curr_tile.stepped_on.emit()
 

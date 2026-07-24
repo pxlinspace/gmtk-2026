@@ -9,3 +9,4 @@ signal treasure_received
 signal cam_shake(amount: float)
 signal restart_level
 signal toggle_pause(paused: bool)
+signal all_treasure_gotten

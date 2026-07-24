@@ -47,7 +47,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath("Beam/MeshInstance3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -59,7 +59,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:scale")
+tracks/1/path = NodePath("Beam/MeshInstance3D2:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -77,7 +77,7 @@ step = 0.25
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("MeshInstance3D:scale")
+tracks/0/path = NodePath("Beam/MeshInstance3D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -89,7 +89,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("MeshInstance3D2:scale")
+tracks/1/path = NodePath("Beam/MeshInstance3D2:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -138,19 +138,21 @@ script = ExtResource("1_arjr5")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)
 shape = SubResource("BoxShape3D_30gms")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1610933109]
+[node name="Beam" type="Node3D" parent="." unique_id=81024720]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beam" unique_id=1610933109]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
 sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("CylinderMesh_30gms")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D" unique_id=120060357]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Beam/MeshInstance3D" unique_id=120060357]
 sorting_offset = -1.0
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_rvg4a")
 surface_material_override/0 = SubResource("StandardMaterial3D_rvg4a")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=188552169]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Beam" unique_id=188552169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.75, 0.5)
 sorting_offset = -1.0
 cast_shadow = 0
@@ -159,6 +161,7 @@ mesh = SubResource("CylinderMesh_72il1")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=860322923]
 libraries/ = SubResource("AnimationLibrary_e8188")
 autoplay = &"idle"
+speed_scale = 2.0
 
 [node name="UfoOrigin" type="Node3D" parent="." unique_id=668523592]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 3.8, 0.5)

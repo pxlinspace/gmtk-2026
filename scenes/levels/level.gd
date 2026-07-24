@@ -11,6 +11,7 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 
 var collectable_treasure: Array[TreasureItem] = []
+var treasure_collected: int = 0
 
 
 func _ready() -> void:
@@ -79,4 +80,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _on_treasure_received() -> void:
-	pass
+	print("found a treasure!")
+	treasure_collected += 1
+	if treasure_collected >= collectable_treasure.size():
+		Events.all_treasure_gotten.emit()
