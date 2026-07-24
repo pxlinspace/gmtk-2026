@@ -14,10 +14,11 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] bombo
 - [ ] more enemy types
 - [ ] level design
 - [ ] tutorial with npc
+- [ ] fix timestep issues
+- [x] bombo
 - [x] making enemies fall
 - [x] treasure collection
 - [x] timer in the corner
