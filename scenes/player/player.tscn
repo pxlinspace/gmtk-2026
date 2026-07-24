@@ -2,9 +2,21 @@
 
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="1_8afob"]
 [ext_resource type="Script" uid="uid://dpjwq53uqumd" path="res://scenes/player/player.gd" id="1_dovo2"]
+[ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="2_75vfm"]
 [ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="2_lvxji"]
 [ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="5_75vfm"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_a5rnb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_75vfm")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
 radius = 0.4
@@ -85,6 +97,7 @@ animations = [{
 
 [node name="Player" type="Area3D" unique_id=343958966]
 script = ExtResource("1_dovo2")
+winning_treasure = SubResource("SpriteFrames_a5rnb")
 
 [node name="Hitbox" type="CollisionShape3D" parent="." unique_id=323506910]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0.5, 0.5)

@@ -2,6 +2,8 @@ extends Area3D
 
 const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 
+@export var winning_treasure: SpriteFrames
+
 @onready var grid_pos: Vector3i = Vector3i(position) #idk how grid_pos is gonna matter now but maybe it'll come in use??
 @onready var tile_sprite: TileSprite = $Anchor/TileSprite
 @onready var anchor: Node3D = $Anchor
@@ -157,10 +159,14 @@ func beamed_down() -> void:
 func win() -> void:
 	Events.toggle_pause.emit(true)
 	can_move = false
+	item_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+	show_item(winning_treasure)
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN).set_parallel()
 	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5)
+	fade_tween.tween_property(item_sprite, "position:y", 3, 1.5).as_relative()
 	fade_tween.tween_property(tile_sprite, "scale:y", 4.0, 1.5)
+	fade_tween.tween_property(item_sprite, "scale:y", 4.0, 1.5).as_relative()
 	fade_tween.chain().tween_property(tile_sprite, "visible", false, 0.0)
 	fade_tween.tween_callback(func() -> void:
 		tile_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
@@ -190,6 +196,24 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
+func show_item(sprite: SpriteFrames) -> void:
+	item_sprite.sprite_frames = sprite
+	item_sprite.animation_player.stop()
+	item_sprite.animation_player.play("bounce")
+	item_sprite.show()
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	can_move = false
+	tile_sprite.flip_h = false
+	tile_sprite.play("item_gotten")
+	await get_tree().create_timer(1.0).timeout
+	tile_sprite.play("default")
+	can_move = true
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	item_sprite.hide()
+
+
 func _on_timestep(_curr_timestep: int) -> void:
 	# 1. check current tile for any items
 	# 2. emit stepped on for current tile
@@ -213,26 +237,15 @@ func _on_move_missed() -> void:
 
 	Clock.advance_time()
 
+
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
-	item_sprite.sprite_frames = item_resource.sprite_frames
-	item_sprite.animation_player.stop()
-	item_sprite.animation_player.play("bounce")
-	item_sprite.show()
-	tile_sprite.animation_player.stop()
-	tile_sprite.animation_player.play("bounce")
-	can_move = false
+
 	Events.toggle_pause.emit(true)
-	tile_sprite.flip_h = false
-	tile_sprite.play("item_gotten")
-	await get_tree().create_timer(1.0).timeout
-	tile_sprite.play("default")
-	can_move = true
+	await show_item(item_resource.sprite_frames)
 	Events.toggle_pause.emit(false)
-	tile_sprite.animation_player.stop()
-	tile_sprite.animation_player.play("bounce")
-	item_sprite.hide()
+
 	if is_treasure:
 		Events.treasure_received.emit()
 	else:
