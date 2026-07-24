@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="ItemResource" format=3 uid="uid://bymljr2vl6dec"]
+
+[ext_resource type="Script" uid="uid://3pvnakr78le3" path="res://scripts/item_resource.gd" id="1_8mmdh"]
+[ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="2_c6ikk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_8mmdh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_c6ikk")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_8mmdh")
+item_name = "treasure"
+item_desc = "yarr we found the booty yarr"
+sprite_frames = SubResource("SpriteFrames_8mmdh")
+metadata/_custom_type_script = "uid://3pvnakr78le3"

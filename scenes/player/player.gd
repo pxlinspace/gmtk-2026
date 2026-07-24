@@ -191,6 +191,7 @@ func _on_move_missed() -> void:
 
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
+	var is_treasure := tile_item is TreasureItem
 	item_sprite.sprite_frames = item_resource.sprite_frames
 	item_sprite.animation_player.stop()
 	item_sprite.animation_player.play("bounce")
@@ -206,4 +207,7 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
-	Events.item_received.emit(item_resource)
+	if is_treasure:
+		Events.treasure_received.emit()
+	else:
+		Events.item_received.emit(item_resource)
