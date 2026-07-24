@@ -51,7 +51,6 @@ func move_to_pos(new_pos: Vector3i) -> void:
 		prev_tile.stepped_off.emit()
 
 	Clock.advance_time()
-	tile_sprite.play("default")
 
 
 func check_tile(pos: Vector3i) -> Tile:
@@ -188,13 +187,14 @@ func show_item(sprite: SpriteFrames) -> void:
 	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
 	await Events.timestep
-	tile_sprite.play("default")
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
 
 
 func _on_timestep(_curr_timestep: int) -> void:
+	tile_sprite.play("default")
+
 	check_curr_tile()
 
 	curr_tile.stepped_on.emit()

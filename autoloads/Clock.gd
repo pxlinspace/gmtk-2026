@@ -16,7 +16,6 @@ func advance_time() -> void:
 	Events.pre_timestep.emit(curr_timestep)
 	await get_tree().process_frame
 	Events.timestep.emit(curr_timestep)
-	print("timestep")
 
 
 func _on_restart_level() -> void:
