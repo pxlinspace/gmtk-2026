@@ -100,11 +100,21 @@ func uh_oh() -> void:
 
 
 func fall_down() -> void:
+	Events.toggle_pause.emit(true)
 	can_move = false
 	print("you died!")
 
+	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
+	tile_sprite.look_at(cam.global_position)
+	tile_sprite.position.y += 0.5
+	tile_sprite.offset.y = 0.0
+
+	var fall_tween := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN).set_parallel()
+	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
+	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 
 func die() -> void:
+	Events.toggle_pause.emit(true)
 	can_move = false
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
@@ -122,10 +132,10 @@ func die() -> void:
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
 
-	var die_tween := create_tween().set_trans(Tween.TRANS_LINEAR).set_parallel()
-	die_tween.tween_property(tile_sprite, "global_position:x", 5.0, 2.0).as_relative()
-	die_tween.tween_property(tile_sprite, "global_position:y", 5.0, 2.0).as_relative()
-	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0).as_relative()
+	var die_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT).set_parallel()
+	die_tween.tween_property(tile_sprite, "global_position:x", 4.0, 2.0)
+	die_tween.tween_property(tile_sprite, "global_position:y", 4.0, 2.0)
+	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0)
 	print("you died!")
 
 
@@ -145,6 +155,7 @@ func beamed_down() -> void:
 
 
 func win() -> void:
+	Events.toggle_pause.emit(true)
 	can_move = false
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN).set_parallel()
