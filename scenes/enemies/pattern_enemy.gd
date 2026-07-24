@@ -7,6 +7,7 @@ class_name PatternEnemy extends BaseEnemy
 @onready var collider: CollisionShape3D = $CollisionShape3D
 
 var position_tween: Tween
+var is_dead: bool = false
 
 func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
@@ -53,22 +54,25 @@ func animate_to_grid_position() -> void:
 func check_curr_tile() -> void:
 	await get_tree().physics_frame
 	var areas := Utils.shapecast_at_pos(grid_position)
-	var is_on_tile := areas.any(func(a) -> bool: return a is Tile and not a.is_disabled)
+	var is_on_tile := areas.any(func(a: Area3D) -> bool: return a is Tile and not a.is_disabled)
 	if not is_on_tile:
 		die()
 
 
 func _on_timestep(curr_timestep: int) -> void:
+	if is_dead: return
 	super._on_timestep(curr_timestep)
 	check_curr_tile()
 
 
 func die() -> void:
+	is_dead = true
 	collider.disabled = true
 	arrow.hide()
 	next_square.hide()
 	await get_tree().create_timer(0.2).timeout
 
+	tile_sprite.center()
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(get_viewport().get_camera_3d().global_position)
 

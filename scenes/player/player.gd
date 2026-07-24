@@ -94,7 +94,7 @@ func fall_down() -> void:
 	tile_sprite.look_at(cam.global_position)
 	tile_sprite.center()
 
-	var fall_tween := create_tween().set_trans(Tween.TRANS_BACK).set_ease(Tween.EASE_IN).set_parallel()
+	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 
