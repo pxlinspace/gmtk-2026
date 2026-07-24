@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://vqba6ya4gtfx"]
+
+[node name="LevelSelect" type="Node3D" unique_id=295417097]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509956800]

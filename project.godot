@@ -42,6 +42,11 @@ treasure=""
 player=""
 enemies=""
 
+[gui]
+
+theme/custom="uid://tujl158183jq"
+theme/custom_font="uid://c5fvqbgdk2lgv"
+
 [input]
 
 left={

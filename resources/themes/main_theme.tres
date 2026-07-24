@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://tujl158183jq"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nads"]
+
+[resource]
+default_font_size = 48
+Button/styles/hover = null
+Button/styles/hover_pressed = null
+Button/styles/normal = SubResource("StyleBoxFlat_4nads")
+Button/styles/pressed = null
