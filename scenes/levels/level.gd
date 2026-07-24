@@ -1,11 +1,17 @@
 class_name Level extends Node3D
 
+enum LevelMode {
+	COLLECT,
+	KILL
+}
+
 const RESTART_TIME: float = 0.5
 
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 ## how long before the time automatically steps
 @export var level_countdown_time: float = 2.0
+@export var level_mode: LevelMode = LevelMode.COLLECT
 
 @onready var level_map: GridMap = $LevelMap
 @onready var level_timer: Timer = $LevelTimer
@@ -14,7 +20,10 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var restart_progress: TextureProgressBar = $HudLayer/RestartProgressBar
 
 var collectable_treasure: Array[TreasureItem] = []
+var killable_enemies: Array[BaseEnemy] = []
+
 var treasure_collected: int = 0
+var enemies_killed: int = 0
 var restart_value: float = 0.0
 var is_restarting: bool = false
 
@@ -23,6 +32,9 @@ func _ready() -> void:
 	Events.timestep.connect(_on_timestep)
 	Events.treasure_received.connect(_on_treasure_received)
 	Events.toggle_pause.connect(_on_paused)
+	Events.enemy_died.connect(_on_enemy_died)
+	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
+	Events.all_enemies_killed.connect(_on_all_enemies_killed)
 
 	timer_bar.set_speed_up(false)
 	restart_progress.hide()
@@ -34,6 +46,10 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("treasure"):
 		if node is TreasureItem:
 			collectable_treasure.append(node)
+
+	for node in get_tree().get_nodes_in_group("enemies"):
+		if node is BaseEnemy:
+			killable_enemies.append(node)
 
 
 func _process(dt: float) -> void:
@@ -109,3 +125,20 @@ func _on_treasure_received() -> void:
 	treasure_collected += 1
 	if treasure_collected >= collectable_treasure.size():
 		Events.all_treasure_gotten.emit()
+
+
+func _on_enemy_died(_enemy: BaseEnemy) -> void:
+	print("enemy died!")
+	enemies_killed += 1
+	if enemies_killed >= killable_enemies.size():
+		Events.all_enemies_killed.emit()
+
+
+func _on_all_treasure_gotten() -> void:
+	if level_mode == LevelMode.COLLECT:
+		Events.mission_complete.emit(level_mode)
+
+
+func _on_all_enemies_killed() -> void:
+	if level_mode == LevelMode.KILL:
+		Events.mission_complete.emit(level_mode)

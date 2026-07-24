@@ -93,6 +93,7 @@ func fall_down() -> void:
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
 
+
 func die() -> void:
 	Events.toggle_pause.emit(true)
 	can_move = false
@@ -210,6 +211,7 @@ func _on_pre_move_missed() -> void:
 
 func _on_move_missed() -> void:
 	pass
+
 
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource

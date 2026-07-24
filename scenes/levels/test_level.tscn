@@ -89,6 +89,7 @@ material = SubResource("StandardMaterial3D_cyt5c")
 
 [node name="TestLevel" type="Node3D" unique_id=1990532022]
 script = ExtResource("1_fr1um")
+level_mode = 1
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=775466758]
 

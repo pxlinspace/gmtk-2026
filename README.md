@@ -17,7 +17,8 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] more enemy types
 - [ ] level design
 - [ ] tutorial with npc
-- [ ] fix timestep issues
+- [ ] figure out how to check what mode the level is when won in player
+- [x] fix timestep issues
 - [x] bombo
 - [x] making enemies fall
 - [x] treasure collection

@@ -4,10 +4,8 @@ class_name PatternEnemy extends BaseEnemy
 
 @onready var arrow: Sprite3D = $Arrow
 @onready var next_square: Sprite3D = $NextSquare
-@onready var collider: CollisionShape3D = $CollisionShape3D
 
 var position_tween: Tween
-var is_dead: bool = false
 
 func _ready() -> void:
 	Events.pre_timestep.connect(_on_timestep)
@@ -63,8 +61,9 @@ func _on_timestep(curr_timestep: int) -> void:
 	super._on_timestep(curr_timestep)
 	check_curr_tile()
 
-
 func die() -> void:
+	super.die()
+
 	is_dead = true
 	collider.disabled = true
 	arrow.hide()

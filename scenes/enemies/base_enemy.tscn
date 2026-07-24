@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_bibkx"]
 
-[node name="BaseEnemy" type="Area3D" unique_id=1295660293]
+[node name="BaseEnemy" type="Area3D" unique_id=1295660293 groups=["enemies"]]
 script = ExtResource("1_qf3h2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1368015053]

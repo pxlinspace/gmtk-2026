@@ -9,7 +9,7 @@ var is_active: bool = false
 
 
 func _ready() -> void:
-	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
+	Events.mission_complete.connect(_on_mission_complete)
 
 	await get_tree().create_timer(1.5).timeout
 	set_active(false)
@@ -29,6 +29,6 @@ func set_active(new_value: bool) -> void:
 	beam_tween.tween_property(beam, "scale:x", target_scale, 1.0)
 	beam_tween.tween_property(beam, "scale:z", target_scale, 1.0)
 
-func _on_all_treasure_gotten() -> void:
+func _on_mission_complete(_level_mode: Level.LevelMode) -> void:
 	set_active(true)
 	print("all treasure collected, get back to the ship!")
