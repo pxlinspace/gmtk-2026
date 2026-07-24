@@ -130,6 +130,7 @@ data = {
 }
 
 [node name="Player" parent="." unique_id=289280773 instance=ExtResource("2_yautc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 
 [node name="TimeLabel" type="Label3D" parent="Player" unique_id=1047470890]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0.5)

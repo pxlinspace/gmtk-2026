@@ -10,6 +10,8 @@ var is_active: bool = false
 
 func _ready() -> void:
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
+
+	await get_tree().create_timer(1.5).timeout
 	set_active(false)
 
 
@@ -23,6 +25,7 @@ func set_active(new_value: bool) -> void:
 	is_active = new_value
 	collider.disabled = not new_value
 	beam.visible = new_value
+
 
 func _on_all_treasure_gotten() -> void:
 	set_active(true)

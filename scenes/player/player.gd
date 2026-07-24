@@ -28,6 +28,8 @@ func _ready() -> void:
 	curr_tile = check_tile(grid_pos)
 	prev_tile = curr_tile
 
+	beamed_down()
+
 
 func move_to_pos(new_pos: Vector3i) -> void:
 	# 3. check validity of tile in that direction
@@ -127,13 +129,31 @@ func die() -> void:
 	print("you died!")
 
 
+func beamed_down() -> void:
+	can_move = false
+	tile_sprite.position.y = 3
+	tile_sprite.scale.y = 4.0
+	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+	var beam_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT).set_parallel()
+	beam_tween.tween_property(tile_sprite, "position:y", 0.0, 1.5)
+	beam_tween.tween_property(tile_sprite, "scale:y", 1.5, 1.5)
+	beam_tween.chain().tween_callback(func() -> void:
+		can_move = true
+		tile_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+		tile_sprite.scale.y = 1.0
+	)
+
+
 func win() -> void:
 	can_move = false
-	var fade_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
-	#tile_sprite.material_override.set_shader_parameter("offset", 0.0)
-	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5).as_relative()
-	# fade_tween.tween_property(tile_sprite.material_override, "shader_parameter/offset", 6.0, 1.5)
+	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
+	var fade_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN).set_parallel()
+	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5)
+	fade_tween.tween_property(tile_sprite, "scale:y", 4.0, 1.5)
 	fade_tween.chain().tween_property(tile_sprite, "visible", false, 0.0)
+	fade_tween.tween_callback(func() -> void:
+		tile_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	)
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -159,9 +179,7 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
-func _on_timestep(curr_timestep: int) -> void:
-	if curr_timestep == 0:
-		can_move = true
+func _on_timestep(_curr_timestep: int) -> void:
 	# 1. check current tile for any items
 	# 2. emit stepped on for current tile
 	check_curr_tile()
