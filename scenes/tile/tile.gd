@@ -41,7 +41,8 @@ func fall_the_tile() -> void:
 func set_infinity() -> void:
 	countdown = INF
 	is_infinity = true
-	label.font_size = 96
+	label.position.x = 0.5
+	label.font_size = 140
 	label.text = "∞"
 
 	change_tile_color(palette.color_infinity)
