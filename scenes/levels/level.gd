@@ -133,5 +133,5 @@ func _on_all_treasure_gotten() -> void:
 
 
 func _on_all_enemies_killed() -> void:
-	if level_resource.level_mode == LevelResource.LevelMode.KILL:
+	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
 		Events.mission_complete.emit(level_resource.level_mode)
