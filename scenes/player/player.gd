@@ -157,7 +157,9 @@ func win() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if can_move:
-		if event.is_action_pressed("left"):
+		if event.is_action_pressed("speed_up"):
+			tile_sprite.animation_player.play("panic")
+		elif event.is_action_pressed("left"):
 			tile_sprite.flip_h = true
 			move_to_pos(grid_pos + Vector3i(-1, 0, 0))
 		elif event.is_action_pressed("right"):
@@ -167,6 +169,7 @@ func _unhandled_input(event: InputEvent) -> void:
 			move_to_pos(grid_pos + Vector3i(0, 0, -1))
 		elif event.is_action_pressed("down"):
 			move_to_pos(grid_pos + Vector3i(0, 0, 1))
+		
 
 
 func animate_to_grid_position() -> void:

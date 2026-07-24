@@ -1,6 +1,6 @@
 class_name Level extends Node3D
 
-const RESTART_TIME: float = 0.5
+const RESTART_TIME: float = 0.35
 
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
@@ -92,10 +92,13 @@ func _on_level_timer_timeout() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("shift"):
+	if event.is_action_pressed("speed_up"):
 		Engine.time_scale = 3.0
 		timer_bar.set_speed_up(true)
-	if event.is_action_released("shift"):
+		Events.pre_move_missed.emit()
+		Clock.advance_time()
+		
+	if event.is_action_released("speed_up"):
 		Engine.time_scale = 1.0
 		timer_bar.set_speed_up(false)
 
