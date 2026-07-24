@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://bmm270uoe4vdl"]
+
+[ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_tur60"]
+[ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="2_0xhi2"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_0xhi2")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_tur60")
+item_name = "bomb"
+item_desc = "its a nuke"
+sprite_frames = SubResource("SpriteFrames_0xhi2")
+metadata/_custom_type_script = "uid://bl8flmcvknn7m"

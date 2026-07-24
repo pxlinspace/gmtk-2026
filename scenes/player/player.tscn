@@ -95,7 +95,7 @@ animations = [{
 "speed": 25.0
 }]
 
-[node name="Player" type="Area3D" unique_id=343958966]
+[node name="Player" type="Area3D" unique_id=343958966 groups=["player"]]
 script = ExtResource("1_dovo2")
 winning_treasure = SubResource("SpriteFrames_a5rnb")
 

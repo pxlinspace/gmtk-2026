@@ -58,7 +58,6 @@ func move_to_pos(new_pos: Vector3i) -> void:
 
 func check_tile(pos: Vector3i) -> Tile:
 	var areas := Utils.shapecast_at_pos(pos)
-	if areas.size() == 0: return null
 	for area in areas:
 		if area is Tile and not area.is_disabled:
 			return area

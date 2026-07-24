@@ -15,6 +15,7 @@
 [ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://items/test.tres" id="12_eaa0b"]
 [ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://items/test_2.tres" id="13_a5rnb"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="13_fqldq"]
+[ext_resource type="Resource" uid="uid://bmm270uoe4vdl" path="res://items/bomb.tres" id="15_os2yb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -139,6 +140,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
 
+[node name="PatternEnemy5" parent="." unique_id=1211100048 instance=ExtResource("4_v45ci")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+pattern = Array[Vector3i]([Vector3i(1, 0, 0), Vector3i(-1, 0, 0)])
+
 [node name="PatternEnemy2" parent="." unique_id=948316300 instance=ExtResource("4_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(1, 0, 0), Vector3i(0, 0, -1), Vector3i(-1, 0, 0)])
@@ -183,7 +188,7 @@ item_resource = ExtResource("13_a5rnb")
 
 [node name="TileItem3" parent="." unique_id=868122214 instance=ExtResource("11_jmx14")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 6)
-item_resource = ExtResource("13_a5rnb")
+item_resource = ExtResource("15_os2yb")
 
 [node name="TreasureItem" parent="." unique_id=1770930121 instance=ExtResource("13_fqldq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
