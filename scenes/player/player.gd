@@ -23,7 +23,7 @@ func _enter_tree() -> void:
 
 func _ready() -> void:
 	item_sprite.hide()
-	item_sprite.position = Vector3(0.3, 1.4, 0.5)
+	item_sprite.position = Vector3(0.3, 1.5, 0.5)
 
 	await get_tree().physics_frame
 
