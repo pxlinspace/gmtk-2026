@@ -14,9 +14,15 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] more enemy types
 - [ ] level design
+- [ ] more enemy types
 - [ ] tutorial with npc
+- [ ] level select
+- [ ] main menu
+- [ ] settings
+- [ ] music and sfx
+- [ ] itch.io page
+- [ ] boss??
 - [ ] figure out how to check what mode the level is when won in player
 - [x] fix timestep issues
 - [x] bombo
@@ -32,15 +38,6 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [x] make the tiles fall
 - [x] infinity tiles
 - [x] better tile system
-
-### later
-
-- [ ] level select
-- [ ] main menu
-- [ ] settings
-- [ ] music and sfx
-- [ ] itch.io page
-- [ ] boss??
 
 ## ideas
 

@@ -8,7 +8,7 @@ signal move_missed
 # triggered when player reaches holy light
 signal win
 # triggered when player completes the objective based on the level mode
-signal mission_complete(level_mode: Level.LevelMode)
+signal mission_complete(level_mode: LevelResource.LevelMode)
 # triggered when player touches the item pickup
 signal item_gotten(tile_item: TileItem)
 # triggered when player actually receives the item (after the animation)

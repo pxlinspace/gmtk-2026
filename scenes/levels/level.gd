@@ -1,17 +1,10 @@
 class_name Level extends Node3D
 
-enum LevelMode {
-	COLLECT,
-	KILL
-}
-
 const RESTART_TIME: float = 0.5
 
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
-## how long before the time automatically steps
-@export var level_countdown_time: float = 2.0
-@export var level_mode: LevelMode = LevelMode.COLLECT
+@export var level_resource: LevelResource
 
 @onready var level_map: GridMap = $LevelMap
 @onready var level_timer: Timer = $LevelTimer
@@ -40,7 +33,7 @@ func _ready() -> void:
 	restart_progress.hide()
 
 	spawn_tiles()
-	level_timer.wait_time = level_countdown_time
+	level_timer.wait_time = level_resource.level_countdown
 	level_timer.start()
 
 	for node in get_tree().get_nodes_in_group("treasure"):
@@ -135,10 +128,10 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 
 func _on_all_treasure_gotten() -> void:
-	if level_mode == LevelMode.COLLECT:
-		Events.mission_complete.emit(level_mode)
+	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
+		Events.mission_complete.emit(level_resource.level_mode)
 
 
 func _on_all_enemies_killed() -> void:
-	if level_mode == LevelMode.KILL:
-		Events.mission_complete.emit(level_mode)
+	if level_resource.level_mode == LevelResource.LevelMode.KILL:
+		Events.mission_complete.emit(level_resource.level_mode)

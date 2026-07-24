@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://b168csfnfxnn1" path="res://scenes/levels/level.gd" id="1_fr1um"]
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="1_jbqir"]
 [ext_resource type="PackedScene" uid="uid://2w7f1pr0125g" path="res://scenes/hud/timer_bar.tscn" id="2_hfwtw"]
+[ext_resource type="Resource" uid="uid://baotbgg5k0lyq" path="res://resources/levels/test_level.tres" id="2_os2yb"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://di2go0e71r7vo" path="res://scenes/hud/item_bar.tscn" id="3_eaa0b"]
 [ext_resource type="Texture2D" uid="uid://cuix25sa5dyhv" path="res://assets/images/placeholders/restart-button.png" id="4_fqldq"]
@@ -12,10 +13,10 @@
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="7_cyt5c"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="8_7x1jh"]
 [ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="11_jmx14"]
-[ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://items/test.tres" id="12_eaa0b"]
-[ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://items/test_2.tres" id="13_a5rnb"]
+[ext_resource type="Resource" uid="uid://deg18ccpjqc8x" path="res://resources/items/test.tres" id="12_eaa0b"]
+[ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://resources/items/test_2.tres" id="13_a5rnb"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="13_fqldq"]
-[ext_resource type="Resource" uid="uid://bmm270uoe4vdl" path="res://items/nuke.tres" id="15_os2yb"]
+[ext_resource type="Resource" uid="uid://bmm270uoe4vdl" path="res://resources/items/nuke.tres" id="15_os2yb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -89,7 +90,7 @@ material = SubResource("StandardMaterial3D_cyt5c")
 
 [node name="TestLevel" type="Node3D" unique_id=1990532022]
 script = ExtResource("1_fr1um")
-level_mode = 1
+level_resource = ExtResource("2_os2yb")
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=775466758]
 
