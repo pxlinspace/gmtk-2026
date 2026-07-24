@@ -1,5 +1,7 @@
 class_name Level extends Node3D
 
+const RESTART_TIME: float = 0.5
+
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 ## how long before the time automatically steps
@@ -9,9 +11,12 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var level_timer: Timer = $LevelTimer
 @onready var timer_bar: TimerBar = $HudLayer/TimerBar
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
+@onready var restart_progress: TextureProgressBar = $HudLayer/RestartProgressBar
 
 var collectable_treasure: Array[TreasureItem] = []
 var treasure_collected: int = 0
+var restart_value: float = 0.0
+var is_restarting: bool = false
 
 
 func _ready() -> void:
@@ -20,6 +25,7 @@ func _ready() -> void:
 	Events.toggle_pause.connect(_on_paused)
 
 	timer_bar.set_speed_up(false)
+	restart_progress.hide()
 
 	spawn_tiles()
 	level_timer.wait_time = level_countdown_time
@@ -32,6 +38,13 @@ func _ready() -> void:
 
 func _process(dt: float) -> void:
 	timer_bar.set_progress(1.0 - level_timer.time_left / level_timer.wait_time)
+	if is_restarting:
+		restart_value += dt
+		restart_progress.value = restart_value / RESTART_TIME
+		if restart_value >= RESTART_TIME:
+			restart_level()
+	else:
+		restart_value = 0.0
 
 
 func spawn_tiles() -> void:
@@ -74,9 +87,19 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("shift"):
 		Engine.time_scale = 1.0
 		timer_bar.set_speed_up(false)
+
 	if event.is_action_pressed("restart"):
-		get_tree().reload_current_scene()
-		Events.restart_level.emit()
+		restart_progress.show()
+		is_restarting = true
+	if event.is_action_released("restart"):
+		restart_progress.hide()
+		is_restarting = false
+
+
+func restart_level() -> void:
+	is_restarting = false
+	get_tree().reload_current_scene()
+	Events.restart_level.emit()
 
 
 func _on_treasure_received() -> void:

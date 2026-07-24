@@ -5,7 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://2w7f1pr0125g" path="res://scenes/hud/timer_bar.tscn" id="2_hfwtw"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_yautc"]
 [ext_resource type="PackedScene" uid="uid://di2go0e71r7vo" path="res://scenes/hud/item_bar.tscn" id="3_eaa0b"]
+[ext_resource type="Texture2D" uid="uid://cuix25sa5dyhv" path="res://assets/images/placeholders/restart-button.png" id="4_fqldq"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="4_v45ci"]
+[ext_resource type="Texture2D" uid="uid://bmmimcd05qky" path="res://assets/images/placeholders/restart-button-progress.png" id="5_3ay3b"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="6_6xh4u"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="7_cyt5c"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="8_7x1jh"]
@@ -101,18 +103,19 @@ color = Color(1, 1, 1, 0)
 [node name="TimerBar" parent="HudLayer" unique_id=673752016 instance=ExtResource("2_hfwtw")]
 position = Vector2(932, 91)
 
-[node name="TextureRect" type="TextureRect" parent="HudLayer" unique_id=797485492]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -160.0
-offset_top = 32.0
-offset_right = -32.0
-offset_bottom = 160.0
-grow_horizontal = 0
-
 [node name="ItemBar" parent="HudLayer" unique_id=1517495826 instance=ExtResource("3_eaa0b")]
 position = Vector2(96, 472)
+
+[node name="RestartProgressBar" type="TextureProgressBar" parent="HudLayer" unique_id=1532985065]
+offset_left = 416.0
+offset_top = 24.0
+offset_right = 456.0
+offset_bottom = 64.0
+max_value = 1.0
+step = 0.01
+fill_mode = 4
+texture_under = ExtResource("4_fqldq")
+texture_progress = ExtResource("5_3ay3b")
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
 
@@ -131,12 +134,6 @@ data = {
 
 [node name="Player" parent="." unique_id=289280773 instance=ExtResource("2_yautc")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="TimeLabel" type="Label3D" parent="Player" unique_id=1047470890]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.7, 0.5)
-visible = false
-billboard = 1
-text = "asdfasdf"
 
 [node name="PatternEnemy" parent="." unique_id=1295660293 instance=ExtResource("4_v45ci")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 0)
