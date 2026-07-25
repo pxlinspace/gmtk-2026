@@ -28,6 +28,8 @@ var explosion_damage: int = 1
 func _ready() -> void:
 	Events.pre_timestep.connect(_on_timestep)
 
+	update_squares()
+
 
 func set_countdown(new_value: int) -> void:
 	curr_countdown = new_value
@@ -66,9 +68,7 @@ func get_affected_tiles() -> Array[Tile]:
 	return affected_tiles
 
 
-func _on_timestep(_curr_timestep: int) -> void:
-	set_countdown(curr_countdown - 1)
-
+func update_squares() -> void:
 	for child in squares.get_children():
 		child.queue_free()
 
@@ -77,3 +77,9 @@ func _on_timestep(_curr_timestep: int) -> void:
 		var square := BOMB_SQUARE.instantiate() as Node3D
 		squares.add_child(square)
 		square.global_position = tile.global_position
+
+
+func _on_timestep(_curr_timestep: int) -> void:
+	set_countdown(curr_countdown - 1)
+
+	update_squares()
