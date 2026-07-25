@@ -1,6 +1,7 @@
 class_name Level extends Node3D
 
 const RESTART_TIME: float = 0.35
+const GOAL_COMPLETED_COLOR := Color("80ff8a")
 
 const tile_scene = preload("res://scenes/tile/tile.tscn")
 
@@ -11,6 +12,11 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var timer_bar: TimerBar = $HudLayer/TimerBar
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 @onready var restart_progress: TextureProgressBar = $HudLayer/RestartProgressBar
+
+@onready var treasure_display: HBoxContainer = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay
+@onready var enemies_display: HBoxContainer = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay
+@onready var treasure_count: Label = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay/TreasureCount
+@onready var enemies_count: Label = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay/EnemiesCount
 
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
@@ -43,6 +49,13 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("enemies"):
 		if node is BaseEnemy:
 			killable_enemies.append(node)
+	
+	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
+		treasure_display.show()
+		update_treasure_count()
+	if level_resource.level_mode == LevelResource.LevelMode.KILL:
+		enemies_display.show()
+
 
 
 func _process(dt: float) -> void:
@@ -116,9 +129,18 @@ func restart_level() -> void:
 	SceneTransition.reload_current_scene()
 
 
+func update_treasure_count() -> void:
+	treasure_count.text = str(treasure_collected) + "/" + str(collectable_treasure.size())
+
+
+func update_enemies_count() -> void:
+	enemies_count.text = str(enemies_killed) + "/" + str(killable_enemies.size())
+
+
 func _on_treasure_received() -> void:
 	print("found a treasure!")
 	treasure_collected += 1
+	update_treasure_count()
 	if treasure_collected >= collectable_treasure.size():
 		Events.all_treasure_gotten.emit()
 
@@ -131,10 +153,12 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 
 func _on_all_treasure_gotten() -> void:
+	treasure_display.modulate = GOAL_COMPLETED_COLOR
 	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
 		Events.mission_complete.emit(level_resource.level_mode)
 
 
 func _on_all_enemies_killed() -> void:
+	enemies_display.modulate = GOAL_COMPLETED_COLOR
 	if level_resource.level_mode == LevelResource.LevelMode.KILL:
 		Events.mission_complete.emit(level_resource.level_mode)
