@@ -77,6 +77,7 @@ font = ExtResource("6_btl0h")
 font_size = 32
 shadow_size = 4
 shadow_color = Color(0.5132329, 0.51323295, 0.51323277, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="TimerBar" type="Node2D" unique_id=1720615051]
 script = ExtResource("3_cbisb")
