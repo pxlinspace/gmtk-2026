@@ -5,7 +5,8 @@ var curr_timestep: int = -1
 
 
 func _ready() -> void:
-	Events.restart_level.connect(_on_restart_level)
+	Events.restart_level.connect(_on_reset_timestep)
+	Events.next_level.connect(_on_reset_timestep)
 
 	# await get_tree().create_timer(1.0).timeout
 
@@ -23,6 +24,6 @@ func advance_time() -> void:
 	Events.timestep.emit(curr_timestep)
 
 
-func _on_restart_level() -> void:
+func _on_reset_timestep() -> void:
 	curr_timestep = -1
 	# advance_time()

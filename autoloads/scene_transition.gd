@@ -16,7 +16,11 @@ func reload_current_scene() -> void:
 
 func change_scene_to_file(scene_path: String) -> void:
 	await transition_out()
-	get_tree().change_scene_to_file(scene_path)
+	ResourceLoader.load_threaded_request(scene_path)
+	while ResourceLoader.load_threaded_get_status(scene_path) == ResourceLoader.THREAD_LOAD_IN_PROGRESS:
+		await get_tree().process_frame
+	get_tree().change_scene_to_packed(ResourceLoader.load_threaded_get(scene_path))
+	await RenderingServer.frame_post_draw
 	transition_in()
 
 

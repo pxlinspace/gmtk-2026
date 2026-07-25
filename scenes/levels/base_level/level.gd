@@ -200,4 +200,5 @@ func _on_win() -> void:
 		print("no next level specified")
 		return
 
+	Events.next_level.emit()
 	SceneTransition.change_scene_to_file(level_resource.next_level)
