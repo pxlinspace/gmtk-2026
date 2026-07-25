@@ -27,6 +27,11 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var level_name_label: Label = $HudLayer/LevelContainer/LevelLabel
 @onready var level_instructions_label: Label = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel
 
+@onready var deploy_player_audio: AudioStreamPlayer = $DeployPlayerAudio
+@onready var end_player_deploy_audio: AudioStreamPlayer = $EndPlayerDeployAudio
+@onready var tick_audio: AudioStreamPlayer = $TickAudio
+@onready var holy_light_ready_audio: AudioStreamPlayer = $HolyLightReadyAudio
+
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
 
@@ -37,12 +42,17 @@ var is_restarting: bool = false
 
 
 func _ready() -> void:
+	AudioPlayer.stop("Menu")
+	AudioPlayer.play("Levels")
+	deploy_player_audio.play()
 	Events.timestep.connect(_on_timestep)
 	Events.treasure_received.connect(_on_treasure_received)
 	Events.toggle_pause.connect(_on_paused)
 	Events.enemy_died.connect(_on_enemy_died)
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
 	Events.all_enemies_killed.connect(_on_all_enemies_killed)
+	Events.player_beamed_down.connect(_on_player_beamed_down)
+	
 	Events.win.connect(_on_win)
 
 	timer_bar.set_speed_up(false)
@@ -50,7 +60,6 @@ func _ready() -> void:
 
 	spawn_tiles()
 	level_timer.wait_time = level_resource.level_countdown
-	Events.player_beamed_down.connect(level_timer.start)
 
 	for node in get_tree().get_nodes_in_group("treasure"):
 		if node is TreasureItem:
@@ -119,6 +128,8 @@ func _on_level_timer_timeout() -> void:
 	Events.pre_move_missed.emit()
 	Clock.advance_time()
 	Events.move_missed.emit()
+	
+	tick_audio.play()
 
 	var flashbang_tween := create_tween()
 	flashbang.color.a = 0.6
@@ -188,12 +199,23 @@ func _on_all_treasure_gotten() -> void:
 	treasure_display.modulate = GOAL_COMPLETED_COLOR
 	if check_mission_complete():
 		Events.mission_complete.emit()
+		holy_light_ready_audio.play()
+		#mission_complete_audio.play()
 
 func _on_all_enemies_killed() -> void:
 	enemies_display.modulate = GOAL_COMPLETED_COLOR
 	if check_mission_complete():
 		Events.mission_complete.emit()
+		holy_light_ready_audio.play()
+		#mission_complete_audio.play()
+		
 
+
+func _on_player_beamed_down() -> void:
+	level_timer.start()
+	end_player_deploy_audio.play()
+	tick_audio.play()
+	
 
 func _on_win() -> void:
 	if not level_resource.next_level or level_resource.next_level == "":

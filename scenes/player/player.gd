@@ -11,6 +11,11 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
 @onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
 
+@onready var step_audio: AudioStreamPlayer = $StepAudio
+@onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
+@onready var panic_audio: AudioStreamPlayer = $PanicAudio
+@onready var win_audio: AudioStreamPlayer = $WinAudio
+
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
@@ -41,7 +46,8 @@ func _ready() -> void:
 func move_to_pos(new_pos: Vector3i, check_valid: bool = true) -> void:
 	var new_tile := check_tile(new_pos)
 	if not new_tile and check_valid: return
-
+	step_audio.pitch_scale = randf_range(0.9, 1.2)
+	step_audio.play()
 	prev_tile = curr_tile
 	curr_tile = new_tile
 
@@ -80,6 +86,7 @@ func check_curr_tile() -> void:
 func uh_oh() -> void:
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
+	panic_audio.play()
 	print("uh oh")
 
 
@@ -149,6 +156,7 @@ func beamed_down() -> void:
 
 func win() -> void:
 	Events.toggle_pause.emit(true)
+	win_audio.play()
 	can_move = false
 	item_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	show_item(winning_treasure)
@@ -241,6 +249,9 @@ func _on_move_missed() -> void:
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
+	
+	if is_treasure:
+		treasure_found_audio.play()
 
 	await show_item(item_resource.sprite_frames)
 
