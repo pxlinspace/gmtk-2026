@@ -9,6 +9,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var anchor: Node3D = $Anchor
 @onready var cam: Camera3D = $Anchor/Camera3D
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
+@onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
 
 var position_tween: Tween
 var prev_tile: Tile
@@ -100,10 +101,15 @@ func die() -> void:
 	can_move = false
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
+	impact_sprite.show()
+	impact_sprite.play("default")
 	Events.cam_shake.emit(0.4)
 
 	await get_tree().create_timer(0.5).timeout
-
+	
+	impact_sprite.hide()
+	impact_sprite.stop()
+	
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	anchor.add_child(explosion)
 	Events.cam_shake.emit(0.6)

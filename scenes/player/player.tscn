@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dpjwq53uqumd" path="res://scenes/player/player.gd" id="1_dovo2"]
 [ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="2_75vfm"]
 [ext_resource type="PackedScene" uid="uid://s2fwise1g0sf" path="res://scenes/components/anchor.tscn" id="2_lvxji"]
+[ext_resource type="Texture2D" uid="uid://186fb7du3d5w" path="res://assets/images/hit_impact-Sheet.png" id="5_0owmy"]
 [ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="5_75vfm"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
 
@@ -20,6 +21,35 @@ animations = [{
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_lvxji"]
 radius = 0.4
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gx1jg"]
+atlas = ExtResource("5_0owmy")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ugbui"]
+atlas = ExtResource("5_0owmy")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fcs02"]
+atlas = ExtResource("5_0owmy")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_myrg7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gx1jg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ugbui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fcs02")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0owmy"]
 atlas = ExtResource("6_75vfm")
@@ -105,17 +135,26 @@ shape = SubResource("SphereShape3D_lvxji")
 
 [node name="Anchor" parent="." unique_id=889524288 instance=ExtResource("2_lvxji")]
 
+[node name="ImpactSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("1_8afob")]
+visible = false
+offset = Vector2(0, 40)
+pixel_size = 0.015
+sprite_frames = SubResource("SpriteFrames_myrg7")
+autoplay = ""
+frame_progress = 0.9416311
+
 [node name="TileSprite" parent="Anchor" unique_id=2049415869 instance=ExtResource("1_8afob")]
 sorting_offset = 2.0
 sprite_frames = SubResource("SpriteFrames_7sbn2")
-animation = &"item_gotten"
+animation = &"panic"
+frame_progress = 0.038405545
 
 [node name="Camera3D" type="Camera3D" parent="Anchor" unique_id=2023232318]
 transform = Transform3D(1, 0, 0, 0, 0.6427876, 0.7660445, 0, -0.7660445, 0.6427876, 0.5, 4.964, 4.098)
 current = true
 script = ExtResource("5_75vfm")
 
-[node name="ItemSprite" parent="Anchor" unique_id=765592719 instance=ExtResource("1_8afob")]
+[node name="ItemSprite" parent="Anchor" unique_id=1507230901 instance=ExtResource("1_8afob")]
 sorting_offset = 3.0
 offset = Vector2(-53.06, 199.99)
 pixel_size = 0.0058125
