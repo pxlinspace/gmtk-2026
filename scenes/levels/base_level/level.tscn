@@ -355,7 +355,7 @@ draw_pass_1 = SubResource("QuadMesh_cyt5c")
 [node name="LevelMap" parent="." unique_id=2083219110 instance=ExtResource("7_c3o0d")]
 
 [node name="Planet" parent="." unique_id=1852319701 instance=ExtResource("15_3p64w")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -45, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 0, -45, 0)
 
 [node name="DeployPlayerAudio" type="AudioStreamPlayer" parent="." unique_id=1898262187]
 stream = ExtResource("16_3rnp5")

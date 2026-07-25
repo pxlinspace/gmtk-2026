@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://186fb7du3d5w" path="res://assets/images/hit_impact-Sheet.png" id="5_0owmy"]
 [ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="5_75vfm"]
 [ext_resource type="Texture2D" uid="uid://m5rjlygaae06" path="res://assets/images/player/player-Sheet.png" id="6_75vfm"]
+[ext_resource type="Texture2D" uid="uid://dkndhv3xuf0pl" path="res://assets/images/ship_arrow.png" id="8_fcs02"]
+[ext_resource type="Script" uid="uid://cs1anlxiel1rm" path="res://scenes/player/ship_arrow.gd" id="8_myrg7"]
 [ext_resource type="AudioStream" uid="uid://dxdvixfds3phl" path="res://assets/audio/step.wav" id="8_qek5x"]
 [ext_resource type="AudioStream" uid="uid://bs553b05fnvj8" path="res://assets/audio/treasure_found.wav" id="9_5gtgg"]
 [ext_resource type="AudioStream" uid="uid://b6y0c3vvj1arv" path="res://assets/audio/panic.wav" id="10_h17s1"]
@@ -164,6 +166,17 @@ script = ExtResource("5_75vfm")
 sorting_offset = 3.0
 offset = Vector2(-53.06, 199.99)
 pixel_size = 0.0058125
+
+[node name="ShipArrow" type="Node3D" parent="Anchor" unique_id=1822512338]
+transform = Transform3D(0, 0, 0, 0, 0, 0, 0, 0, 0, 0.5, 0.5, 0.5)
+visible = false
+script = ExtResource("8_myrg7")
+
+[node name="ArrowSprite" type="Sprite3D" parent="Anchor/ShipArrow" unique_id=824589712]
+transform = Transform3D(-3.715468e-08, 0.85, -3.715468e-08, 0, -3.715468e-08, -0.85, -0.85, -3.715468e-08, 1.6240827e-15, 2, 0, 0)
+sorting_offset = 2.0
+texture_filter = 0
+texture = ExtResource("8_fcs02")
 
 [node name="StepAudio" type="AudioStreamPlayer" parent="." unique_id=250032875]
 stream = ExtResource("8_qek5x")

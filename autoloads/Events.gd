@@ -1,7 +1,8 @@
 extends Node
 
-# sry ignore this random ass variable im too lazy to make another autoload XD
+# sry ignore these random ass variables im too lazy to make another autoload XD
 var game_began: bool = false
+var ship_position: Vector3
 
 signal pre_timestep(curr_timestep: int)
 signal timestep(curr_timestep: int)
