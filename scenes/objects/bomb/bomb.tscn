@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="2_nu1y8"]
 [ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="3_s3m63"]
 [ext_resource type="FontFile" uid="uid://c5fvqbgdk2lgv" path="res://assets/fonts/m6x11plus.ttf" id="4_gmufi"]
+[ext_resource type="Texture2D" uid="uid://nvrvstcmipjj" path="res://assets/images/placeholders/item-timer-background.png" id="5_02van"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s3m63"]
 animations = [{
@@ -23,11 +24,18 @@ script = ExtResource("1_aj2di")
 sprite_frames = SubResource("SpriteFrames_s3m63")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=259888467]
-transform = Transform3D(1, 4.371139e-08, 4.3711392e-08, -4.371139e-08, 1, -3.5527137e-15, -4.371139e-08, 0, 1, 0.5, 0.5, 0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.3)
 sorting_offset = 1.0
-billboard = 1
+billboard = 2
 texture_filter = 0
+modulate = Color(0.5137255, 0.5137255, 0.5137255, 1)
 text = "8"
 font = ExtResource("4_gmufi")
-font_size = 150
+font_size = 116
 outline_size = 0
+
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=280544446]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.3)
+billboard = 2
+texture_filter = 2
+texture = ExtResource("5_02van")

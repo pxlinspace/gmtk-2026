@@ -14,6 +14,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
+- [ ] more items
 - [ ] level design
 - [ ] more enemy types
 - [ ] tutorial with npc
