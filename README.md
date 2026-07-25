@@ -14,7 +14,6 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] jumpy item
 - [ ] level design
 - [ ] level select
 - [ ] main menu
@@ -23,6 +22,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] boss
 - [ ] itch.io page
 - [ ] figure out how to check what mode the level is when won in player
+- [x] jumpy item
 - [x] more enemy types
 - [x] bomb range indicator
 - [x] tutorial with npc
