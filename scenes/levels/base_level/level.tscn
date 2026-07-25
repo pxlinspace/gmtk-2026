@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://c01fdn8mbvdjp" path="res://assets/images/textpanel.png" id="7_v2fu8"]
 [ext_resource type="Texture2D" uid="uid://cwqtgkx7q0bsy" path="res://assets/images/strikethrough.png" id="9_hfd2d"]
 [ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="9_ynnbu"]
+[ext_resource type="Texture2D" uid="uid://cnbb07xtf5oug" path="res://assets/images/crackle-purple-Sheet.png" id="10_3p64w"]
 [ext_resource type="Texture2D" uid="uid://dflcq87hhfkc0" path="res://assets/images/textpanel-purple.png" id="11_i5dd8"]
-[ext_resource type="Texture2D" uid="uid://bq3pn5rfq7hhq" path="res://assets/images/crackle-purple.png" id="12_3p64w"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="12_kbcxf"]
 [ext_resource type="PackedScene" uid="uid://d4cgpsqbwv3ob" path="res://scenes/objects/planet/planet.tscn" id="15_3p64w"]
 
@@ -86,6 +86,35 @@ texture_margin_bottom = 8.0
 [sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
 font = ExtResource("9_ynnbu")
 font_size = 24
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3rnp5"]
+atlas = ExtResource("10_3p64w")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k2b3o"]
+atlas = ExtResource("10_3p64w")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ns8qr"]
+atlas = ExtResource("10_3p64w")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_080vs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3rnp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k2b3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ns8qr")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 6.0
+}]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -278,12 +307,11 @@ label_settings = SubResource("LabelSettings_sk5k4")
 autowrap_mode = 2
 visible_characters_behavior = 1
 
-[node name="Crackle" type="TextureRect" parent="HudLayer" unique_id=868176252]
-offset_left = 123.0
-offset_top = 35.0
-offset_right = 219.0
-offset_bottom = 131.0
-texture = ExtResource("12_3p64w")
+[node name="Crackle" type="AnimatedSprite2D" parent="HudLayer" unique_id=1002675944]
+position = Vector2(171, 83)
+sprite_frames = SubResource("SpriteFrames_080vs")
+autoplay = "default"
+frame_progress = 0.0979987
 
 [node name="RestartProgressBar" type="TextureProgressBar" parent="HudLayer" unique_id=1532985065]
 anchors_preset = 5
