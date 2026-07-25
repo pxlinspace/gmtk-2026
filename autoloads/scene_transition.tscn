@@ -113,10 +113,10 @@ color = Color(1, 1, 1, 0)
 [node name="ColorRectLeft" type="ColorRect" parent="." unique_id=1304892157]
 offset_left = -512.0
 offset_bottom = 576.0
-color = Color(0, 0, 0, 1)
+color = Color(0.30980393, 0.2901961, 0.4, 1)
 
 [node name="ColorRectRight" type="ColorRect" parent="." unique_id=2057994576]
 offset_left = 1024.0
 offset_right = 1536.001
 offset_bottom = 576.0
-color = Color(0, 0, 0, 1)
+color = Color(0.30980393, 0.2901961, 0.4, 1)
