@@ -9,6 +9,7 @@ var is_dead: bool = false
 
 
 func _ready() -> void:
+	Events.pre_timestep.connect(_on_pre_timestep)
 	Events.timestep.connect(_on_timestep)
 
 func move(_curr_timestep: int) -> void:
@@ -23,6 +24,8 @@ func check_curr_tile() -> void:
 	if not is_on_tile:
 		die()
 
-func _on_timestep(curr_timestep: int) -> void:
-	check_curr_tile()
+func _on_pre_timestep(curr_timestep: int) -> void:
 	move(curr_timestep)
+
+func _on_timestep(_curr_timestep: int) -> void:
+	check_curr_tile()

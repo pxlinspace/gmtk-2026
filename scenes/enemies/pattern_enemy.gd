@@ -8,7 +8,8 @@ class_name PatternEnemy extends BaseEnemy
 var position_tween: Tween
 
 func _ready() -> void:
-	Events.pre_timestep.connect(_on_timestep)
+	super._ready()
+
 	arrow.top_level = true
 	next_square.top_level = true
 	update_arrow(Clock.curr_timestep)
@@ -21,6 +22,7 @@ func move_to_pos(new_pos: Vector3i) -> void:
 
 
 func move(curr_timestep: int) -> void:
+	if is_dead: return
 	var curr_move := pattern[curr_timestep % pattern.size()]
 	if curr_move.x > 0:
 		tile_sprite.flip_h = false
@@ -49,9 +51,8 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
-func _on_timestep(curr_timestep: int) -> void:
-	if is_dead: return
-	super._on_timestep(curr_timestep)
+func _on_pre_timestep(curr_timestep: int) -> void:
+	super._on_pre_timestep(curr_timestep)
 
 func die() -> void:
 	super.die()
