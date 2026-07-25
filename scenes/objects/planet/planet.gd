@@ -5,7 +5,7 @@ extends Node3D
 
 
 func _process(delta: float) -> void:
-	clouds.rotation.y += delta * 0.02
+	clouds.rotation.y += delta * 0.015
 	clouds_2.rotation.y += delta * 0.04
 	
 	

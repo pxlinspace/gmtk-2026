@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bp1ymf8ah7cpm"
-path.s3tc="res://.godot/imported/planet.png-fbe81cdfef323c85b38e59fcd5056a16.s3tc.ctex"
+uid="uid://hlg40ymdjamn"
+path.s3tc="res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/images/planet/planet.png"
-dest_files=["res://.godot/imported/planet.png-fbe81cdfef323c85b38e59fcd5056a16.s3tc.ctex"]
+source_file="res://assets/images/planet/planet_clouds_v2.png"
+dest_files=["res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"]
 
 [params]
 
