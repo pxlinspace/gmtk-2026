@@ -14,7 +14,6 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] freezy item
 - [ ] jumpy item
 - [ ] level design
 - [ ] level select

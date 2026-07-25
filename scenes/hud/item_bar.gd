@@ -21,8 +21,12 @@ func set_item_positions() -> void:
 
 func _on_item_received(item_resource: ItemResource) -> void:
 	var item_bar_item := item_scene.instantiate() as ItemBarItem
+	item_bar_item.item_used.connect(_on_item_used)
 	add_child(item_bar_item)
 	move_child(item_bar_item, 0)
 	item_bar_item.set_item(item_resource)
 
+	set_item_positions()
+
+func _on_item_used(_item: ItemBarItem) -> void:
 	set_item_positions()

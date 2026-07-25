@@ -1,5 +1,7 @@
 class_name ItemBarItem extends Node2D
 
+signal item_used(item: ItemBarItem)
+
 @export var button_e: Texture2D
 @export var button_q: Texture2D
 
@@ -24,3 +26,5 @@ func _unhandled_input(event: InputEvent) -> void:
 	if InputMap.has_action(button) and event.is_action_pressed(button):
 		Clock.advance_time()
 		item.use_item(get_tree().current_scene, get_tree().get_nodes_in_group("player")[0].grid_pos)
+		item_used.emit(self)
+		queue_free()
