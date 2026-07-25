@@ -13,10 +13,14 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var flashbang: ColorRect = $HudLayer/Flashbang
 @onready var restart_progress: TextureProgressBar = $HudLayer/RestartProgressBar
 
-@onready var treasure_display: HBoxContainer = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay
-@onready var enemies_display: HBoxContainer = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay
-@onready var treasure_count: Label = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay/TreasureCount
-@onready var enemies_count: Label = $HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay/EnemiesCount
+@onready var treasure_display: HBoxContainer = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay
+@onready var enemies_display: HBoxContainer = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay
+
+@onready var treasure_label: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureLabel
+@onready var enemies_label: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesLabel
+
+@onready var treasure_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureCount
+@onready var enemies_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesCount
 
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
@@ -158,11 +162,12 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 
 func _on_all_treasure_gotten() -> void:
-	treasure_display.modulate = GOAL_COMPLETED_COLOR
+	treasure_label.label_settings.font_color = GOAL_COMPLETED_COLOR
 	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
 		Events.mission_complete.emit(level_resource.level_mode)
 
 
 func _on_all_enemies_killed() -> void:
+	enemies_label.label_settings.font_color = GOAL_COMPLETED_COLOR
 	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
 		Events.mission_complete.emit(level_resource.level_mode)

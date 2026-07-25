@@ -7,10 +7,10 @@
 
 [node name="Level" unique_id=1990532022 instance=ExtResource("1_fiq81")]
 
-[node name="LevelLabel" parent="HudLayer/VBoxContainer/HBoxContainer/PanelContainer3" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
+[node name="LevelLabel" parent="HudLayer/LevelContainer" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
 text = "1-2"
 
-[node name="DescriptionLabel" parent="HudLayer/VBoxContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
+[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
 text = "Some areas have more than one treasure, 
 
 But don't tread recklessly! You wouldn't want to destroy your way back would you?"

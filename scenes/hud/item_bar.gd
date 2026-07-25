@@ -16,7 +16,7 @@ func set_item_positions() -> void:
 	for i in range(get_child_count()):
 		var item := get_child(i) as ItemBarItem
 		item.set_button("e" if i == 0 else "q")
-		item.position.x = i * (ITEM_SEPARATION)
+		item.position.x = i * -ITEM_SEPARATION
 
 
 func _on_item_received(item_resource: ItemResource) -> void:
