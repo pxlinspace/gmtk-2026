@@ -98,6 +98,7 @@ func uh_oh() -> void:
 
 func fall_down() -> void:
 	Events.toggle_pause.emit(true)
+	Events.player_lost.emit()
 	fell_down = true
 	can_move = false
 	print("you died!")
@@ -115,10 +116,14 @@ func fall_down() -> void:
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
+	
+	await get_tree().create_timer(1.0).timeout
+	Events.player_gone.emit()
 
 
 func die() -> void:
 	Events.toggle_pause.emit(true)
+	Events.player_lost.emit()
 	can_move = false
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
@@ -151,6 +156,8 @@ func die() -> void:
 	die_tween.tween_property(tile_sprite, "global_position:y", 5.0, 2.5)
 	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0)
 	print("you died!")
+	await get_tree().create_timer(1).timeout
+	Events.player_gone.emit()
 
 
 func beamed_down() -> void:
@@ -171,6 +178,7 @@ func beamed_down() -> void:
 
 
 func win() -> void:
+	Events.player_beamed_up.emit()
 	Events.toggle_pause.emit(true)
 	win_audio.play()
 	can_move = false

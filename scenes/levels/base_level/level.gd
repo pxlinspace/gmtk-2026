@@ -40,6 +40,8 @@ var enemies_killed: int = 0
 var mission_complete: bool = false
 var restart_value: float = 0.0
 var is_restarting: bool = false
+var player_lost: bool = false
+var is_player_beamed_up: bool = false
 
 
 func _ready() -> void:
@@ -53,6 +55,10 @@ func _ready() -> void:
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
 	Events.all_enemies_killed.connect(_on_all_enemies_killed)
 	Events.player_beamed_down.connect(_on_player_beamed_down)
+	Events.player_beamed_up.connect(_on_player_beamed_up)
+	Events.player_lost.connect(_on_player_lost)
+	Events.player_gone.connect(_on_player_gone)
+	
 	
 	Events.win.connect(_on_win)
 
@@ -138,7 +144,7 @@ func _on_level_timer_timeout() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("speed_up"):
+	if event.is_action_pressed("speed_up") and not is_player_beamed_up:
 		Engine.time_scale = 3.0
 		timer_bar.set_speed_up(true)
 		Events.pre_move_missed.emit()
@@ -157,7 +163,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		Engine.time_scale = 1.0
 		timer_bar.set_speed_up(false)
 
-	if event.is_action_pressed("restart"):
+	if event.is_action_pressed("restart") and not player_lost:
 		restart_progress.show()
 		is_restarting = true
 	if event.is_action_released("restart"):
@@ -222,7 +228,23 @@ func _on_player_beamed_down() -> void:
 	level_timer.start()
 	end_player_deploy_audio.play()
 	tick_audio.play()
-	
+
+
+func _on_player_beamed_up() -> void:
+	is_player_beamed_up = true
+	Engine.time_scale = 1.0
+	timer_bar.set_speed_up(false)
+
+
+func _on_player_lost() -> void:
+	player_lost = true
+	restart_progress.hide()
+	is_restarting = false
+
+
+func _on_player_gone() -> void:
+	restart_level()
+
 
 func _on_win() -> void:
 	if not level_resource.next_level or level_resource.next_level == "":

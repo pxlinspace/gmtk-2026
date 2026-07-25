@@ -10,9 +10,9 @@ func _ready() -> void:
 
 
 func scale_button_up(button_index: int) -> void:
-	var tween := create_tween()
+	var tween := create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUART)
 	tween.tween_property(get_child(button_index), "scale", Vector2(1.1, 1.1), 0.2)
 
 func scale_button_down(button_index: int) -> void:
-	var tween := create_tween()
+	var tween := create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_QUART)
 	tween.tween_property(get_child(button_index), "scale", Vector2(1, 1), 0.2)

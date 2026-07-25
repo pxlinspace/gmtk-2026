@@ -125,8 +125,8 @@ color = Color(0, 0, 0, 1)
 
 [node name="InAudio" type="AudioStreamPlayer" parent="." unique_id=1448981629]
 stream = ExtResource("2_on86r")
-volume_db = 2.0
+volume_db = 5.0
 
 [node name="OutAudio" type="AudioStreamPlayer" parent="." unique_id=470636131]
 stream = ExtResource("3_rhfbs")
-volume_db = 4.0
+volume_db = 8.0
