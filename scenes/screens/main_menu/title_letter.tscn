@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dvcojoa6oug8d"]
+
+[ext_resource type="Texture2D" uid="uid://cs43oqkfh5uh7" path="res://assets/images/title.png" id="1_l6u5d"]
+
+[node name="TitleLetter" type="Sprite2D" unique_id=1756289605]
+texture = ExtResource("1_l6u5d")
+hframes = 9
