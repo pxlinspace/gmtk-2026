@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://bav3agb8w4l8n"]
+
+[ext_resource type="Script" uid="uid://d5is53hmqa0g" path="res://scenes/screens/main_menu/title_sprites.gd" id="1_h0ajh"]
+[ext_resource type="PackedScene" uid="uid://dvcojoa6oug8d" path="res://scenes/screens/main_menu/title_letter.tscn" id="2_fik1n"]
+
+[node name="TitleSprites" type="Node2D" unique_id=2019204747]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_h0ajh")
+
+[node name="TitleLetter" parent="." unique_id=1756289605 instance=ExtResource("2_fik1n")]
+position = Vector2(-189, 0)
+
+[node name="TitleLetter2" parent="." unique_id=1593170621 instance=ExtResource("2_fik1n")]
+position = Vector2(-135, 0)
+frame = 1
+
+[node name="TitleLetter3" parent="." unique_id=1914943580 instance=ExtResource("2_fik1n")]
+position = Vector2(-81, 0)
+frame = 2
+
+[node name="TitleLetter4" parent="." unique_id=385035907 instance=ExtResource("2_fik1n")]
+position = Vector2(-27, 0)
+frame = 3
+
+[node name="TitleLetter5" parent="." unique_id=762072287 instance=ExtResource("2_fik1n")]
+position = Vector2(27, 0)
+frame = 4
+
+[node name="TitleLetter6" parent="." unique_id=1953024289 instance=ExtResource("2_fik1n")]
+position = Vector2(81, 0)
+frame = 5
+
+[node name="TitleLetter7" parent="." unique_id=995318731 instance=ExtResource("2_fik1n")]
+position = Vector2(135, 0)
+frame = 6
+
+[node name="TitleLetter8" parent="." unique_id=518046 instance=ExtResource("2_fik1n")]
+position = Vector2(194.33333, 0)
+frame = 7
+
+[node name="TitleLetter9" parent="." unique_id=2003223596 instance=ExtResource("2_fik1n")]
+position = Vector2(248.33333, 0)
+frame = 8
