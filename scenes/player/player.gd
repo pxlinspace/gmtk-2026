@@ -127,13 +127,15 @@ func beamed_down() -> void:
 	tile_sprite.position.y = 3
 	tile_sprite.scale.y = 4.0
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	var beam_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_OUT).set_parallel()
-	beam_tween.tween_property(tile_sprite, "position:y", 0.0, 1.5)
-	beam_tween.tween_property(tile_sprite, "scale:y", 1.5, 1.5)
+	var beam_tween := create_tween().set_trans(Tween.TRANS_QUART).set_ease(Tween.EASE_OUT).set_parallel()
+	beam_tween.tween_property(tile_sprite, "position:y", 0.0, 1.0)
+	beam_tween.tween_property(tile_sprite, "scale:y", 1.5, 1.0)
 	beam_tween.chain().tween_callback(func() -> void:
 		can_move = true
+		Events.player_beamed_down.emit()
 		tile_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 		tile_sprite.scale.y = 1.0
+		tile_sprite.animation_player.play("bounce_in_place")
 	)
 
 
@@ -157,7 +159,8 @@ func win() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if can_move:
 		if event.is_action_pressed("speed_up"):
-			tile_sprite.animation_player.play("panic")
+			tile_sprite.animation_player.stop()
+			tile_sprite.animation_player.play("bounce_in_place")
 		elif event.is_action_pressed("left"):
 			tile_sprite.flip_h = true
 			move_to_pos(grid_pos + Vector3i(-1, 0, 0))

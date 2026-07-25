@@ -40,7 +40,9 @@ func _ready() -> void:
 
 	spawn_tiles()
 	level_timer.wait_time = level_resource.level_countdown
-	level_timer.start()
+	Events.player_beamed_down.connect(level_timer.start)
+
+	#level_timer.start()
 
 	for node in get_tree().get_nodes_in_group("treasure"):
 		if node is TreasureItem:
@@ -59,7 +61,8 @@ func _ready() -> void:
 
 
 func _process(dt: float) -> void:
-	timer_bar.set_progress(1.0 - level_timer.time_left / level_timer.wait_time)
+	if not level_timer.is_stopped():
+		timer_bar.set_progress(1.0 - level_timer.time_left / level_timer.wait_time)
 	if is_restarting:
 		restart_value += dt
 		restart_progress.value = restart_value / RESTART_TIME
@@ -125,6 +128,7 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func restart_level() -> void:
 	is_restarting = false
+	Events.toggle_pause.emit(true)
 	Events.restart_level.emit()
 	SceneTransition.reload_current_scene()
 

@@ -12,6 +12,7 @@ var trauma_power: int = 2
 func _ready() -> void:
 	Events.cam_shake.connect(_on_cam_shake)
 	Events.move_missed.connect(_on_move_missed)
+	Events.player_beamed_down.connect(_on_player_beamed_down)
 
 
 func _process(delta: float) -> void:
@@ -42,4 +43,8 @@ func _on_cam_shake(amount: float) -> void:
 
 
 func _on_move_missed() -> void:
+	add_trauma(0.2)
+
+
+func _on_player_beamed_down() -> void:
 	add_trauma(0.2)

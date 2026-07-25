@@ -11,7 +11,7 @@ var is_active: bool = false
 func _ready() -> void:
 	Events.mission_complete.connect(_on_mission_complete)
 
-	await get_tree().create_timer(1.5).timeout
+	await get_tree().create_timer(1.0).timeout
 	set_active(false)
 
 

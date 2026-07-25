@@ -94,7 +94,6 @@ texture = ExtResource("1_xhe6g")
 modulate = Color(0.8117647, 0.8117647, 0.8117647, 1)
 texture = ExtResource("3_l7in1")
 hframes = 12
-frame = 3
 
 [node name="TopSprite" type="AnimatedSprite2D" parent="WatchSprites" unique_id=1123578540]
 sprite_frames = SubResource("SpriteFrames_vknqg")
