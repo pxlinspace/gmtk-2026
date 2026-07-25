@@ -29,6 +29,6 @@ func set_active(new_value: bool) -> void:
 	beam_tween.tween_property(beam, "scale:x", target_scale, 1.0)
 	beam_tween.tween_property(beam, "scale:z", target_scale, 1.0)
 
-func _on_mission_complete(_level_mode: LevelResource.LevelMode) -> void:
+func _on_mission_complete() -> void:
 	set_active(true)
-	print("all treasure collected, get back to the ship!")
+	print("mission complete, get back to the ship!")

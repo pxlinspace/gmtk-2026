@@ -6,7 +6,7 @@ enum LevelMode {
 }
 
 @export var level_name: String = "the cool level"
-@export var level_mode: LevelMode = LevelMode.COLLECT
+@export var level_mode: Array[LevelMode] = [LevelMode.COLLECT]
 
 ## how long before the time automatically steps
 @export var level_countdown: float = 1.0

@@ -59,10 +59,10 @@ func _ready() -> void:
 		if node is BaseEnemy:
 			killable_enemies.append(node)
 
-	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
+	if LevelResource.LevelMode.COLLECT in level_resource.level_mode:
 		treasure_display.show()
 		update_treasure_count()
-	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
+	if LevelResource.LevelMode.DEFEAT in level_resource.level_mode:
 		enemies_display.show()
 		update_enemies_count()
 
@@ -158,6 +158,15 @@ func update_enemies_count() -> void:
 	enemies_count.text = str(enemies_killed) + "/" + str(killable_enemies.size())
 
 
+func check_mission_complete() -> bool:
+	for mode in level_resource.level_mode:
+		if mode == LevelResource.LevelMode.COLLECT and treasure_collected < collectable_treasure.size():
+			return false
+		if mode == LevelResource.LevelMode.DEFEAT and enemies_killed < killable_enemies.size():
+			return false
+	return true
+
+
 func _on_treasure_received() -> void:
 	print("found a treasure!")
 	treasure_collected += 1
@@ -175,12 +184,11 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 
 func _on_all_treasure_gotten() -> void:
-	treasure_label.label_settings.font_color = GOAL_COMPLETED_COLOR
-	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
-		Events.mission_complete.emit(level_resource.level_mode)
-
+	treasure_display.modulate = GOAL_COMPLETED_COLOR
+	if check_mission_complete():
+		Events.mission_complete.emit()
 
 func _on_all_enemies_killed() -> void:
-	enemies_label.label_settings.font_color = GOAL_COMPLETED_COLOR
-	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
-		Events.mission_complete.emit(level_resource.level_mode)
+	enemies_display.modulate = GOAL_COMPLETED_COLOR
+	if check_mission_complete():
+		Events.mission_complete.emit()

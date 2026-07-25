@@ -22,8 +22,9 @@ texture_margin_left = 8.0
 texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
+expand_margin_bottom = 16.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_6761a"]
+[sub_resource type="LabelSettings" id="LabelSettings_3p64w"]
 font = ExtResource("9_ynnbu")
 font_size = 24
 
@@ -157,10 +158,14 @@ position = Vector2(932, 91)
 position = Vector2(928, 472)
 
 [node name="MissionPanel" type="PanelContainer" parent="HudLayer" unique_id=598251614]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
 offset_left = -16.0
-offset_top = 520.0
+offset_top = -56.0
 offset_right = 328.0
-offset_bottom = 600.0
+offset_bottom = 8.0
+grow_vertical = 0
 theme_override_styles/panel = SubResource("StyleBoxTexture_hfd2d")
 
 [node name="MissionMargin" type="MarginContainer" parent="HudLayer/MissionPanel" unique_id=1876492904]
@@ -172,7 +177,7 @@ theme_override_constants/margin_bottom = 12
 
 [node name="MissionContainer" type="VBoxContainer" parent="HudLayer/MissionPanel/MissionMargin" unique_id=1399757849]
 layout_mode = 2
-theme_override_constants/separation = 0
+theme_override_constants/separation = 6
 
 [node name="TreasureDisplay" type="HBoxContainer" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer" unique_id=1230320316]
 visible = false
@@ -181,13 +186,13 @@ layout_mode = 2
 [node name="TreasureLabel" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay" unique_id=1698270059]
 layout_mode = 2
 text = "collect treasure"
-label_settings = SubResource("LabelSettings_6761a")
+label_settings = SubResource("LabelSettings_3p64w")
 
 [node name="TreasureCount" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay" unique_id=1485768557]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0/3"
-label_settings = SubResource("LabelSettings_6761a")
+label_settings = SubResource("LabelSettings_3p64w")
 horizontal_alignment = 2
 
 [node name="EnemiesDisplay" type="HBoxContainer" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer" unique_id=56453853]
@@ -197,13 +202,13 @@ layout_mode = 2
 [node name="EnemiesLabel" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay" unique_id=1905883807]
 layout_mode = 2
 text = "defeat enemies"
-label_settings = SubResource("LabelSettings_6761a")
+label_settings = SubResource("LabelSettings_3p64w")
 
 [node name="EnemiesCount" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay" unique_id=1083676717]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0/3"
-label_settings = SubResource("LabelSettings_6761a")
+label_settings = SubResource("LabelSettings_3p64w")
 horizontal_alignment = 2
 
 [node name="Strikethrough" type="TextureRect" parent="HudLayer" unique_id=899205318]
