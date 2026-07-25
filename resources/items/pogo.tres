@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="PogoItemResource" format=3 uid="uid://bdtgptjqi7sdr"]
+
+[ext_resource type="Script" uid="uid://c2mtve35li0pb" path="res://scripts/item_resources/pogo_item_resource.gd.gd" id="1_4vi1a"]
+[ext_resource type="Texture2D" uid="uid://bq3pn5rfq7hhq" path="res://assets/images/crackle-purple.png" id="2_5x1ht"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4vi1a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5x1ht")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[resource]
+script = ExtResource("1_4vi1a")
+item_name = "pogo"
+item_desc = "pogo pogo!"
+sprite_frames = SubResource("SpriteFrames_4vi1a")
+metadata/_custom_type_script = "uid://c2mtve35li0pb"

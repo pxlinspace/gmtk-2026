@@ -22,3 +22,4 @@ signal all_treasure_gotten
 signal all_enemies_killed
 signal enemy_died(enemy: BaseEnemy)
 signal player_beamed_down
+signal player_pogo(distance: int)

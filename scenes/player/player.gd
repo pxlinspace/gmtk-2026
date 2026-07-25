@@ -15,6 +15,7 @@ var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var can_move: bool = false
+var curr_dir: Vector3i = Vector3i.ZERO
 
 
 func _enter_tree() -> void:
@@ -23,6 +24,7 @@ func _enter_tree() -> void:
 	Events.timestep.connect(_on_timestep)
 	Events.item_gotten.connect(_on_item_gotten)
 	Events.restart_level.connect(_on_restart_level)
+	Events.player_pogo.connect(_on_player_pogo)
 
 
 func _ready() -> void:
@@ -36,9 +38,9 @@ func _ready() -> void:
 	beamed_down()
 
 
-func move_to_pos(new_pos: Vector3i) -> void:
+func move_to_pos(new_pos: Vector3i, check_valid: bool = true) -> void:
 	var new_tile := check_tile(new_pos)
-	if not new_tile: return
+	if not new_tile and check_valid: return
 
 	prev_tile = curr_tile
 	curr_tile = new_tile
@@ -106,10 +108,10 @@ func die() -> void:
 	Events.cam_shake.emit(0.4)
 
 	await get_tree().create_timer(0.5).timeout
-	
+
 	impact_sprite.hide()
 	impact_sprite.stop()
-	
+
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	anchor.add_child(explosion)
 	Events.cam_shake.emit(0.6)
@@ -169,15 +171,18 @@ func _unhandled_input(event: InputEvent) -> void:
 			tile_sprite.animation_player.play("bounce_in_place")
 		elif event.is_action_pressed("left"):
 			tile_sprite.flip_h = true
-			move_to_pos(grid_pos + Vector3i(-1, 0, 0))
+			curr_dir = Vector3i(-1, 0, 0)
+			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("right"):
 			tile_sprite.flip_h = false
-			move_to_pos(grid_pos + Vector3i(1, 0, 0))
+			curr_dir = Vector3i(1, 0, 0)
+			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("up"):
-			move_to_pos(grid_pos + Vector3i(0, 0, -1))
+			curr_dir = Vector3i(0, 0, -1)
+			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("down"):
-			move_to_pos(grid_pos + Vector3i(0, 0, 1))
-		
+			curr_dir = Vector3i(0, 0, 1)
+			move_to_pos(grid_pos + curr_dir)
 
 
 func animate_to_grid_position() -> void:
@@ -208,6 +213,11 @@ func _on_timestep(_curr_timestep: int) -> void:
 	tile_sprite.play("default")
 
 	check_curr_tile()
+
+	if not curr_tile:
+		print("yeah you just pogoed onto thin air")
+		fall_down()
+		return
 
 	curr_tile.stepped_on.emit()
 
@@ -241,3 +251,8 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 
 func _on_restart_level() -> void:
 	can_move = false
+
+
+func _on_player_pogo(distance: int) -> void:
+	var new_pos := grid_pos + curr_dir * distance
+	move_to_pos(new_pos, false)

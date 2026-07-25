@@ -9,6 +9,7 @@
 [ext_resource type="Resource" uid="uid://6ipvgouoqsus" path="res://resources/items/test_2.tres" id="7_osrbx"]
 [ext_resource type="Resource" uid="uid://bmm270uoe4vdl" path="res://resources/items/nuke.tres" id="8_4wh7x"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="9_lga2u"]
+[ext_resource type="Resource" uid="uid://bdtgptjqi7sdr" path="res://resources/items/pogo.tres" id="10_g8sj1"]
 
 [node name="TestingLevel" unique_id=1990532022 instance=ExtResource("1_11dnb")]
 
@@ -57,3 +58,7 @@ item_resource = ExtResource("8_4wh7x")
 
 [node name="TreasureItem" parent="." index="17" unique_id=667416885 instance=ExtResource("9_lga2u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+
+[node name="TileItem4" parent="." index="18" unique_id=2020264884 instance=ExtResource("5_sb23r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
+item_resource = ExtResource("10_g8sj1")
