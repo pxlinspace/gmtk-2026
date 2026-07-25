@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bvx68t1bbtn6h"]
+
+[ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_2k7im"]
+[ext_resource type="Resource" uid="uid://l0bdguw43821" path="res://resources/levels/level_10.tres" id="2_bpgow"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_ljrt2"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_bpgow"]
+
+[node name="Level" unique_id=1990532022 instance=ExtResource("1_2k7im")]
+level_resource = ExtResource("2_bpgow")
+
+[node name="Player" parent="." index="7" unique_id=343958966 instance=ExtResource("2_ljrt2")]
+
+[node name="TheHolyLight" parent="." index="8" unique_id=696309230 instance=ExtResource("3_bpgow")]

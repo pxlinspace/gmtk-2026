@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://l0bdguw43821"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_314mw"]
+
+[resource]
+script = ExtResource("1_314mw")
+level_name = "1-X"
+has_instructions = true
+level_instructions = "time to put all the skills you've learned so far to use! go get'em!"
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"
