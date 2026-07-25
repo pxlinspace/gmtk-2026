@@ -25,7 +25,7 @@ texture_margin_bottom = 8.0
 
 [sub_resource type="LabelSettings" id="LabelSettings_6761a"]
 font = ExtResource("9_ynnbu")
-font_size = 32
+font_size = 24
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i5dd8"]
 texture = ExtResource("7_v2fu8")
@@ -42,7 +42,7 @@ spacing_bottom = -10
 [sub_resource type="LabelSettings" id="LabelSettings_i5dd8"]
 line_spacing = 0.0
 font = SubResource("FontVariation_ynnbu")
-font_size = 32
+font_size = 24
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ynnbu"]
 atlas = ExtResource("7_hfd2d")
@@ -155,7 +155,7 @@ position = Vector2(928, 472)
 
 [node name="MissionPanel" type="PanelContainer" parent="HudLayer" unique_id=598251614]
 offset_left = -16.0
-offset_top = 512.0
+offset_top = 520.0
 offset_right = 328.0
 offset_bottom = 600.0
 theme_override_styles/panel = SubResource("StyleBoxTexture_hfd2d")
@@ -219,7 +219,7 @@ anchor_right = 0.5
 offset_left = -64.0
 offset_top = -8.0
 offset_right = 64.0
-offset_bottom = 48.0
+offset_bottom = 40.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxTexture_i5dd8")
@@ -282,9 +282,9 @@ anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -32.0
-offset_top = 16.0
+offset_top = 64.0
 offset_right = 32.0
-offset_bottom = 80.0
+offset_bottom = 128.0
 grow_horizontal = 2
 max_value = 1.0
 step = 0.01
