@@ -42,14 +42,19 @@ func explode() -> void:
 	explosion.position = global_position
 	Events.cam_shake.emit(0.6)
 
+	var affected_tiles: Array[Tile] = []
 	for dir in explode_dirs:
 		for i in explosion_radius:
-			var check_pos := Vector3i(global_position) + dir * i
-			var areas := Utils.shapecast_at_pos(check_pos)
-			for area in areas:
-				if area is Tile and not area.is_disabled:
-					for x in range(explosion_damage):
-						area.stepped_off.emit()
+			for d in explode_dirs:
+				var check_pos := Vector3i(global_position) + dir * i + d
+				var areas := Utils.shapecast_at_pos(check_pos)
+				for area in areas:
+					if area is Tile and not area.is_disabled and area not in affected_tiles:
+						affected_tiles.append(area)
+
+	for tile in affected_tiles:
+		for x in range(explosion_damage):
+			tile.stepped_off.emit()
 
 	queue_free()
 

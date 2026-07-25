@@ -49,17 +49,9 @@ func animate_to_grid_position() -> void:
 	tile_sprite.animation_player.play("bounce")
 
 
-func check_curr_tile() -> void:
-	var areas := Utils.shapecast_at_pos(grid_position)
-	var is_on_tile := areas.any(func(a: Area3D) -> bool: return a is Tile and not a.is_disabled)
-	if not is_on_tile:
-		die()
-
-
 func _on_timestep(curr_timestep: int) -> void:
 	if is_dead: return
 	super._on_timestep(curr_timestep)
-	check_curr_tile()
 
 func die() -> void:
 	super.die()
