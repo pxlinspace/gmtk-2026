@@ -6,7 +6,7 @@
 script = ExtResource("1_ia1ul")
 level_name = "1-2"
 has_instructions = true
-level_instructions = "Some areas have more than one treasure, 
+level_instructions = "most areas have more than one treasure, 
 
 But don't tread recklessly! You wouldn't want to destroy your way back would you?"
 next_level = "uid://b0bd4hyle7qay"
