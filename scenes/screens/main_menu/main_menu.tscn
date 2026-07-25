@@ -6,6 +6,7 @@
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="4_enpo5"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="5_g4j36"]
 [ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="6_g4j36"]
+[ext_resource type="PackedScene" uid="uid://d4cgpsqbwv3ob" path="res://scenes/objects/planet/planet.tscn" id="7_ht6f7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ht6f7"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -127,6 +128,7 @@ environment = SubResource("Environment_xibsw")
 
 [node name="Planet" type="MeshInstance3D" parent="." unique_id=858245690]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.456167, -45, -8.558058)
+visible = false
 mesh = SubResource("SphereMesh_0urj7")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Planet" unique_id=1307513562]
@@ -148,5 +150,8 @@ draw_pass_1 = SubResource("QuadMesh_8vo2r")
 transform = Transform3D(1, 0, 0, 0, 0.47715876, 0.87881714, 0, -0.87881714, 0.47715876, 0, 8.165, 0)
 script = ExtResource("6_g4j36")
 metadata/_custom_type_script = "uid://cne4awgynrvad"
+
+[node name="Planet2" parent="." unique_id=1852319701 instance=ExtResource("7_ht6f7")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 20.456167, -45, -8.558058)
 
 [connection signal="pressed" from="CanvasLayer/ButtonContainer/QuitButton" to="." method="_on_quit_button_pressed"]
