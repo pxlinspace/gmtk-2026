@@ -69,7 +69,7 @@ func check_curr_tile() -> void:
 	var areas := Utils.shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is TheHolyLight and area.is_active:
-			win()
+			await win()
 			Events.win.emit()
 		if area is BaseEnemy:
 			die()
@@ -162,6 +162,7 @@ func win() -> void:
 	fade_tween.tween_callback(func() -> void:
 		tile_sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	)
+	await fade_tween.finished
 
 
 func _unhandled_input(event: InputEvent) -> void:

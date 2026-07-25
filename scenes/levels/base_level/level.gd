@@ -43,6 +43,7 @@ func _ready() -> void:
 	Events.enemy_died.connect(_on_enemy_died)
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
 	Events.all_enemies_killed.connect(_on_all_enemies_killed)
+	Events.win.connect(_on_win)
 
 	timer_bar.set_speed_up(false)
 	restart_progress.hide()
@@ -192,3 +193,11 @@ func _on_all_enemies_killed() -> void:
 	enemies_display.modulate = GOAL_COMPLETED_COLOR
 	if check_mission_complete():
 		Events.mission_complete.emit()
+
+
+func _on_win() -> void:
+	if not level_resource.next_level or level_resource.next_level == "":
+		print("no next level specified")
+		return
+
+	SceneTransition.change_scene_to_file(level_resource.next_level)

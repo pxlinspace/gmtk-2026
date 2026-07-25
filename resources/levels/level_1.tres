@@ -9,4 +9,5 @@ has_instructions = true
 level_instructions = "The tiles will dissapear when you step off of them, or when you stand on them too long.
 
 Be careful not to walk anywhere where you'll get stuck!"
+next_level = "uid://j1owud46mu7c"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"
