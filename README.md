@@ -14,18 +14,18 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] bomb range indicator
 - [ ] more items
 - [ ] level design
 - [ ] more enemy types
-- [ ] tutorial with npc
 - [ ] level select
 - [ ] main menu
 - [ ] settings
 - [ ] music and sfx
+- [ ] boss
 - [ ] itch.io page
-- [ ] boss??
 - [ ] figure out how to check what mode the level is when won in player
+- [x] bomb range indicator
+- [x] tutorial with npc
 - [x] fix timestep issues
 - [x] bombo
 - [x] making enemies fall

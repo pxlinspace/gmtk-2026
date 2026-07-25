@@ -39,3 +39,5 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.3)
 billboard = 2
 texture_filter = 2
 texture = ExtResource("5_02van")
+
+[node name="Squares" type="Node3D" parent="." unique_id=465219942]
