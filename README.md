@@ -17,7 +17,6 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] freezy item
 - [ ] jumpy item
 - [ ] level design
-- [ ] more enemy types
 - [ ] level select
 - [ ] main menu
 - [ ] settings
@@ -25,6 +24,7 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 - [ ] boss
 - [ ] itch.io page
 - [ ] figure out how to check what mode the level is when won in player
+- [x] more enemy types
 - [x] bomb range indicator
 - [x] tutorial with npc
 - [x] fix timestep issues
