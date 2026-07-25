@@ -8,13 +8,13 @@
 
 [node name="Level" unique_id=1990532022 instance=ExtResource("1_anwe6")]
 
-[node name="LevelLabel" parent="HudLayer/VBoxContainer/HBoxContainer/PanelContainer3" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
+[node name="LevelLabel" parent="HudLayer/LevelContainer" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
 text = "1-4"
 
-[node name="DescriptionLabel" parent="HudLayer/VBoxContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
+[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
 text = "Yikes, this place is infested! It's worth mentioning that you can stand still in one place to wait for an enemy to move if it's blocking your way."
 
-[node name="LevelMap" parent="." index="6" unique_id=2083219110]
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {
 "cells": PackedInt32Array(0, 3, 1441797, 65535, 3, 1441797, 0, 4, 1441797, 65535, 4, 1441797, 65534, 5, 0, 65534, 6, 0, 1, 5, 0, 1, 6, 0, 65535, 7, 0, 0, 7, 0, 0, 8, 0, 65535, 8, 0, 0, 5, 1, 1, 7, 1, 1, 8, 1, 65534, 7, 1, 65534, 8, 1, 65535, 5, 1, 65535, 6, 1, 0, 6, 1, 65533, 7, 0, 65532, 7, 1310721, 65533, 8, 0, 65532, 8, 1310720, 65535, 9, 1, 0, 9, 1, 65535, 10, 1, 0, 10, 1, 1, 9, 1310720, 1, 10, 1310720, 0, 11, 1310720, 65535, 11, 1310720, 1, 11, 1310721, 1, 12, 1310720, 65531, 7, 1310720)
 }
