@@ -4,7 +4,7 @@
 
 [resource]
 Button/colors/font_color = Color(1, 1, 1, 1)
-Button/colors/font_outline_color = Color(0.31641287, 0.2477727, 0.44147047, 1)
+Button/colors/font_outline_color = Color(0.483625, 0.34449998, 0.53, 1)
 Button/constants/outline_size = 24
 Button/font_sizes/font_size = 64
 Button/fonts/font = ExtResource("1_a68kh")

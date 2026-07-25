@@ -1,11 +1,11 @@
-[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://bg3u8opsnrml6"]
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://daofr707l88yk"]
 
-[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_uljcx"]
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_bwa2w"]
 
 [resource]
-script = ExtResource("1_uljcx")
+script = ExtResource("1_bwa2w")
 level_name = "1-4"
 has_instructions = true
-level_instructions = "Yikes, this place is infested!"
-next_level = "uid://jfgsrvgx7fsv"
+level_instructions = "remember, standing still on a tile and waiting for an enemy to pass is always an option!"
+next_level = "uid://341nyg7kr7g"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

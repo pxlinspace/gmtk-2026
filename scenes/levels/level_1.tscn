@@ -16,14 +16,14 @@ offset_right = 316.0
 offset_bottom = 580.0
 
 [node name="Label" type="Label" parent="HudLayer" parent_id_path=PackedInt32Array(775466758) index="9" unique_id=1863586691]
-offset_left = 34.0
+offset_left = 15.0
 offset_top = 425.0
-offset_right = 427.0
+offset_right = 408.0
 offset_bottom = 500.0
 theme_override_constants/outline_size = 16
 theme_override_font_sizes/font_size = 36
-text = "move using WASD
-or the arrow keys"
+text = "move using WASD / arrow keys
+hold R to restart"
 
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {

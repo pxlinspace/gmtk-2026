@@ -1,14 +1,9 @@
-[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://baw2ihgnrmlgf"]
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://cka02y7boi7dp"]
 
-[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_r1rfv"]
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_d77fa"]
 
 [resource]
-script = ExtResource("1_r1rfv")
+script = ExtResource("1_d77fa")
 level_name = "1-5"
-level_mode = Array[int]([1])
-has_instructions = true
-level_instructions = "No treasure here, but people have been complaining about the slug infestation! 
-
-Your task here is to get rid of all the enemies."
-next_level = "uid://fabgtjfg8t3j"
+next_level = "uid://e57ttrjo0bit"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"
