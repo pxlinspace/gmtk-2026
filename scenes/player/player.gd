@@ -15,11 +15,15 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
 @onready var panic_audio: AudioStreamPlayer = $PanicAudio
 @onready var win_audio: AudioStreamPlayer = $WinAudio
+@onready var fall_audio: AudioStreamPlayer = $FallAudio
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var hit_audio: AudioStreamPlayer = $HitAudio
 
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var can_move: bool = false
+var fell_down: bool = false
 var curr_dir: Vector3i = Vector3i.ZERO
 
 
@@ -72,6 +76,8 @@ func check_tile(pos: Vector3i) -> Tile:
 
 
 func check_curr_tile() -> void:
+	if fell_down:
+		return
 	var areas := Utils.shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is TheHolyLight and area.is_active:
@@ -92,12 +98,18 @@ func uh_oh() -> void:
 
 func fall_down() -> void:
 	Events.toggle_pause.emit(true)
+	fell_down = true
 	can_move = false
 	print("you died!")
+	fall_audio.play()
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
 	tile_sprite.center()
+	tile_sprite.stop()
+	tile_sprite.play("panic")
+	tile_sprite.animation_player.play("panic")
+	
 
 	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
@@ -113,11 +125,15 @@ func die() -> void:
 	impact_sprite.show()
 	impact_sprite.play("default")
 	Events.cam_shake.emit(0.4)
+	
+	hit_audio.play()
 
 	await get_tree().create_timer(0.5).timeout
 
 	impact_sprite.hide()
 	impact_sprite.stop()
+	
+	explosion_audio.play()
 
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	anchor.add_child(explosion)
@@ -219,7 +235,8 @@ func show_item(sprite: SpriteFrames) -> void:
 
 
 func _on_timestep(_curr_timestep: int) -> void:
-	tile_sprite.play("default")
+	if can_move:
+		tile_sprite.play("default")
 
 	check_curr_tile()
 
@@ -230,7 +247,7 @@ func _on_timestep(_curr_timestep: int) -> void:
 
 	curr_tile.stepped_on.emit()
 
-	if curr_tile.is_disabled:
+	if curr_tile.is_disabled and can_move:
 		uh_oh()
 
 

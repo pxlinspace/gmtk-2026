@@ -4,6 +4,7 @@ class_name PatternEnemy extends BaseEnemy
 
 @onready var arrow: Sprite3D = $Arrow
 @onready var next_square: Sprite3D = $NextSquare
+@onready var fall_audio: AudioStreamPlayer = $FallAudio
 
 var position_tween: Tween
 
@@ -57,6 +58,8 @@ func _on_pre_timestep(curr_timestep: int) -> void:
 func die() -> void:
 	if is_dead: return
 	super.die()
+	
+	fall_audio.play()
 
 	arrow.hide()
 	next_square.hide()

@@ -11,6 +11,9 @@
 [ext_resource type="AudioStream" uid="uid://bs553b05fnvj8" path="res://assets/audio/treasure_found.wav" id="9_5gtgg"]
 [ext_resource type="AudioStream" uid="uid://b6y0c3vvj1arv" path="res://assets/audio/panic.wav" id="10_h17s1"]
 [ext_resource type="AudioStream" uid="uid://n1lj0t4ckt8j" path="res://assets/audio/win.wav" id="11_je7p5"]
+[ext_resource type="AudioStream" uid="uid://bom0loc2wsfds" path="res://assets/audio/player_fall.wav" id="12_fm80t"]
+[ext_resource type="AudioStream" uid="uid://ct8qp2v7tmqsy" path="res://assets/audio/deltarune-explosion.mp3" id="13_gx1jg"]
+[ext_resource type="AudioStream" uid="uid://bhyfgvvbtm4tj" path="res://assets/audio/hit.wav" id="14_ugbui"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5rnb"]
 animations = [{
@@ -151,7 +154,6 @@ frame_progress = 0.9416311
 sorting_offset = 2.0
 sprite_frames = SubResource("SpriteFrames_7sbn2")
 animation = &"panic"
-frame_progress = 0.038405545
 
 [node name="Camera3D" type="Camera3D" parent="Anchor" unique_id=2023232318]
 transform = Transform3D(1, 0, 0, 0, 0.6427876, 0.7660445, 0, -0.7660445, 0.6427876, 0.5, 4.964, 4.098)
@@ -179,3 +181,15 @@ volume_db = -6.863
 [node name="WinAudio" type="AudioStreamPlayer" parent="." unique_id=241405293]
 stream = ExtResource("11_je7p5")
 volume_db = -6.863
+
+[node name="FallAudio" type="AudioStreamPlayer" parent="." unique_id=1517124642]
+stream = ExtResource("12_fm80t")
+volume_db = -6.863
+
+[node name="ExplosionAudio" type="AudioStreamPlayer" parent="." unique_id=569593764]
+stream = ExtResource("13_gx1jg")
+volume_db = -11.35
+
+[node name="HitAudio" type="AudioStreamPlayer" parent="." unique_id=363125168]
+stream = ExtResource("14_ugbui")
+volume_db = -6.335

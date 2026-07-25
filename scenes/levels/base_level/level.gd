@@ -37,6 +37,7 @@ var killable_enemies: Array[BaseEnemy] = []
 
 var treasure_collected: int = 0
 var enemies_killed: int = 0
+var mission_complete: bool = false
 var restart_value: float = 0.0
 var is_restarting: bool = false
 
@@ -142,6 +143,15 @@ func _unhandled_input(event: InputEvent) -> void:
 		timer_bar.set_speed_up(true)
 		Events.pre_move_missed.emit()
 		Clock.advance_time()
+		tick_audio.pitch_scale = 1.3
+		tick_audio.play()
+		await get_tree().create_timer(0.15).timeout
+		tick_audio.stop()
+		tick_audio.pitch_scale = 1.5
+		tick_audio.play()
+		await get_tree().create_timer(0.2).timeout
+		tick_audio.pitch_scale = 1.0
+		
 
 	if event.is_action_released("speed_up"):
 		Engine.time_scale = 1.0
@@ -176,6 +186,10 @@ func check_mission_complete() -> bool:
 			return false
 		if mode == LevelResource.LevelMode.DEFEAT and enemies_killed < killable_enemies.size():
 			return false
+	if not mission_complete:
+		mission_complete = true
+		holy_light_ready_audio.play()
+		Events.mission_complete.emit()
 	return true
 
 
@@ -197,18 +211,11 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 func _on_all_treasure_gotten() -> void:
 	treasure_display.modulate = GOAL_COMPLETED_COLOR
-	if check_mission_complete():
-		Events.mission_complete.emit()
-		holy_light_ready_audio.play()
-		#mission_complete_audio.play()
+	check_mission_complete()
 
 func _on_all_enemies_killed() -> void:
 	enemies_display.modulate = GOAL_COMPLETED_COLOR
-	if check_mission_complete():
-		Events.mission_complete.emit()
-		holy_light_ready_audio.play()
-		#mission_complete_audio.play()
-		
+	check_mission_complete()
 
 
 func _on_player_beamed_down() -> void:
