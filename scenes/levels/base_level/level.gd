@@ -53,7 +53,7 @@ func _ready() -> void:
 	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
 		treasure_display.show()
 		update_treasure_count()
-	if level_resource.level_mode == LevelResource.LevelMode.KILL:
+	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
 		enemies_display.show()
 
 
@@ -159,6 +159,5 @@ func _on_all_treasure_gotten() -> void:
 
 
 func _on_all_enemies_killed() -> void:
-	enemies_display.modulate = GOAL_COMPLETED_COLOR
-	if level_resource.level_mode == LevelResource.LevelMode.KILL:
+	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
 		Events.mission_complete.emit(level_resource.level_mode)

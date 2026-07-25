@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://dvik4vxmtf5yg" path="res://scenes/hud/timer_bar.gd" id="3_cbisb"]
 [ext_resource type="Texture2D" uid="uid://b804uqqbbuyc1" path="res://assets/images/timer/timer_hands-Sheet.png" id="3_l7in1"]
 [ext_resource type="Texture2D" uid="uid://cqjvfdncsw8bi" path="res://assets/images/timer/timer-Sheet.png" id="4_l7in1"]
-[ext_resource type="Texture2D" uid="uid://ducukuxg6wqah" path="res://assets/images/placeholders/speed-up.png" id="5_32sy1"]
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="6_btl0h"]
 
 [sub_resource type="Animation" id="Animation_cbisb"]
 length = 0.001
@@ -73,9 +73,11 @@ animations = [{
 }]
 
 [sub_resource type="LabelSettings" id="LabelSettings_32sy1"]
+font = ExtResource("6_btl0h")
 font_size = 32
 shadow_size = 4
 shadow_color = Color(0.5132329, 0.51323295, 0.51323277, 1)
+shadow_offset = Vector2(2, 2)
 
 [node name="TimerBar" type="Node2D" unique_id=1720615051]
 script = ExtResource("3_cbisb")
@@ -102,12 +104,11 @@ frame_progress = 0.8009366
 [node name="SpeedUpSprite" type="Sprite2D" parent="WatchSprites" unique_id=1141126644]
 position = Vector2(-10, 21)
 scale = Vector2(0.49999997, 0.33333337)
-texture = ExtResource("5_32sy1")
 
 [node name="SpeedUpLabel" type="Label" parent="." unique_id=676057735]
-offset_left = -69.0
-offset_top = 65.0
-offset_right = 98.0
-offset_bottom = 98.0
-text = "SPEEDING UP"
+offset_left = -128.0
+offset_top = 72.0
+offset_right = 64.0
+offset_bottom = 105.0
+text = "SPEEDING UP >>"
 label_settings = SubResource("LabelSettings_32sy1")
