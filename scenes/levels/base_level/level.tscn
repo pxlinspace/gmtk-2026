@@ -7,11 +7,40 @@
 [ext_resource type="Texture2D" uid="uid://cuix25sa5dyhv" path="res://assets/images/placeholders/restart-button.png" id="5_4ab0e"]
 [ext_resource type="Texture2D" uid="uid://bmmimcd05qky" path="res://assets/images/placeholders/restart-button-progress.png" id="6_p62il"]
 [ext_resource type="PackedScene" uid="uid://cmp5g26ur71hr" path="res://scenes/level_map/level_map.tscn" id="7_c3o0d"]
+[ext_resource type="Texture2D" uid="uid://ugddqyy573wh" path="res://assets/images/friend_portraits/friendportraits-Sheet.png" id="7_hfd2d"]
 [ext_resource type="Texture2D" uid="uid://c01fdn8mbvdjp" path="res://assets/images/textpanel.png" id="7_v2fu8"]
-[ext_resource type="FontFile" uid="uid://y6wmobowmh55" path="res://assets/fonts/m5x7.ttf" id="8_ynnbu"]
-[ext_resource type="FontFile" uid="uid://c5fvqbgdk2lgv" path="res://assets/fonts/m6x11plus.ttf" id="9_ynnbu"]
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="9_ynnbu"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="11_gwbx5"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="12_kbcxf"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynnbu"]
+atlas = ExtResource("7_hfd2d")
+region = Rect2(96, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfd2d"]
+atlas = ExtResource("7_hfd2d")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5dd8"]
+atlas = ExtResource("7_hfd2d")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lg3a2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynnbu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfd2d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5dd8")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfd2d"]
 texture = ExtResource("7_v2fu8")
@@ -20,20 +49,22 @@ texture_margin_top = 8.0
 texture_margin_right = 8.0
 texture_margin_bottom = 8.0
 
-[sub_resource type="LabelSettings" id="LabelSettings_ynnbu"]
-font = ExtResource("8_ynnbu")
-font_size = 32
-
-[sub_resource type="LabelSettings" id="LabelSettings_v2fu8"]
-font = ExtResource("9_ynnbu")
-font_size = 36
+[sub_resource type="FontVariation" id="FontVariation_ynnbu"]
+base_font = ExtResource("9_ynnbu")
+spacing_bottom = -10
 
 [sub_resource type="LabelSettings" id="LabelSettings_i5dd8"]
-font = ExtResource("9_ynnbu")
-font_size = 36
+line_spacing = 0.0
+font = SubResource("FontVariation_ynnbu")
+font_size = 52
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_lg3a2"]
-size = Vector2(96, 96)
+[sub_resource type="LabelSettings" id="LabelSettings_sk5k4"]
+font = ExtResource("9_ynnbu")
+font_size = 24
+
+[sub_resource type="LabelSettings" id="LabelSettings_6761a"]
+font = ExtResource("9_ynnbu")
+font_size = 32
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -146,6 +177,32 @@ offset_left = 16.0
 offset_top = 16.0
 offset_right = 256.0
 offset_bottom = 172.0
+theme_override_constants/separation = 16
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HudLayer/VBoxContainer" unique_id=1193510707]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Control" type="Control" parent="HudLayer/VBoxContainer/HBoxContainer" unique_id=2109383710]
+custom_minimum_size = Vector2(96, 96)
+layout_mode = 2
+
+[node name="FriendSprite" type="AnimatedSprite2D" parent="HudLayer/VBoxContainer/HBoxContainer/Control" unique_id=1975694833]
+position = Vector2(48, 48)
+sprite_frames = SubResource("SpriteFrames_lg3a2")
+autoplay = "default"
+frame_progress = 0.8469007
+
+[node name="PanelContainer3" type="PanelContainer" parent="HudLayer/VBoxContainer/HBoxContainer" unique_id=1767356227]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_hfd2d")
+
+[node name="LevelLabel" type="Label" parent="HudLayer/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=957114526]
+layout_mode = 2
+text = "1-1"
+label_settings = SubResource("LabelSettings_i5dd8")
+horizontal_alignment = 1
 
 [node name="PanelContainer" type="PanelContainer" parent="HudLayer/VBoxContainer" unique_id=1955354898]
 layout_mode = 2
@@ -162,7 +219,7 @@ theme_override_constants/margin_bottom = 12
 custom_minimum_size = Vector2(200, 0)
 custom_maximum_size = Vector2(200, -1)
 layout_mode = 2
-label_settings = SubResource("LabelSettings_ynnbu")
+label_settings = SubResource("LabelSettings_sk5k4")
 autowrap_mode = 2
 
 [node name="PanelContainer2" type="PanelContainer" parent="HudLayer/VBoxContainer" unique_id=598251614]
@@ -187,13 +244,13 @@ layout_mode = 2
 [node name="TreasureLabel" type="Label" parent="HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay" unique_id=1698270059]
 layout_mode = 2
 text = "Treasure:"
-label_settings = SubResource("LabelSettings_v2fu8")
+label_settings = SubResource("LabelSettings_6761a")
 
 [node name="TreasureCount" type="Label" parent="HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/TreasureDisplay" unique_id=1485768557]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0/3"
-label_settings = SubResource("LabelSettings_v2fu8")
+label_settings = SubResource("LabelSettings_6761a")
 horizontal_alignment = 2
 
 [node name="EnemiesDisplay" type="HBoxContainer" parent="HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=56453853]
@@ -203,41 +260,14 @@ layout_mode = 2
 [node name="EnemiesLabel" type="Label" parent="HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay" unique_id=1905883807]
 layout_mode = 2
 text = "Enemies:"
-label_settings = SubResource("LabelSettings_v2fu8")
+label_settings = SubResource("LabelSettings_6761a")
 
 [node name="EnemiesCount" type="Label" parent="HudLayer/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/EnemiesDisplay" unique_id=1083676717]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "0/3"
-label_settings = SubResource("LabelSettings_v2fu8")
+label_settings = SubResource("LabelSettings_6761a")
 horizontal_alignment = 2
-
-[node name="HBoxContainer" type="HBoxContainer" parent="HudLayer/VBoxContainer" unique_id=1193510707]
-visible = false
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="PanelContainer3" type="PanelContainer" parent="HudLayer/VBoxContainer/HBoxContainer" unique_id=1767356227]
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxTexture_hfd2d")
-
-[node name="MarginContainer" type="MarginContainer" parent="HudLayer/VBoxContainer/HBoxContainer/PanelContainer3" unique_id=2128601146]
-layout_mode = 2
-theme_override_constants/margin_left = 12
-theme_override_constants/margin_top = 12
-theme_override_constants/margin_right = 12
-theme_override_constants/margin_bottom = 12
-
-[node name="LevelLabel" type="Label" parent="HudLayer/VBoxContainer/HBoxContainer/PanelContainer3/MarginContainer" unique_id=957114526]
-layout_mode = 2
-text = "1-1"
-label_settings = SubResource("LabelSettings_i5dd8")
-autowrap_mode = 2
-
-[node name="TextureRect" type="TextureRect" parent="HudLayer/VBoxContainer/HBoxContainer" unique_id=978895865]
-layout_mode = 2
-texture = SubResource("PlaceholderTexture2D_lg3a2")
 
 [node name="LevelTimer" type="Timer" parent="." unique_id=1438316184]
 
