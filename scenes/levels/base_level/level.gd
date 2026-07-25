@@ -22,7 +22,7 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var treasure_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureCount
 @onready var enemies_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesCount
 
-@onready var crackle: TextureRect = $HudLayer/Crackle
+@onready var crackle: AnimatedSprite2D = $HudLayer/Crackle
 @onready var friend_container: VBoxContainer = $HudLayer/FriendContainer
 @onready var level_name_label: Label = $HudLayer/LevelContainer/LevelLabel
 @onready var level_instructions_label: Label = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel

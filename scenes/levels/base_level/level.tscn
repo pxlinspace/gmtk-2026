@@ -165,7 +165,7 @@ albedo_texture = ExtResource("12_kbcxf")
 material = SubResource("StandardMaterial3D_cyt5c")
 size = Vector2(2, 2)
 
-[node name="Level" type="Node3D" unique_id=1990532022]
+[node name="Level2" type="Node3D" unique_id=1990532022]
 script = ExtResource("1_b8j7q")
 level_resource = ExtResource("2_qhnmj")
 

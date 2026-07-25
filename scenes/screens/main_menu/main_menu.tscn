@@ -106,7 +106,7 @@ theme = ExtResource("4_xibsw")
 text = "play"
 flat = true
 alignment = 0
-scene_path = "uid://wkmhgdfsfhqj"
+scene_path = "uid://vuu1ifmtfxrm"
 
 [node name="LevelSelectButton" parent="CanvasLayer/ButtonContainer" unique_id=1699925629 instance=ExtResource("3_enpo5")]
 layout_mode = 2

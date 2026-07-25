@@ -5,6 +5,7 @@
 [node name="SceneButton" type="Button" unique_id=1810188404]
 offset_right = 40.0
 offset_bottom = 40.0
+pivot_offset_ratio = Vector2(0, 0.5)
 script = ExtResource("1_v3saj")
 scene_path = "uid://c4214qv11sf8m"
 
