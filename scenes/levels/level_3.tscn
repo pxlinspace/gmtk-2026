@@ -10,7 +10,7 @@
 
 [node name="LevelMap" parent="." index="6" unique_id=2083219110]
 data = {
-"cells": PackedInt32Array(0, 3, 1441797, 65535, 3, 1441797, 65535, 4, 1441797, 0, 4, 1441797, 0, 5, 1310720, 65535, 5, 1310721, 65535, 6, 1310720, 0, 6, 1310721, 0, 7, 1310720, 65535, 7, 1310721, 0, 8, 1310721, 65535, 8, 1310720, 65534, 5, 1310720, 65534, 6, 1310721, 65534, 7, 1310720, 65534, 8, 1310721, 1, 5, 1310721, 1, 6, 1310720, 1, 7, 1310721, 1, 8, 1310720, 65534, 9, 1310720, 65535, 9, 1310721, 0, 9, 1310720, 1, 9, 1310721, 65535, 10, 1310720, 0, 10, 1310721, 65533, 9, 1310721, 65533, 8, 1310720, 65532, 8, 1310721, 65532, 9, 1310720, 2, 8, 1310721, 2, 9, 1310720, 3, 9, 1310721, 3, 8, 1310720)
+"cells": PackedInt32Array(0, 3, 1441797, 65535, 3, 1441797, 65535, 4, 1441797, 0, 4, 1441797, 0, 5, 1310720, 65535, 5, 0, 65535, 6, 1310720, 0, 6, 0, 0, 7, 1310720, 65535, 7, 0, 0, 8, 0, 65535, 8, 1310720, 65534, 5, 1310720, 65534, 6, 0, 65534, 8, 0, 1, 5, 0, 1, 6, 1310720, 1, 8, 1310720, 65534, 9, 0, 65535, 9, 0, 0, 9, 0, 1, 9, 0, 65535, 10, 5, 0, 10, 5, 65533, 9, 0, 65533, 8, 0, 65532, 8, 0, 65532, 9, 0, 2, 8, 0, 2, 9, 0, 3, 9, 0, 3, 8, 1310720)
 }
 
 [node name="Player" parent="." index="7" unique_id=343958966 instance=ExtResource("2_fmg3e")]
@@ -26,17 +26,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 9)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 8)
 
 [node name="PatternEnemy" parent="." index="11" unique_id=1295660293 instance=ExtResource("5_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
-pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1)])
-
-[node name="PatternEnemy2" parent="." index="12" unique_id=1318975069 instance=ExtResource("5_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
 pattern = Array[Vector3i]([Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1)])
 
-[node name="PatternEnemy3" parent="." index="13" unique_id=423961369 instance=ExtResource("5_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
-pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1)])
-
-[node name="PatternEnemy4" parent="." index="14" unique_id=846483224 instance=ExtResource("5_fmg3e")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 9)
+[node name="PatternEnemy2" parent="." index="12" unique_id=560626800 instance=ExtResource("5_fmg3e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
 pattern = Array[Vector3i]([Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1)])
