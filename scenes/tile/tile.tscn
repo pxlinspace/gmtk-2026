@@ -40,8 +40,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, -0.24999997, 0.5)
 cast_shadow = 0
 mesh = SubResource("BoxMesh_vb0sl")
 
-[node name="Label3D" type="Label3D" parent="Anchor/MeshInstance" unique_id=126902231]
-transform = Transform3D(1, 4.371139e-08, 4.3711392e-08, -4.371139e-08, -4.371139e-08, 1, 4.3711392e-08, -1, -4.3711385e-08, 0.029999971, 0.29999998, 0)
+[node name="MeshOutline" type="MeshInstance3D" parent="Anchor/MeshInstance" unique_id=1678736582]
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_bibkx")
+surface_material_override/0 = ExtResource("2_dvver")
+
+[node name="Label3D" type="Label3D" parent="Anchor" unique_id=126902231]
+transform = Transform3D(1, 4.371139e-08, 4.3711392e-08, -4.371139e-08, -4.371139e-08, 1, 4.3711392e-08, -1, -4.3711385e-08, 0.53, 0.05, 0.5)
 sorting_offset = -1.0
 texture_filter = 0
 modulate = Color(0, 0, 0, 1)
@@ -49,8 +54,3 @@ text = "8"
 font = ExtResource("5_krq7o")
 font_size = 150
 outline_size = 8
-
-[node name="MeshOutline" type="MeshInstance3D" parent="Anchor/MeshInstance" unique_id=1678736582]
-cast_shadow = 0
-mesh = SubResource("ArrayMesh_bibkx")
-surface_material_override/0 = ExtResource("2_dvver")

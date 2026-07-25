@@ -6,7 +6,7 @@ signal stepped_off
 @export var palette: PaletteResource
 
 @onready var anchor: Node3D = $Anchor
-@onready var label: Label3D = $Anchor/MeshInstance/Label3D
+@onready var label: Label3D = $Anchor/Label3D
 @onready var tile_mesh: MeshInstance3D = $Anchor/MeshInstance
 @onready var outline_mesh: MeshInstance3D = $Anchor/MeshInstance/MeshOutline
 
@@ -38,16 +38,12 @@ func fall_the_tile() -> void:
 	var fall_tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(self, "position:y", -20.0, 0.75)
 	fall_tween.tween_property(self, "rotation_degrees:x", 180.0, 0.75).as_relative()
-	
-	var scale_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
-	scale_tween.tween_property(tile_mesh, "scale", Vector3.ZERO, 0.75)
-	scale_tween.tween_callback(func() -> void: hide())
 
 
 func set_infinity() -> void:
 	countdown = INF
 	is_infinity = true
-	label.position.x = 0
+	label.position.x = 0.5
 	label.font_size = 150
 	label.text = "∞"
 

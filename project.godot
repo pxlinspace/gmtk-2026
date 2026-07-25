@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="gmtk-2026"
-run/main_scene="uid://vuu1ifmtfxrm"
+run/main_scene="uid://c4214qv11sf8m"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
