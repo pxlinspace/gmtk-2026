@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://ccbixq2706blo"]
+
+[ext_resource type="Script" uid="uid://bmwydr47ebsbb" path="res://autoloads/audio_player.gd" id="1_bbogv"]
+[ext_resource type="AudioStream" uid="uid://cjjdpodlmbouv" path="res://assets/music/Specification.mp3" id="2_tcwc2"]
+
+[node name="AudioPlayer" type="Node" unique_id=981514620]
+script = ExtResource("1_bbogv")
+
+[node name="Menu" type="AudioStreamPlayer" parent="." unique_id=522909454]
+stream = ExtResource("2_tcwc2")

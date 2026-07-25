@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://bmdtmfbol55w1"]
+
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="1_a68kh"]
+
+[resource]
+Button/colors/font_color = Color(1, 1, 1, 1)
+Button/colors/font_outline_color = Color(0.31641287, 0.2477727, 0.44147047, 1)
+Button/constants/outline_size = 24
+Button/font_sizes/font_size = 64
+Button/fonts/font = ExtResource("1_a68kh")
