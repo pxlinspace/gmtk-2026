@@ -2,18 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_fiq81"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_l37oo"]
+[ext_resource type="Resource" uid="uid://c8xr033xs6713" path="res://resources/levels/level_2.tres" id="2_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_qpwj6"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="4_ibugp"]
 
 [node name="Level" unique_id=1990532022 instance=ExtResource("1_fiq81")]
-
-[node name="LevelLabel" parent="HudLayer/LevelContainer" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
-text = "1-2"
-
-[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
-text = "Some areas have more than one treasure, 
-
-But don't tread recklessly! You wouldn't want to destroy your way back would you?"
+level_resource = ExtResource("2_qpwj6")
 
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {

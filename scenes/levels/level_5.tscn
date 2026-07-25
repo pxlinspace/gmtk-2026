@@ -1,28 +1,14 @@
 [gd_scene format=3 uid="uid://jfgsrvgx7fsv"]
 
 [ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_fi56y"]
-[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="2_fsnos"]
+[ext_resource type="Resource" uid="uid://baw2ihgnrmlgf" path="res://resources/levels/level_5.tres" id="2_fsnos"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_hldbq"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_fsnos"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="4_mxx4w"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="5_vvoq0"]
 
-[sub_resource type="Resource" id="Resource_mxx4w"]
-script = ExtResource("2_fsnos")
-level_name = "test level"
-level_mode = 1
-metadata/_custom_type_script = "uid://5kgtrn6psl6t"
-
 [node name="Level" unique_id=1990532022 instance=ExtResource("1_fi56y")]
-level_resource = SubResource("Resource_mxx4w")
-
-[node name="LevelLabel" parent="HudLayer/LevelContainer" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
-text = "1-5"
-
-[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
-text = "No treasure here, but people have been complaining about the slug infestation! 
-
-Your task here is to get rid of all the enemies."
+level_resource = ExtResource("2_fsnos")
 
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {

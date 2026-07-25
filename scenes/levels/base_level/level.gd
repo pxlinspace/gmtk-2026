@@ -22,6 +22,9 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var treasure_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureCount
 @onready var enemies_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesCount
 
+@onready var level_name_label: Label = $HudLayer/LevelContainer/LevelLabel
+@onready var level_instructions_label: Label = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel
+
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
 
@@ -46,8 +49,6 @@ func _ready() -> void:
 	level_timer.wait_time = level_resource.level_countdown
 	Events.player_beamed_down.connect(level_timer.start)
 
-	#level_timer.start()
-
 	for node in get_tree().get_nodes_in_group("treasure"):
 		if node is TreasureItem:
 			collectable_treasure.append(node)
@@ -63,6 +64,12 @@ func _ready() -> void:
 		enemies_display.show()
 		update_enemies_count()
 
+	level_instructions_label.text = level_resource.level_instructions
+	level_name_label.text = level_resource.level_name
+
+	level_instructions_label.visible_ratio = 0.0
+	var instructions_tween := create_tween()
+	instructions_tween.tween_property(level_instructions_label, "visible_ratio", 1.0, 1.5)
 
 func _process(dt: float) -> void:
 	if not level_timer.is_stopped():

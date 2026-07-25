@@ -10,3 +10,6 @@ enum LevelMode {
 
 ## how long before the time automatically steps
 @export var level_countdown: float = 1.5
+
+@export var has_instructions: bool = false
+@export_multiline() var level_instructions: String = ""

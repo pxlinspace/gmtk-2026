@@ -2,19 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_0qepi"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_fmg3e"]
+[ext_resource type="Resource" uid="uid://baxtnl3nv4q7f" path="res://resources/levels/level_3.tres" id="2_ftfob"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_ftfob"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="4_fkk1g"]
 [ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="5_fmg3e"]
 
 [node name="Level" unique_id=1990532022 instance=ExtResource("1_0qepi")]
-
-[node name="LevelLabel" parent="HudLayer/LevelContainer" parent_id_path=PackedInt32Array(1767356227) index="0" unique_id=957114526]
-text = "1-3"
-
-[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=150146370]
-text = "Beware of the weird ghost slug things! The red squares will indicate where they'll attack.
-
-Thankfully, They're very simple-minded and will only follow their own path repeatedly."
+level_resource = ExtResource("2_ftfob")
 
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {

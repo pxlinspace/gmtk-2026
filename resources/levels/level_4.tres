@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://bg3u8opsnrml6"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_uljcx"]
+
+[resource]
+script = ExtResource("1_uljcx")
+level_name = "1-4"
+has_instructions = true
+level_instructions = "Yikes, this place is infested! It's worth mentioning that you can stand still in one place to wait for an enemy to move if it's blocking your way."
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"
