@@ -55,10 +55,9 @@ func _on_pre_timestep(curr_timestep: int) -> void:
 	super._on_pre_timestep(curr_timestep)
 
 func die() -> void:
+	if is_dead: return
 	super.die()
 
-	is_dead = true
-	collider.disabled = true
 	arrow.hide()
 	next_square.hide()
 	await get_tree().create_timer(0.2).timeout

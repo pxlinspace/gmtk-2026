@@ -12,11 +12,17 @@ func _ready() -> void:
 	Events.pre_timestep.connect(_on_pre_timestep)
 	Events.timestep.connect(_on_timestep)
 
+
 func move(_curr_timestep: int) -> void:
 	pass
 
+
 func die() -> void:
+	if is_dead: return
+	is_dead = true
+	collider.disabled = true
 	Events.enemy_died.emit(self)
+
 
 func check_curr_tile() -> void:
 	var areas := Utils.shapecast_at_pos(grid_position)
