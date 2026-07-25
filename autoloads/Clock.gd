@@ -1,5 +1,6 @@
 extends Node
 
+var time: float = 0.0
 var curr_timestep: int = -1
 
 
@@ -9,6 +10,10 @@ func _ready() -> void:
 	# await get_tree().create_timer(1.0).timeout
 
 	# advance_time()
+
+
+func _process(dt: float) -> void:
+	time += dt
 
 
 func advance_time() -> void:

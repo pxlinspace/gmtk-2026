@@ -1,6 +1,7 @@
 class_name Bomb extends Node3D
 
 const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
+const BOMB_SQUARE = preload("res://scenes/effects/bomb_square.tscn")
 
 const explode_dirs: Array[Vector3i] = [
 	Vector3i(1, 0, 0),
@@ -13,6 +14,8 @@ const explode_dirs: Array[Vector3i] = [
 	Vector3i(1, 0, 1),
 	Vector3i(-1, 0, 1),
 ]
+
+@onready var squares: Node3D = $Squares
 
 var explosion_radius: int = 1
 var curr_countdown: int = 0
@@ -42,17 +45,35 @@ func explode() -> void:
 	explosion.position = global_position
 	Events.cam_shake.emit(0.6)
 
-	for dir in explode_dirs:
-		for i in explosion_radius:
-			var check_pos := Vector3i(global_position) + dir * i
-			var areas := Utils.shapecast_at_pos(check_pos)
-			for area in areas:
-				if area is Tile and not area.is_disabled:
-					for x in range(explosion_damage):
-						area.stepped_off.emit()
+	var tiles := get_affected_tiles()
+	for tile in tiles:
+		for x in range(explosion_damage):
+			tile.stepped_off.emit()
 
 	queue_free()
 
 
+func get_affected_tiles() -> Array[Tile]:
+	var affected_tiles: Array[Tile] = []
+	for dir in explode_dirs:
+		for i in explosion_radius:
+			for d in explode_dirs:
+				var check_pos := Vector3i(global_position) + dir * i + d
+				var areas := Utils.shapecast_at_pos(check_pos)
+				for area in areas:
+					if area is Tile and not area.is_disabled and area not in affected_tiles:
+						affected_tiles.append(area)
+	return affected_tiles
+
+
 func _on_timestep(_curr_timestep: int) -> void:
 	set_countdown(curr_countdown - 1)
+
+	for child in squares.get_children():
+		child.queue_free()
+
+	var tiles := get_affected_tiles()
+	for tile in tiles:
+		var square := BOMB_SQUARE.instantiate() as Node3D
+		squares.add_child(square)
+		square.global_position = tile.global_position

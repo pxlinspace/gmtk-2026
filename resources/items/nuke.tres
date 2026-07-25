@@ -16,7 +16,6 @@ animations = [{
 
 [resource]
 script = ExtResource("1_xtfc1")
-explosion_radius = 10
 explosion_damage = 5
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"

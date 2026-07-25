@@ -49,13 +49,13 @@ func _ready() -> void:
 	for node in get_tree().get_nodes_in_group("enemies"):
 		if node is BaseEnemy:
 			killable_enemies.append(node)
-	
+
 	if level_resource.level_mode == LevelResource.LevelMode.COLLECT:
 		treasure_display.show()
 		update_treasure_count()
 	if level_resource.level_mode == LevelResource.LevelMode.DEFEAT:
 		enemies_display.show()
-
+		update_enemies_count()
 
 
 func _process(dt: float) -> void:
@@ -110,7 +110,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		timer_bar.set_speed_up(true)
 		Events.pre_move_missed.emit()
 		Clock.advance_time()
-		
+
 	if event.is_action_released("speed_up"):
 		Engine.time_scale = 1.0
 		timer_bar.set_speed_up(false)
@@ -148,6 +148,7 @@ func _on_treasure_received() -> void:
 func _on_enemy_died(_enemy: BaseEnemy) -> void:
 	print("enemy died!")
 	enemies_killed += 1
+	update_enemies_count()
 	if enemies_killed >= killable_enemies.size():
 		Events.all_enemies_killed.emit()
 
