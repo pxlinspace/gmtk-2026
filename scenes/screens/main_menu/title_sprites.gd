@@ -3,7 +3,6 @@ extends Node2D
 const RADIAN_OFFSET: float = 0.75
 
 @export var radians: float = 0.0
-@onready var title_sprites: Node2D = $TitleSprites
 
 
 func _process(delta: float) -> void:
