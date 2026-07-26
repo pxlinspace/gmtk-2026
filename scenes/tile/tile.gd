@@ -9,6 +9,7 @@ signal stepped_off
 @onready var label: Label3D = $Anchor/MeshInstance/Label3D
 @onready var tile_mesh: MeshInstance3D = $Anchor/MeshInstance
 @onready var outline_mesh: MeshInstance3D = $Anchor/MeshInstance/MeshOutline
+@onready var infinity: Sprite3D = $Anchor/MeshInstance/Infinity
 
 var countdown: int = 0
 var step_tween: Tween
@@ -48,10 +49,8 @@ func fall_the_tile() -> void:
 func set_infinity() -> void:
 	countdown = INF
 	is_infinity = true
-	label.position.x = 0
-	label.font_size = 150
-	label.text = "∞"
-
+	label.hide()
+	infinity.show()
 	change_tile_color(palette.color_infinity)
 
 
