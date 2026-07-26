@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://dsw3rh65nywo"]
+
+[ext_resource type="PackedScene" uid="uid://b3bc17jkbe4wj" path="res://scenes/levels/base_level/level_world_3.tscn" id="1_bhlfj"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_0kvtp"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_nsfgt"]
+[ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="4_k5agr"]
+[ext_resource type="PackedScene" uid="uid://d3gdof6yra3ql" path="res://scenes/enemies/pattern_enemy.tscn" id="5_tddnw"]
+
+[node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_bhlfj")]
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(65535, 4, 1, 65535, 3, 1, 65534, 3, 1, 65534, 2, 0, 65534, 4, 1, 65535, 5, 2, 0, 4, 1, 0, 5, 2, 0, 6, 2, 65535, 6, 2, 65534, 6, 2, 65534, 5, 1, 65533, 5, 1, 65533, 6, 2, 1, 6, 2, 2, 7, 0, 1, 7, 2, 0, 7, 2, 65535, 7, 2, 65532, 5, 0, 2, 6, 2, 3, 6, 0, 65534, 7, 2, 1, 5, 2, 2, 5, 0, 65533, 4, 1, 65533, 7, 2, 65532, 7, 0, 65531, 7, 0, 65534, 8, 0, 65535, 8, 0, 0, 9, 0, 1, 10, 0, 0, 10, 0, 1, 11, 0, 0, 11, 0, 65535, 10, 0, 1, 12, 0, 2, 12, 0, 3, 12, 0, 3, 13, 0, 65535, 9, 0, 65534, 9, 0, 65533, 8, 0, 65533, 3, 1, 0, 3, 1, 1, 4, 1, 2, 4, 1, 65532, 3, 1, 65532, 6, 2, 0, 8, 2)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("2_0kvtp")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("3_nsfgt")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
+
+[node name="TreasureItem" parent="." index="13" unique_id=831780269 instance=ExtResource("4_k5agr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+
+[node name="TreasureItem2" parent="." index="14" unique_id=158325700 instance=ExtResource("4_k5agr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 12)
+
+[node name="PatternEnemy4" parent="." index="15" unique_id=1295660293 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)
+pattern = Array[Vector3i]([Vector3i(1, 0, 0), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(0, 0, -1)])
+
+[node name="PatternEnemy6" parent="." index="16" unique_id=732557890 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
+pattern = Array[Vector3i]([Vector3i(1, 0, 0), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(0, 0, -1)])
+
+[node name="PatternEnemy5" parent="." index="17" unique_id=331286972 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 5)
+pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1)])
+
+[node name="PatternEnemy7" parent="." index="18" unique_id=89119776 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, 5)
+pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1)])
+
+[node name="PatternEnemy8" parent="." index="19" unique_id=1303521924 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 7)
+pattern = Array[Vector3i]([Vector3i(1, 0, 0), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(0, 0, -1)])
+
+[node name="PatternEnemy9" parent="." index="20" unique_id=1278235300 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 9)
+pattern = Array[Vector3i]([Vector3i(1, 0, 0), Vector3i(1, 0, 0), Vector3i(-1, 0, 0), Vector3i(-1, 0, 0)])
+
+[node name="PatternEnemy10" parent="." index="21" unique_id=282300782 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+pattern = Array[Vector3i]([Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(1, 0, 0), Vector3i(-1, 0, 0)])
+
+[node name="PatternEnemy11" parent="." index="22" unique_id=795919300 instance=ExtResource("5_tddnw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 11)
+pattern = Array[Vector3i]([Vector3i(-1, 0, 0), Vector3i(-1, 0, 0), Vector3i(1, 0, 0), Vector3i(1, 0, 0)])
+
+[editable path="Planet"]

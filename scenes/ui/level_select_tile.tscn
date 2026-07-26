@@ -2,11 +2,25 @@
 
 [ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="1_cvu7t"]
 [ext_resource type="Script" uid="uid://hqm4gdrms2q4" path="res://scenes/ui/level_select_tile.gd" id="1_v4irt"]
-[ext_resource type="Texture2D" uid="uid://uxl80bldykxt" path="res://assets/images/placeholders/collect.png" id="2_3wccx"]
+[ext_resource type="Texture2D" uid="uid://8u5euebbrxw4" path="res://assets/images/lock-Sheet.png" id="2_3wccx"]
 [ext_resource type="Texture2D" uid="uid://5lhfsly3o6hx" path="res://assets/images/placeholders/skull.png" id="2_50k17"]
 [ext_resource type="Texture2D" uid="uid://c01fdn8mbvdjp" path="res://assets/images/textpanel.png" id="2_j3win"]
-[ext_resource type="Texture2D" uid="uid://bdhsfobhhov7p" path="res://assets/images/placeholders/lock.png" id="2_vh5hi"]
-[ext_resource type="Texture2D" uid="uid://k2vkn147a6qi" path="res://assets/images/placeholders/both.png" id="4_h7a1i"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h7a1i"]
+atlas = ExtResource("2_3wccx")
+region = Rect2(0, 0, 128, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vh5hi"]
+atlas = ExtResource("2_3wccx")
+region = Rect2(128, 0, 128, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_at0y5"]
+atlas = ExtResource("2_3wccx")
+region = Rect2(256, 0, 128, 0)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8h7de"]
+atlas = ExtResource("2_3wccx")
+region = Rect2(384, 0, 128, 0)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4irt"]
 texture = ExtResource("2_j3win")
@@ -30,10 +44,10 @@ anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_v4irt")
-lock_icon = ExtResource("2_vh5hi")
-collect_icon = ExtResource("2_3wccx")
-defeat_icon = ExtResource("2_50k17")
-both_icon = ExtResource("4_h7a1i")
+lock_icon = SubResource("AtlasTexture_h7a1i")
+collect_icon = SubResource("AtlasTexture_vh5hi")
+defeat_icon = SubResource("AtlasTexture_at0y5")
+both_icon = SubResource("AtlasTexture_8h7de")
 
 [node name="LevelPanel" type="Button" parent="." unique_id=742620924]
 layout_mode = 1
