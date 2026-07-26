@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://djsyow1572cj1"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_ji0ia"]
+
+[resource]
+script = ExtResource("1_ji0ia")
+level_name = "2-7"
+level_mode = Array[int]([2])
+level_scene = "uid://dnu5sjawuyefs"
+next_level = "uid://vqba6ya4gtfx"
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"
