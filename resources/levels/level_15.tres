@@ -6,6 +6,6 @@
 script = ExtResource("1_ji0ia")
 level_name = "2-7"
 level_mode = Array[int]([2])
-level_scene = "uid://dnu5sjawuyefs"
-next_level = "uid://vqba6ya4gtfx"
+level_scene = "uid://hnkig6bb4c0o"
+next_level = "uid://c8eunebnucomn"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

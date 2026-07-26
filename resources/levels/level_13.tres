@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://bvkjukalkgrbu"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_37cyr"]
+
+[resource]
+script = ExtResource("1_37cyr")
+level_name = "2-5"
+level_instructions = "Look, only two treasures. How hard can it be?"
+level_scene = "uid://bkduqvaexvghm"
+next_level = "uid://dj58b7mp4tbr"
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"
