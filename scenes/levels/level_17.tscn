@@ -8,6 +8,10 @@
 [node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_imly0")]
 level_resource = ExtResource("2_d1pgp")
 
+[node name="DescriptionLabel" parent="HudLayer/FriendContainer/PanelContainer/MarginContainer" parent_id_path=PackedInt32Array(1207314999) index="0" unique_id=654760867]
+fit_content = false
+autowrap_mode = 2
+
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {
 "cells": PackedInt32Array(0, 0, 5, 65535, 0, 5, 1, 0, 5, 1, 1, 5, 0, 1, 5, 65535, 1, 5)
