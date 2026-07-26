@@ -6,6 +6,7 @@ const bomb_scene = preload("res://scenes/objects/bomb/bomb.tscn")
 @export var explosion_countdown: int = 5
 @export var explosion_damage: int = 1
 @export var explosion_dirs: Array[Vector3i] = [
+	Vector3i(0, 0, 0),
 	Vector3i(1, 0, 0),
 	Vector3i(-1, 0, 0),
 	Vector3i(0, 0, 1),

@@ -79,7 +79,8 @@ func _ready() -> void:
 			killable_enemies.append(node)
 
 	for node in get_tree().get_nodes_in_group("tiles"):
-		total_tile_count += 1
+		if node is Tile and not node.is_infinity:
+			total_tile_count += 1
 
 	if LevelResource.LevelMode.COLLECT in level_resource.level_mode:
 		treasure_display.show()

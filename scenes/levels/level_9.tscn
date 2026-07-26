@@ -5,7 +5,6 @@
 [ext_resource type="Resource" uid="uid://d2a8mjoqexeeu" path="res://resources/levels/level_9.tres" id="2_sd2du"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_csf6e"]
 [ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="6_6v45j"]
-[ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="6_ltlq2"]
 [ext_resource type="Resource" uid="uid://dq3lbdt4vuhhn" path="res://resources/items/bomb.tres" id="7_ltlq2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
@@ -104,7 +103,7 @@ environment = SubResource("Environment_n75j1")
 
 [node name="LevelMap" parent="." index="5" unique_id=2083219110]
 data = {
-"cells": PackedInt32Array(0, 65535, 5, 65535, 65535, 5, 65535, 0, 5, 0, 0, 5, 65535, 1, 1441792, 65535, 2, 1441792, 0, 1, 1441792, 0, 2, 1441792, 1, 2, 1441792, 1, 3, 1441792, 2, 3, 1441797, 2, 2, 1441792)
+"cells": PackedInt32Array(0, 65535, 5, 65535, 65535, 5, 65535, 0, 5, 0, 0, 5, 65535, 1, 1441792, 65535, 2, 1441792, 0, 1, 1441792, 0, 2, 1441793, 1, 2, 1441793, 1, 3, 1441792, 2, 3, 1441797, 2, 2, 1441793, 1, 1, 1441792, 2, 1, 1441792)
 }
 
 [node name="Base" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="1" unique_id=1387446432]
@@ -122,11 +121,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 [node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("3_csf6e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
 
-[node name="TreasureItem" parent="." index="13" unique_id=831780269 instance=ExtResource("6_ltlq2")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
-
-[node name="TileItem" parent="." index="14" unique_id=137661814 instance=ExtResource("6_6v45j")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 3)
+[node name="TileItem" parent="." index="13" unique_id=137661814 instance=ExtResource("6_6v45j")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, 2)
 item_resource = ExtResource("7_ltlq2")
 
 [editable path="Planet"]

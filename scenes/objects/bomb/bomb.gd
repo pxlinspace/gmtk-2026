@@ -52,7 +52,7 @@ func get_affected_tiles() -> Array[Tile]:
 	var affected_tiles: Array[Tile] = []
 	for dir in explosion_dirs:
 		for i in range(explosion_radius):
-			var check_pos := Vector3i(global_position) + dir * i
+			var check_pos := Vector3i(global_position) + dir * (i + 1)
 			var areas := Utils.shapecast_at_pos(check_pos)
 			for area in areas:
 				if area is Tile and not area.is_disabled and area not in affected_tiles:
