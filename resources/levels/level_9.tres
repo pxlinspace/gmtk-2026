@@ -9,7 +9,7 @@ level_mode = Array[int]([2, 0])
 has_instructions = true
 level_instructions = "your mission here is to drop every single tile.
 
-see that bomb over there? when used, it will make all tiles around it count down by 2."
+see that [shake]bomb[/shake] over there? when used, it will make all tiles around it count down by 2."
 level_scene = "uid://b6lpy4n07h0nh"
 next_level = "uid://cghy5wu43l0c5"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

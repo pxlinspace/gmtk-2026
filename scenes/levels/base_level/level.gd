@@ -24,7 +24,7 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var crackle: AnimatedSprite2D = $HudLayer/Crackle
 @onready var friend_container: VBoxContainer = $HudLayer/FriendContainer
 @onready var level_name_label: Label = $HudLayer/LevelContainer/LevelLabel
-@onready var level_instructions_label: Label = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel
+@onready var level_instructions_label: RichTextLabel = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel
 
 @onready var deploy_player_audio: AudioStreamPlayer = $DeployPlayerAudio
 @onready var end_player_deploy_audio: AudioStreamPlayer = $EndPlayerDeployAudio
