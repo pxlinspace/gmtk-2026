@@ -211,18 +211,23 @@ func _unhandled_input(event: InputEvent) -> void:
 			tile_sprite.animation_player.play("bounce_in_place")
 		elif event.is_action_pressed("left"):
 			tile_sprite.flip_h = true
-			curr_dir = Vector3i(-1, 0, 0)
+			set_dir(Vector3i(-1, 0, 0))
 			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("right"):
 			tile_sprite.flip_h = false
-			curr_dir = Vector3i(1, 0, 0)
+			set_dir(Vector3i(1, 0, 0))
 			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("up"):
-			curr_dir = Vector3i(0, 0, -1)
+			set_dir(Vector3i(0, 0, -1))
 			move_to_pos(grid_pos + curr_dir)
 		elif event.is_action_pressed("down"):
-			curr_dir = Vector3i(0, 0, 1)
+			set_dir(Vector3i(0, 0, 1))
 			move_to_pos(grid_pos + curr_dir)
+
+
+func set_dir(new_dir: Vector3i) -> void:
+	curr_dir = new_dir
+	pogo_square.position = Vector3(curr_dir * 2) + Vector3(0.5, 0, 0.5)
 
 
 func animate_to_grid_position() -> void:
@@ -264,8 +269,6 @@ func _on_timestep(_curr_timestep: int) -> void:
 
 	if curr_tile.is_disabled and can_move:
 		uh_oh()
-
-	pogo_square.position = Vector3(curr_dir * 2) + Vector3(0.5, 0, 0.5)
 
 
 func _on_pre_move_missed() -> void:
