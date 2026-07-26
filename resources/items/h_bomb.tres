@@ -1,31 +1,31 @@
 [gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://dq3lbdt4vuhhn"]
 
 [ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_rjeeh"]
-[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="2_5lxr6"]
+[ext_resource type="Texture2D" uid="uid://rify5mojamix" path="res://assets/images/items/horizontal_bomb-Sheet.png" id="2_rjeeh"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00cn6"]
-atlas = ExtResource("2_5lxr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_5lxr6"]
+atlas = ExtResource("2_rjeeh")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kva7"]
-atlas = ExtResource("2_5lxr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_wg7or"]
+atlas = ExtResource("2_rjeeh")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tnfw"]
-atlas = ExtResource("2_5lxr6")
+[sub_resource type="AtlasTexture" id="AtlasTexture_hv3bm"]
+atlas = ExtResource("2_rjeeh")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_v4dxy"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00cn6")
+"texture": SubResource("AtlasTexture_5lxr6")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4kva7")
+"texture": SubResource("AtlasTexture_wg7or")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tnfw")
+"texture": SubResource("AtlasTexture_hv3bm")
 }],
 "loop": 1,
 "name": &"default",
@@ -40,5 +40,5 @@ explosion_damage = 3
 explosion_dirs = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(1, 0, 0), Vector3i(-1, 0, 0)])
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"
-sprite_frames = SubResource("SpriteFrames_0xhi2")
+sprite_frames = SubResource("SpriteFrames_v4dxy")
 metadata/_custom_type_script = "uid://bl8flmcvknn7m"

@@ -55,3 +55,13 @@ pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(0, 0,
 [node name="PatternEnemy11" parent="." index="21" unique_id=718013999 instance=ExtResource("5_d06uk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 0, 2)
 pattern = Array[Vector3i]([Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(-1, 0, 0), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(1, 0, 0), Vector3i(1, 0, 0)])
+
+[node name="Label" type="Label" parent="." index="22" unique_id=1502013795]
+offset_left = 15.0
+offset_top = 425.0
+offset_right = 408.0
+offset_bottom = 500.0
+theme_override_constants/outline_size = 16
+theme_override_font_sizes/font_size = 36
+text = "
+hold SHIFT to speed up time"
