@@ -110,13 +110,13 @@ func fall_down() -> void:
 	tile_sprite.stop()
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
-	
+
 
 	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
-	
+
 	await get_tree().create_timer(1.0).timeout
 	Events.player_gone.emit()
 
@@ -130,14 +130,14 @@ func die() -> void:
 	impact_sprite.show()
 	impact_sprite.play("default")
 	Events.cam_shake.emit(0.4)
-	
+
 	hit_audio.play()
 
 	await get_tree().create_timer(0.5).timeout
 
 	impact_sprite.hide()
 	impact_sprite.stop()
-	
+
 	explosion_audio.play()
 
 	var explosion := EXPLOSION_EFFECT.instantiate()
@@ -240,7 +240,7 @@ func show_item(sprite: SpriteFrames) -> void:
 	tile_sprite.animation_player.play("bounce")
 	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
-	await Events.timestep
+	await Events.pre_timestep
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
@@ -278,11 +278,11 @@ func _on_move_missed() -> void:
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
-	
+
 	if is_treasure:
 		treasure_found_audio.play()
 
-	await show_item(item_resource.sprite_frames)
+	show_item(item_resource.sprite_frames)
 
 	if is_treasure:
 		Events.treasure_received.emit()
