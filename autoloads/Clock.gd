@@ -25,5 +25,6 @@ func advance_time() -> void:
 
 
 func _on_reset_timestep() -> void:
+	print("reset")
 	curr_timestep = -1
 	# advance_time()

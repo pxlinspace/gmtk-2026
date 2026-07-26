@@ -14,15 +14,15 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] automatic restart on death
 - [ ] level design
 - [ ] level select
 - [ ] main menu
 - [ ] settings
-- [ ] music and sfx
 - [ ] boss
 - [ ] itch.io page
-- [ ] figure out how to check what mode the level is when won in player
+- [x] figure out how to check what mode the level is when won in player
+- [x] music and sfx
+- [x] automatic restart on death
 - [x] level transitioning
 - [x] jumpy item
 - [x] more enemy types

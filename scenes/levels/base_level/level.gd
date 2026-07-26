@@ -144,7 +144,7 @@ func _on_level_timer_timeout() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("speed_up") and not is_player_beamed_up:
+	if event.is_action_pressed("speed_up") and not is_player_beamed_up and not player_lost:
 		Engine.time_scale = 3.0
 		timer_bar.set_speed_up(true)
 		Events.pre_move_missed.emit()
@@ -243,6 +243,7 @@ func _on_player_lost() -> void:
 
 
 func _on_player_gone() -> void:
+	print("player lost")
 	restart_level()
 
 
