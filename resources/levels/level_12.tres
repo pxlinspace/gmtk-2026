@@ -7,7 +7,7 @@ script = ExtResource("1_r1rfv")
 level_name = "1-5"
 level_mode = Array[int]([1])
 has_instructions = true
-level_instructions = "No treasure here, but people have been complaining about the slug infestation! 
+level_instructions = "No treasure here, but people have been complaining about the [shake]slug infestation![/shake]
 
 Your task here is to get rid of all the enemies."
 level_scene = "uid://dnu5sjawuyefs"

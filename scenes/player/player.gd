@@ -10,6 +10,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var cam: Camera3D = $Anchor/Camera3D
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
 @onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
+@onready var pogo_square: Sprite3D = $PogoSquare
 
 @onready var step_audio: AudioStreamPlayer = $StepAudio
 @onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
@@ -34,10 +35,12 @@ func _enter_tree() -> void:
 	Events.item_gotten.connect(_on_item_gotten)
 	Events.restart_level.connect(_on_restart_level)
 	Events.player_pogo.connect(_on_player_pogo)
+	Events.item_used.connect(_on_item_used)
 
 
 func _ready() -> void:
 	item_sprite.hide()
+	pogo_square.hide()
 
 	await get_tree().process_frame
 
@@ -110,13 +113,13 @@ func fall_down() -> void:
 	tile_sprite.stop()
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
-	
+
 
 	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
-	
+
 	await get_tree().create_timer(1.0).timeout
 	Events.player_gone.emit()
 
@@ -130,14 +133,14 @@ func die() -> void:
 	impact_sprite.show()
 	impact_sprite.play("default")
 	Events.cam_shake.emit(0.4)
-	
+
 	hit_audio.play()
 
 	await get_tree().create_timer(0.5).timeout
 
 	impact_sprite.hide()
 	impact_sprite.stop()
-	
+
 	explosion_audio.play()
 
 	var explosion := EXPLOSION_EFFECT.instantiate()
@@ -240,7 +243,7 @@ func show_item(sprite: SpriteFrames) -> void:
 	tile_sprite.animation_player.play("bounce")
 	tile_sprite.flip_h = false
 	tile_sprite.play("item_gotten")
-	await Events.timestep
+	await Events.pre_timestep
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
 	item_sprite.hide()
@@ -262,6 +265,8 @@ func _on_timestep(_curr_timestep: int) -> void:
 	if curr_tile.is_disabled and can_move:
 		uh_oh()
 
+	pogo_square.position = Vector3(curr_dir * 2) + Vector3(0.5, 0, 0.5)
+
 
 func _on_pre_move_missed() -> void:
 	if curr_tile.is_disabled:
@@ -278,16 +283,19 @@ func _on_move_missed() -> void:
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
-	
+
 	if is_treasure:
 		treasure_found_audio.play()
 
-	await show_item(item_resource.sprite_frames)
+	show_item(item_resource.sprite_frames)
 
 	if is_treasure:
 		Events.treasure_received.emit()
 	else:
 		Events.item_received.emit(item_resource)
+
+	if item_resource is PogoItemResource:
+		pogo_square.show()
 
 
 func _on_restart_level() -> void:
@@ -297,3 +305,8 @@ func _on_restart_level() -> void:
 func _on_player_pogo(distance: int) -> void:
 	var new_pos := grid_pos + curr_dir * distance
 	move_to_pos(new_pos, false)
+
+
+func _on_item_used(item: ItemResource) -> void:
+	if item is PogoItemResource:
+		pogo_square.hide()

@@ -2,8 +2,19 @@
 
 [ext_resource type="PackedScene" uid="uid://b3bc17jkbe4wj" path="res://scenes/levels/base_level/level_world_3.tscn" id="1_imly0"]
 [ext_resource type="Resource" uid="uid://b8klhdcncanpf" path="res://resources/levels/level_17.tres" id="2_d1pgp"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_s5aqk"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_ddhf2"]
 
 [node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_imly0")]
 level_resource = ExtResource("2_d1pgp")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(0, 0, 5, 65535, 0, 5, 1, 0, 5, 1, 1, 5, 0, 1, 5, 65535, 1, 5)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("3_s5aqk")]
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("4_ddhf2")]
 
 [editable path="Planet"]

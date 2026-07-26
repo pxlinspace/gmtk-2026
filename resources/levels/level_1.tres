@@ -7,6 +7,7 @@ script = ExtResource("1_hndnq")
 level_name = "1-1"
 has_instructions = true
 level_instructions = "These tiles disappear when you step off of them, or when you stand on them too long.
+
 Be careful not to walk anywhere where you'll get stuck!"
 level_scene = "uid://vuu1ifmtfxrm"
 next_level = "uid://j1owud46mu7c"
