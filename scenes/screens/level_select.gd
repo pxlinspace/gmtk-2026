@@ -1,6 +1,6 @@
 extends Node3D
 
-@export var max_page: int = 1
+@export var max_page: int = 2
 @onready var page_left_button: Button = $CanvasLayer/PageLeftButton
 @onready var page_right_button: Button = $CanvasLayer/PageRightButton
 @onready var container: Control = $CanvasLayer/Container

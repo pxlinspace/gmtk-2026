@@ -14,7 +14,22 @@
 [ext_resource type="Resource" uid="uid://cka02y7boi7dp" path="res://resources/levels/level_5.tres" id="9_8ck4p"]
 [ext_resource type="Resource" uid="uid://b6xelenstgy2i" path="res://resources/levels/level_6.tres" id="10_jgwy5"]
 [ext_resource type="Resource" uid="uid://cjp1cv41xs4ma" path="res://resources/levels/level_7.tres" id="11_2e5a7"]
+[ext_resource type="Resource" uid="uid://d2a8mjoqexeeu" path="res://resources/levels/level_9.tres" id="11_8svhu"]
+[ext_resource type="Resource" uid="uid://dbojc1fdjq2ee" path="res://resources/levels/level_10.tres" id="12_beck1"]
 [ext_resource type="Resource" uid="uid://l0bdguw43821" path="res://resources/levels/level_8.tres" id="12_n2m0v"]
+[ext_resource type="Resource" uid="uid://bhwxumh8sor0" path="res://resources/levels/level_11.tres" id="13_otm3p"]
+[ext_resource type="Resource" uid="uid://byccgpln1l3gi" path="res://resources/levels/level_12.tres" id="14_1v7hq"]
+[ext_resource type="Resource" uid="uid://cuqiu3nom5ndy" path="res://resources/levels/level_13.tres" id="15_qhlxu"]
+[ext_resource type="Resource" uid="uid://bvkjukalkgrbu" path="res://resources/levels/level_14.tres" id="16_gakm4"]
+[ext_resource type="Resource" uid="uid://djsyow1572cj1" path="res://resources/levels/level_15.tres" id="17_yhfjw"]
+[ext_resource type="Resource" uid="uid://b8klhdcncanpf" path="res://resources/levels/level_17.tres" id="18_iui2i"]
+[ext_resource type="Resource" uid="uid://b64d3gd072a4y" path="res://resources/levels/level_18.tres" id="19_aovek"]
+[ext_resource type="Resource" uid="uid://d120uk3gtaxqe" path="res://resources/levels/level_19.tres" id="20_aovek"]
+[ext_resource type="Resource" uid="uid://dqu85q1w6d1mc" path="res://resources/levels/level_20.tres" id="21_pj4rl"]
+[ext_resource type="Resource" uid="uid://dk3dcsi31xxoh" path="res://resources/levels/level_21.tres" id="22_on3pd"]
+[ext_resource type="Resource" uid="uid://dfbdy4buijkbm" path="res://resources/levels/level_22.tres" id="23_pyfwr"]
+[ext_resource type="Resource" uid="uid://c8ig3uk40v4sp" path="res://resources/levels/level_23.tres" id="24_yjyd5"]
+[ext_resource type="Resource" uid="uid://c2pj8ottl0ik1" path="res://resources/levels/level_24.tres" id="25_ljxtv"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7khc8"]
 sky_top_color = Color(0.89, 0.89, 0.89, 1)
@@ -66,7 +81,7 @@ material = SubResource("StandardMaterial3D_cyt5c")
 
 [node name="LevelSelect" type="Node3D" unique_id=295417097]
 script = ExtResource("1_r8gmh")
-metadata/_edit_vertical_guides_ = [2048.0]
+metadata/_edit_vertical_guides_ = [2048.0, 3072.0]
 metadata/_edit_horizontal_guides_ = [576.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509956800]
@@ -148,35 +163,80 @@ columns = 4
 
 [node name="LevelSelectTile" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1965789760 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("5_knlji")
+level_resource = ExtResource("11_8svhu")
 
 [node name="LevelSelectTile2" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=663243932 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("6_7khc8")
+level_resource = ExtResource("12_beck1")
 
 [node name="LevelSelectTile3" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1843723437 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("7_7khc8")
+level_resource = ExtResource("13_otm3p")
 
 [node name="LevelSelectTile4" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=274549324 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("8_a376o")
+level_resource = ExtResource("14_1v7hq")
 
 [node name="LevelSelectTile5" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1847103613 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("9_8ck4p")
+level_resource = ExtResource("15_qhlxu")
 
 [node name="LevelSelectTile6" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1314595398 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("10_jgwy5")
+level_resource = ExtResource("16_gakm4")
 
 [node name="LevelSelectTile7" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=570723488 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("11_2e5a7")
+level_resource = ExtResource("17_yhfjw")
 
-[node name="LevelSelectTile8" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1883121190 instance=ExtResource("3_l8kew")]
+[node name="LevelTileGrid3" type="GridContainer" parent="CanvasLayer/Container" unique_id=2018942407]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 1784.0
+offset_top = -176.0
+offset_right = 2440.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="LevelSelectTile" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=557657391 instance=ExtResource("3_l8kew")]
 layout_mode = 2
-level_resource = ExtResource("12_n2m0v")
+level_resource = ExtResource("18_iui2i")
+
+[node name="LevelSelectTile2" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=453857187 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("19_aovek")
+
+[node name="LevelSelectTile3" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=1264261824 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("20_aovek")
+
+[node name="LevelSelectTile4" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=1947239840 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("21_pj4rl")
+
+[node name="LevelSelectTile5" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=1798380174 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("22_on3pd")
+
+[node name="LevelSelectTile6" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=937005887 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("23_pyfwr")
+
+[node name="LevelSelectTile7" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=639193824 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("24_yjyd5")
+
+[node name="LevelSelectTile8" parent="CanvasLayer/Container/LevelTileGrid3" unique_id=646362543 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("25_ljxtv")
 
 [node name="PageLeftButton" type="Button" parent="CanvasLayer" unique_id=1289066028]
 anchors_preset = 5
@@ -210,6 +270,7 @@ offset_bottom = 552.0
 text = "back to menu"
 
 [node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1613407680]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
