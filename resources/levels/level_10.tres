@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://dbojc1fdjq2ee"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_314mw"]
+
+[resource]
+script = ExtResource("1_314mw")
+has_instructions = true
+level_instructions = "Yikes, this place is infested!"
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"

@@ -1,0 +1,126 @@
+[gd_scene format=3 uid="uid://b6lpy4n07h0nh"]
+
+[ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_kqofe"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="2_62qgl"]
+[ext_resource type="Resource" uid="uid://d2a8mjoqexeeu" path="res://resources/levels/level_9.tres" id="2_sd2du"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="3_csf6e"]
+[ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="6_ltlq2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
+sky_top_color = Color(0.89, 0.89, 0.89, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_fr1um"]
+sky_material = SubResource("ProceduralSkyMaterial_yautc")
+
+[sub_resource type="Environment" id="Environment_n75j1"]
+background_mode = 1
+background_color = Color(0.76, 0.57, 0.74099994, 1)
+sky = SubResource("Sky_fr1um")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+glow_bloom = 1.0
+glow_hdr_threshold = 1.12
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+fog_light_color = Color(1, 1, 1, 1)
+fog_height = -0.05
+fog_height_density = 4.0
+adjustment_contrast = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_so6ag"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+grow = true
+grow_amount = 2.0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bruix"]
+next_pass = SubResource("StandardMaterial3D_so6ag")
+albedo_color = Color(0.99, 0.42619497, 0.32669997, 1)
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+stencil_outline_thickness = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_1i7n4"]
+material = SubResource("StandardMaterial3D_bruix")
+radius = 40.0
+height = 80.0
+rings = 128
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_4g8xy"]
+load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_87c5t"]
+transparency = 1
+blend_mode = 1
+shading_mode = 2
+albedo_color = Color(0.89, 0.07119998, 0.28954643, 0.3137255)
+albedo_texture = SubResource("CompressedTexture2D_4g8xy")
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_x8c4v"]
+lightmap_size_hint = Vector2i(1258, 630)
+material = SubResource("StandardMaterial3D_87c5t")
+radius = 41.0
+height = 82.0
+radial_segments = 80
+rings = 160
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_p4tbp"]
+load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0tlbu"]
+transparency = 1
+blend_mode = 1
+shading_mode = 2
+albedo_color = Color(0.6448003, 0.074399985, 0.93, 0.2901961)
+albedo_texture = SubResource("CompressedTexture2D_p4tbp")
+uv1_scale = Vector3(-1, -1, -1)
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_cu2t2"]
+lightmap_size_hint = Vector2i(1258, 630)
+material = SubResource("StandardMaterial3D_0tlbu")
+radius = 42.0
+height = 84.0
+radial_segments = 80
+rings = 160
+
+[node name="LevelWorld2" unique_id=1990532022 instance=ExtResource("1_kqofe")]
+level_resource = ExtResource("2_sd2du")
+
+[node name="WorldEnvironment" parent="." index="3" unique_id=2124536568]
+environment = SubResource("Environment_n75j1")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(0, 65535, 5, 65535, 65535, 5, 65535, 0, 5, 0, 0, 5)
+}
+
+[node name="Base" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="1" unique_id=1387446432]
+mesh = SubResource("SphereMesh_1i7n4")
+
+[node name="Clouds" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="2" unique_id=1065715332]
+mesh = SubResource("SphereMesh_x8c4v")
+
+[node name="Clouds2" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="3" unique_id=625053106]
+mesh = SubResource("SphereMesh_cu2t2")
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("2_62qgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("3_csf6e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1)
+
+[node name="TreasureItem" parent="." index="13" unique_id=831780269 instance=ExtResource("6_ltlq2")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -3)
+
+[editable path="Planet"]

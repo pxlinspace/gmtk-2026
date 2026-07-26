@@ -183,7 +183,11 @@ func win() -> void:
 	win_audio.play()
 	can_move = false
 	item_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	show_item(winning_treasure)
+	#show_item(winning_treasure)
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	tile_sprite.flip_h = false
+	tile_sprite.play("item_gotten")
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN).set_parallel()
 	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5)
