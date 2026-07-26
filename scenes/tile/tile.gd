@@ -34,11 +34,12 @@ func set_countdown(new_value: int) -> void:
 
 
 func fall_the_tile() -> void:
+	Events.tile_dropped.emit(self)
 	is_disabled = true
 	var fall_tween := create_tween().set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(self, "position:y", -20.0, 0.75)
 	fall_tween.tween_property(self, "rotation_degrees:x", 180.0, 0.75).as_relative()
-	
+
 	var scale_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN)
 	scale_tween.tween_property(tile_mesh, "scale", Vector3.ZERO, 0.75)
 	scale_tween.tween_callback(func() -> void: hide())

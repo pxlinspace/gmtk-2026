@@ -2,7 +2,8 @@ class_name LevelResource extends Resource
 
 enum LevelMode {
 	COLLECT,
-	DEFEAT
+	DEFEAT,
+	DROP
 }
 
 @export var level_name: String = "the cool level"
