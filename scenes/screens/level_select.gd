@@ -4,9 +4,11 @@ extends Node3D
 @onready var page_left_button: Button = $CanvasLayer/PageLeftButton
 @onready var page_right_button: Button = $CanvasLayer/PageRightButton
 @onready var container: Control = $CanvasLayer/Container
+@onready var world_label: RichTextLabel = $CanvasLayer/WorldLabel
 
 var curr_page: int = 0
 var page_tween: Tween
+
 
 func _ready() -> void:
 	set_page(0)
@@ -21,6 +23,8 @@ func set_page(new_page: int) -> void:
 		page_left_button.hide()
 	elif curr_page == max_page:
 		page_right_button.hide()
+
+	world_label.text = "world %d" % (curr_page + 1)
 
 	if page_tween: page_tween.kill()
 	page_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)

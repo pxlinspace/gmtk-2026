@@ -20,7 +20,7 @@
 [ext_resource type="Resource" uid="uid://bhwxumh8sor0" path="res://resources/levels/level_11.tres" id="13_otm3p"]
 [ext_resource type="Resource" uid="uid://byccgpln1l3gi" path="res://resources/levels/level_12.tres" id="14_1v7hq"]
 [ext_resource type="Resource" uid="uid://cuqiu3nom5ndy" path="res://resources/levels/level_13.tres" id="15_qhlxu"]
-[ext_resource type="Resource" uid="uid://bvkjukalkgrbu" path="res://resources/levels/level_14.tres" id="16_gakm4"]
+[ext_resource type="Resource" uid="uid://k76hk231erai" path="res://resources/levels/level_14.tres" id="16_gakm4"]
 [ext_resource type="Resource" uid="uid://djsyow1572cj1" path="res://resources/levels/level_15.tres" id="17_yhfjw"]
 [ext_resource type="Resource" uid="uid://b8klhdcncanpf" path="res://resources/levels/level_17.tres" id="18_iui2i"]
 [ext_resource type="Resource" uid="uid://b64d3gd072a4y" path="res://resources/levels/level_18.tres" id="19_aovek"]
@@ -196,9 +196,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = 1784.0
+offset_left = 1720.0
 offset_top = -176.0
-offset_right = 2440.0
+offset_right = 2376.0
 offset_bottom = 192.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -270,7 +270,6 @@ offset_bottom = 552.0
 text = "back to menu"
 
 [node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1613407680]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
