@@ -1,18 +1,18 @@
-[gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://bmm270uoe4vdl"]
+[gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://dq3lbdt4vuhhn"]
 
-[ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_xtfc1"]
-[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="2_jfwot"]
+[ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_rjeeh"]
+[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="2_5lxr6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_00cn6"]
-atlas = ExtResource("2_jfwot")
+atlas = ExtResource("2_5lxr6")
 region = Rect2(0, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4kva7"]
-atlas = ExtResource("2_jfwot")
+atlas = ExtResource("2_5lxr6")
 region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2tnfw"]
-atlas = ExtResource("2_jfwot")
+atlas = ExtResource("2_5lxr6")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
@@ -33,9 +33,11 @@ animations = [{
 }]
 
 [resource]
-script = ExtResource("1_xtfc1")
-explosion_radius = 3
-explosion_damage = 5
+script = ExtResource("1_rjeeh")
+explosion_radius = 2
+explosion_countdown = 3
+explosion_damage = 3
+explosion_dirs = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(1, 0, 0), Vector3i(-1, 0, 0)])
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"
 sprite_frames = SubResource("SpriteFrames_0xhi2")

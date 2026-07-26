@@ -244,6 +244,22 @@ text = "0/3"
 label_settings = SubResource("LabelSettings_3p64w")
 horizontal_alignment = 2
 
+[node name="TilesDisplay" type="HBoxContainer" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer" unique_id=1201912093]
+visible = false
+layout_mode = 2
+
+[node name="TilesLabel" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/TilesDisplay" unique_id=46494602]
+layout_mode = 2
+text = "drop all tiles"
+label_settings = SubResource("LabelSettings_3p64w")
+
+[node name="TilesCount" type="Label" parent="HudLayer/MissionPanel/MissionMargin/MissionContainer/TilesDisplay" unique_id=1521923725]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0/3"
+label_settings = SubResource("LabelSettings_3p64w")
+horizontal_alignment = 2
+
 [node name="Strikethrough" type="TextureRect" parent="HudLayer" unique_id=899205318]
 visible = false
 self_modulate = Color(0.5019608, 1, 0.5411765, 1)

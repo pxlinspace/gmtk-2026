@@ -25,7 +25,7 @@ _surfaces = [{
 "vertex_data": PackedByteArray("wnLkvvWllz7CcuQ+wnLkPvWllz7CcuS+wnLkPvWllz7CcuQ+wnLkvvWllz7CcuS+wnLkvvWll77CcuQ+wnLkPvWll77CcuS+wnLkPvWll77CcuQ+wnLkvvWll77CcuS+wnLkPvWllz7CcuQ+wnLkvvWllz7CcuS+wnLkPvWllz7CcuS+wnLkvvWllz7CcuQ+wnLkPvWll77CcuQ+wnLkvvWll77CcuS+wnLkPvWll77CcuS+wnLkvvWll77CcuQ+wnLkPvWllz7CcuQ+wnLkvvWll77CcuQ+wnLkvvWllz7CcuQ+wnLkPvWll77CcuQ+wnLkPvWllz7CcuS+wnLkvvWll77CcuS+wnLkvvWllz7CcuS+wnLkPvWll77CcuS+/3//f////7//////AAD/v/9//3////+//////wAA/7//f/9/////v/////8AAP+//3//f////7//////AAD/v///AID/////AAAAgP9//7///wCA/////wAAAID/f/+///8AgP////8AAACA/3//v///AID/////AAAAgP9//78AgP//AAD/vwCAAAD///+/AID//wAA/78AgAAA////vwCA//8AAP+/AIAAAP///78AgP//AAD/vwCAAAD///+/")
 }]
 
-[node name="Tile" type="Area3D" unique_id=1558390590]
+[node name="Tile" type="Area3D" unique_id=1558390590 groups=["tiles"]]
 script = ExtResource("1_vb0sl")
 palette = ExtResource("2_2jaqc")
 

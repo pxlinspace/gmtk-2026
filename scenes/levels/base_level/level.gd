@@ -15,12 +15,11 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 @onready var treasure_display: HBoxContainer = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay
 @onready var enemies_display: HBoxContainer = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay
-
-@onready var treasure_label: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureLabel
-@onready var enemies_label: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesLabel
+@onready var tiles_display: HBoxContainer = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TilesDisplay
 
 @onready var treasure_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TreasureDisplay/TreasureCount
 @onready var enemies_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/EnemiesDisplay/EnemiesCount
+@onready var tiles_count: Label = $HudLayer/MissionPanel/MissionMargin/MissionContainer/TilesDisplay/TilesCount
 
 @onready var crackle: AnimatedSprite2D = $HudLayer/Crackle
 @onready var friend_container: VBoxContainer = $HudLayer/FriendContainer
@@ -34,9 +33,11 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
+var total_tile_count: int = 0
 
 var treasure_collected: int = 0
 var enemies_killed: int = 0
+var tiles_dropped: int = 0
 var mission_complete: bool = false
 var restart_value: float = 0.0
 var is_restarting: bool = false
@@ -52,13 +53,14 @@ func _ready() -> void:
 	Events.treasure_received.connect(_on_treasure_received)
 	Events.toggle_pause.connect(_on_paused)
 	Events.enemy_died.connect(_on_enemy_died)
+	Events.tile_dropped.connect(_on_tile_dropped)
+	Events.all_tiles_dropped.connect(_on_all_tiles_dropped)
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
 	Events.all_enemies_killed.connect(_on_all_enemies_killed)
 	Events.player_beamed_down.connect(_on_player_beamed_down)
 	Events.player_beamed_up.connect(_on_player_beamed_up)
 	Events.player_lost.connect(_on_player_lost)
 	Events.player_gone.connect(_on_player_gone)
-
 
 	Events.win.connect(_on_win)
 
@@ -76,12 +78,19 @@ func _ready() -> void:
 		if node is BaseEnemy:
 			killable_enemies.append(node)
 
+	for node in get_tree().get_nodes_in_group("tiles"):
+		if node is Tile and not node.is_infinity:
+			total_tile_count += 1
+
 	if LevelResource.LevelMode.COLLECT in level_resource.level_mode:
 		treasure_display.show()
 		update_treasure_count()
 	if LevelResource.LevelMode.DEFEAT in level_resource.level_mode:
 		enemies_display.show()
 		update_enemies_count()
+	if LevelResource.LevelMode.DROP in level_resource.level_mode:
+		tiles_display.show()
+		update_tiles_count()
 
 	level_name_label.text = level_resource.level_name
 
@@ -186,12 +195,19 @@ func update_enemies_count() -> void:
 	enemies_count.text = str(enemies_killed) + "/" + str(killable_enemies.size())
 
 
+func update_tiles_count() -> void:
+	tiles_count.text = str(tiles_dropped) + "/" + str(total_tile_count)
+
+
 func check_mission_complete() -> bool:
 	for mode in level_resource.level_mode:
 		if mode == LevelResource.LevelMode.COLLECT and treasure_collected < collectable_treasure.size():
 			return false
 		if mode == LevelResource.LevelMode.DEFEAT and enemies_killed < killable_enemies.size():
 			return false
+		if mode == LevelResource.LevelMode.DROP and tiles_dropped < total_tile_count:
+			return false
+
 	if not mission_complete:
 		mission_complete = true
 		holy_light_ready_audio.play()
@@ -215,12 +231,25 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 		Events.all_enemies_killed.emit()
 
 
+func _on_tile_dropped(_tile: Tile) -> void:
+	tiles_dropped += 1
+	update_tiles_count()
+	if tiles_dropped >= total_tile_count:
+		Events.all_tiles_dropped.emit()
+
+
 func _on_all_treasure_gotten() -> void:
 	treasure_display.modulate = GOAL_COMPLETED_COLOR
 	check_mission_complete()
 
+
 func _on_all_enemies_killed() -> void:
 	enemies_display.modulate = GOAL_COMPLETED_COLOR
+	check_mission_complete()
+
+
+func _on_all_tiles_dropped() -> void:
+	tiles_display.modulate = GOAL_COMPLETED_COLOR
 	check_mission_complete()
 
 
@@ -253,5 +282,5 @@ func _on_win() -> void:
 		return
 
 	Events.next_level.emit()
-	SaveManager.set_level_completed(level_resource.level_scene)	
+	SaveManager.set_level_completed(level_resource.level_scene)
 	SceneTransition.change_scene_to_file(level_resource.next_level)
