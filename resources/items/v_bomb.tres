@@ -35,7 +35,7 @@ animations = [{
 [resource]
 script = ExtResource("1_f0dfu")
 explosion_countdown = 3
-explosion_damage = 5
+explosion_damage = 2
 explosion_dirs = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, -1)])
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"

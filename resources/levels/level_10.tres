@@ -4,8 +4,10 @@
 
 [resource]
 script = ExtResource("1_314mw")
+level_name = "2-2"
+level_mode = Array[int]([1, 2])
 has_instructions = true
-level_instructions = "Yikes, this place is infested!"
+level_instructions = "Yikes, this place is infested! use the bomb to quickly defeat enemies."
 level_scene = "uid://cghy5wu43l0c5"
-next_level = "uid://bs2p7w2ydx0uk"
+next_level = "uid://bwhoerkjuu2mu"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"
