@@ -10,10 +10,10 @@ config_version=5
 
 [application]
 
-config/name="gmtk-2026"
+config/name="TICSTEP 3D"
 run/main_scene="uid://c4214qv11sf8m"
 config/features=PackedStringArray("4.7", "GL Compatibility")
-config/icon="res://icon.svg"
+config/icon="uid://cx2qfsch7l6op"
 
 [autoload]
 

@@ -8,5 +8,3 @@ extends Node3D
 func _process(delta: float) -> void:
 	clouds.rotation.y += delta * 0.015 * animation_speed_scale
 	clouds_2.rotation.y += delta * 0.04 * animation_speed_scale
-
-
