@@ -6,4 +6,6 @@
 script = ExtResource("1_314mw")
 has_instructions = true
 level_instructions = "Yikes, this place is infested!"
+level_scene = "uid://cghy5wu43l0c5"
+next_level = "uid://bs2p7w2ydx0uk"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

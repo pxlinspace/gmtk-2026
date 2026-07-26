@@ -10,5 +10,6 @@ has_instructions = true
 level_instructions = "No treasure here, but people have been complaining about the slug infestation! 
 
 Your task here is to get rid of all the enemies."
-next_level = "uid://fabgtjfg8t3j"
+level_scene = "uid://dnu5sjawuyefs"
+next_level = "uid://vqba6ya4gtfx"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

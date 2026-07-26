@@ -14,4 +14,5 @@ enum LevelMode {
 @export var has_instructions: bool = false
 @export_multiline() var level_instructions: String = ""
 
+@export_file("*.tscn", "*.scn") var level_scene: String
 @export_file("*.tscn", "*.scn") var next_level: String

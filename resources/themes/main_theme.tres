@@ -1,13 +1,14 @@
 [gd_resource type="Theme" format=3 uid="uid://tujl158183jq"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4nads"]
-expand_margin_top = 8.0
-expand_margin_bottom = 8.0
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="1_x2ak3"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_v3saj"]
 
 [resource]
 default_font_size = 32
-Button/styles/hover = SubResource("StyleBoxFlat_4nads")
-Button/styles/hover_pressed = SubResource("StyleBoxFlat_4nads")
-Button/styles/normal = SubResource("StyleBoxFlat_4nads")
-Button/styles/pressed = SubResource("StyleBoxFlat_4nads")
+Button/fonts/font = ExtResource("1_x2ak3")
+Button/styles/hover = SubResource("StyleBoxEmpty_v3saj")
+Button/styles/hover_pressed = SubResource("StyleBoxEmpty_v3saj")
+Button/styles/normal = SubResource("StyleBoxEmpty_v3saj")
+Button/styles/pressed = SubResource("StyleBoxEmpty_v3saj")
 VBoxContainer/constants/separation = 24

@@ -1,0 +1,86 @@
+[gd_scene format=3 uid="uid://cm3pmqqh3npxe"]
+
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="1_cvu7t"]
+[ext_resource type="Script" uid="uid://hqm4gdrms2q4" path="res://scenes/ui/level_select_tile.gd" id="1_v4irt"]
+[ext_resource type="Texture2D" uid="uid://uxl80bldykxt" path="res://assets/images/placeholders/collect.png" id="2_3wccx"]
+[ext_resource type="Texture2D" uid="uid://5lhfsly3o6hx" path="res://assets/images/placeholders/skull.png" id="2_50k17"]
+[ext_resource type="Texture2D" uid="uid://c01fdn8mbvdjp" path="res://assets/images/textpanel.png" id="2_j3win"]
+[ext_resource type="Texture2D" uid="uid://k2vkn147a6qi" path="res://assets/images/placeholders/both.png" id="4_h7a1i"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4irt"]
+texture = ExtResource("2_j3win")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_50k17"]
+texture = ExtResource("2_j3win")
+texture_margin_left = 8.0
+texture_margin_top = 8.0
+texture_margin_right = 8.0
+texture_margin_bottom = 8.0
+expand_margin_top = 8.0
+
+[node name="LevelSelectTile" type="Control" unique_id=2014104010]
+custom_minimum_size = Vector2(128, 128)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 64.0
+offset_bottom = 64.0
+script = ExtResource("1_v4irt")
+collect_icon = ExtResource("2_3wccx")
+defeat_icon = ExtResource("2_50k17")
+both_icon = ExtResource("4_h7a1i")
+
+[node name="LevelPanel" type="Button" parent="." unique_id=742620924]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/normal = SubResource("StyleBoxTexture_v4irt")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_v4irt")
+theme_override_styles/hover = SubResource("StyleBoxTexture_v4irt")
+theme_override_styles/hover_pressed = SubResource("StyleBoxTexture_v4irt")
+
+[node name="CenterContainer" type="CenterContainer" parent="LevelPanel" unique_id=781697286]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="LevelPanel/CenterContainer" unique_id=1320637606]
+layout_mode = 2
+texture = ExtResource("2_50k17")
+
+[node name="Panel" type="Panel" parent="." unique_id=1877950046]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 144.0
+offset_right = 120.0
+offset_bottom = 176.0
+theme_override_styles/panel = SubResource("StyleBoxTexture_50k17")
+
+[node name="Label" type="Label" parent="Panel" unique_id=1474793678]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -20.0
+offset_right = 64.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_cvu7t")
+text = "1-1"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="LevelPanel" to="." method="_on_level_panel_pressed"]

@@ -9,5 +9,6 @@ has_instructions = true
 level_instructions = "most areas have more than one treasure, 
 
 But don't tread recklessly! You wouldn't want to destroy your way back would you?"
+level_scene = "uid://j1owud46mu7c"
 next_level = "uid://b0bd4hyle7qay"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

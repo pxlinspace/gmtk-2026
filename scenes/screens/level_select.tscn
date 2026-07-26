@@ -2,15 +2,253 @@
 
 [ext_resource type="Script" uid="uid://crodi7rjg5ews" path="res://scenes/screens/level_select.gd" id="1_r8gmh"]
 [ext_resource type="PackedScene" uid="uid://bm5es1irsp5cc" path="res://scenes/ui/scene_button.tscn" id="2_0ycd8"]
+[ext_resource type="PackedScene" uid="uid://cm3pmqqh3npxe" path="res://scenes/ui/level_select_tile.tscn" id="3_l8kew"]
+[ext_resource type="FontFile" uid="uid://cdnehjigwncl5" path="res://assets/fonts/augiepixel.ttf" id="4_mlrvt"]
+[ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="4_ra86j"]
+[ext_resource type="Resource" uid="uid://dc1vf4mswehaa" path="res://resources/levels/level_1.tres" id="5_knlji"]
+[ext_resource type="Script" uid="uid://cne4awgynrvad" path="res://scripts/camera.gd" id="5_mlrvt"]
+[ext_resource type="Resource" uid="uid://c8xr033xs6713" path="res://resources/levels/level_2.tres" id="6_7khc8"]
+[ext_resource type="PackedScene" uid="uid://d4cgpsqbwv3ob" path="res://scenes/objects/planet/planet.tscn" id="6_knlji"]
+[ext_resource type="Resource" uid="uid://baxtnl3nv4q7f" path="res://resources/levels/level_3.tres" id="7_7khc8"]
+[ext_resource type="Resource" uid="uid://daofr707l88yk" path="res://resources/levels/level_4.tres" id="8_a376o"]
+[ext_resource type="Resource" uid="uid://cka02y7boi7dp" path="res://resources/levels/level_5.tres" id="9_8ck4p"]
+[ext_resource type="Resource" uid="uid://b6xelenstgy2i" path="res://resources/levels/level_6.tres" id="10_jgwy5"]
+[ext_resource type="Resource" uid="uid://cjp1cv41xs4ma" path="res://resources/levels/level_7.tres" id="11_2e5a7"]
+[ext_resource type="Resource" uid="uid://l0bdguw43821" path="res://resources/levels/level_8.tres" id="12_n2m0v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_7khc8"]
+sky_top_color = Color(0.89, 0.89, 0.89, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_fr1um"]
+sky_material = SubResource("ProceduralSkyMaterial_7khc8")
+
+[sub_resource type="Environment" id="Environment_a376o"]
+background_mode = 1
+background_color = Color(0.17066666, 0.16499999, 0.25, 1)
+sky = SubResource("Sky_fr1um")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+glow_bloom = 1.0
+glow_hdr_threshold = 1.12
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+fog_light_color = Color(1, 1, 1, 1)
+fog_height = -0.05
+fog_height_density = 4.0
+adjustment_contrast = 0.75
+
+[sub_resource type="Curve" id="Curve_2e5a7"]
+_data = [Vector2(0, 0), 0.0, 6.193549, 0, 0, Vector2(0.453125, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -3.8341022, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_2mu0v"]
+curve = SubResource("Curve_2e5a7")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_n2m0v"]
+emission_shape = 2
+emission_sphere_radius = 30.0
+use_rotation_velocity_3d = true
+rotation_velocity_3d_min = Vector3(0, 0, -50)
+rotation_velocity_3d_max = Vector3(0, 0, 50)
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_2mu0v")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cyt5c"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_ra86j")
+
+[sub_resource type="QuadMesh" id="QuadMesh_8svhu"]
+material = SubResource("StandardMaterial3D_cyt5c")
 
 [node name="LevelSelect" type="Node3D" unique_id=295417097]
 script = ExtResource("1_r8gmh")
+metadata/_edit_vertical_guides_ = [2048.0]
+metadata/_edit_horizontal_guides_ = [576.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509956800]
 
 [node name="BackButton" parent="CanvasLayer" unique_id=1810188404 instance=ExtResource("2_0ycd8")]
-offset_left = 24.0
-offset_top = 32.0
-offset_right = 216.0
-offset_bottom = 72.0
+offset_left = 32.0
+offset_top = 512.0
+offset_right = 224.0
+offset_bottom = 552.0
 text = "back to menu"
+
+[node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1613407680]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_top = 32.0
+offset_right = 328.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("4_mlrvt")
+bbcode_enabled = true
+text = "world 1"
+fit_content = true
+horizontal_alignment = 1
+
+[node name="Container" type="Control" parent="CanvasLayer" unique_id=1655165858]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="LevelTileGrid" type="GridContainer" parent="CanvasLayer/Container" unique_id=1855719147]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -328.0
+offset_top = -176.0
+offset_right = 328.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="LevelSelectTile" parent="CanvasLayer/Container/LevelTileGrid" unique_id=2014104010 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("5_knlji")
+
+[node name="LevelSelectTile2" parent="CanvasLayer/Container/LevelTileGrid" unique_id=990996453 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("6_7khc8")
+
+[node name="LevelSelectTile3" parent="CanvasLayer/Container/LevelTileGrid" unique_id=743841434 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("7_7khc8")
+
+[node name="LevelSelectTile4" parent="CanvasLayer/Container/LevelTileGrid" unique_id=609084140 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("8_a376o")
+
+[node name="LevelSelectTile5" parent="CanvasLayer/Container/LevelTileGrid" unique_id=734347558 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("9_8ck4p")
+
+[node name="LevelSelectTile6" parent="CanvasLayer/Container/LevelTileGrid" unique_id=815991629 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("10_jgwy5")
+
+[node name="LevelSelectTile7" parent="CanvasLayer/Container/LevelTileGrid" unique_id=1597505947 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("11_2e5a7")
+
+[node name="LevelSelectTile8" parent="CanvasLayer/Container/LevelTileGrid" unique_id=296766157 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("12_n2m0v")
+
+[node name="LevelTileGrid2" type="GridContainer" parent="CanvasLayer/Container" unique_id=2142627896]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 696.0
+offset_top = -176.0
+offset_right = 1352.0
+offset_bottom = 192.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 48
+theme_override_constants/v_separation = 64
+columns = 4
+
+[node name="LevelSelectTile" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1965789760 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("5_knlji")
+
+[node name="LevelSelectTile2" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=663243932 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("6_7khc8")
+
+[node name="LevelSelectTile3" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1843723437 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("7_7khc8")
+
+[node name="LevelSelectTile4" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=274549324 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("8_a376o")
+
+[node name="LevelSelectTile5" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1847103613 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("9_8ck4p")
+
+[node name="LevelSelectTile6" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1314595398 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("10_jgwy5")
+
+[node name="LevelSelectTile7" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=570723488 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("11_2e5a7")
+
+[node name="LevelSelectTile8" parent="CanvasLayer/Container/LevelTileGrid2" unique_id=1883121190 instance=ExtResource("3_l8kew")]
+layout_mode = 2
+level_resource = ExtResource("12_n2m0v")
+
+[node name="PageLeftButton" type="Button" parent="CanvasLayer" unique_id=1289066028]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -144.0
+offset_top = 20.0
+offset_right = -80.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = "<"
+
+[node name="PageRightButton" type="Button" parent="CanvasLayer" unique_id=448178910]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 88.0
+offset_top = 20.0
+offset_right = 152.0
+offset_bottom = 76.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 48
+text = ">"
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=962208782]
+transform = Transform3D(-4.371139e-08, -0.8660254, -0.50000006, 0, -0.50000006, 0.8660254, -1, 3.7855173e-08, 2.1855696e-08, 0, 2, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=458653982]
+environment = SubResource("Environment_a376o")
+
+[node name="Stars" type="GPUParticles3D" parent="." unique_id=1018980251]
+cast_shadow = 0
+amount = 200
+lifetime = 10.0
+preprocess = 10.0
+randomness = 1.0
+transform_align = 1
+transform_align_channel_filter = 1
+process_material = SubResource("ParticleProcessMaterial_n2m0v")
+draw_pass_1 = SubResource("QuadMesh_8svhu")
+
+[node name="Camera" type="Camera3D" parent="." unique_id=809480116]
+transform = Transform3D(1, 0, 0, 0, 0.47715876, 0.87881714, 0, -0.87881714, 0.47715876, 0, 8.165, 0)
+script = ExtResource("5_mlrvt")
+metadata/_custom_type_script = "uid://cne4awgynrvad"
+
+[node name="Planet2" parent="." unique_id=1852319701 instance=ExtResource("6_knlji")]
+transform = Transform3D(0.2821852, 0.08762247, 0.05190208, -0.10183547, 0.24432372, 0.14119305, -0.0010307506, -0.15042685, 0.25955868, 14.851156, -17.927834, -4.812971)
+animation_speed_scale = 3.0
+
+[connection signal="pressed" from="CanvasLayer/PageLeftButton" to="." method="_on_page_left_button_pressed"]
+[connection signal="pressed" from="CanvasLayer/PageRightButton" to="." method="_on_page_right_button_pressed"]

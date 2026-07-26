@@ -8,5 +8,6 @@ level_name = "1-7"
 level_mode = Array[int]([1])
 has_instructions = true
 level_instructions = "No treasure in this area! Your objective this time is to defeat all the enemies."
+level_scene = "uid://j87c2yj3022q"
 next_level = "uid://bvx68t1bbtn6h"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

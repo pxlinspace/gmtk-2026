@@ -8,5 +8,6 @@ level_name = "1-8"
 level_mode = Array[int]([0, 1])
 has_instructions = true
 level_instructions = "time to put all the skills you've learned so far to use, go get'em!"
+level_scene = "uid://bvx68t1bbtn6h"
 next_level = "uid://b6lpy4n07h0nh"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"
