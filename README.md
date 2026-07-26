@@ -7,14 +7,19 @@ play the game on [itch.io](https://pxlinspace.itch.io/ticstep-3d)!
 
 ## Features
 - 2.5D low-res art style inspired by the nostalgia of 3DS games
+- tile movement system inspired by Crypt of the Necrodancer
+- Fluid tween animations that keep the game feeling smooth
+- Detailed sound design to help complete the experience
 - 23 levels spread out across 3 worlds
-- Different level objectives to keep gameplay interesting
+- Different level objectives to keep gameplay interesting (collecting treasure, defeating enemies, dropping all the tiles)
+- Bombs and springs as collectable items to help complete your mission
+- Silly scientist bunny
 - funny explosion gif
 
 ## Credits
 - This game was concocted by [pxlinspace](https://pxlinspace.itch.io) and [deltea](https://deltea.itch.io)!
 - Made with the Godot game engine
-- Sound effects were made using [ChipTone](https://sfbgames.itch.io/chiptone) and Audacity
+- Sound effects were made using [ChipTone](https://sfbgames.itch.io/chiptone) and Audacity (the clock tick and fade transition sounds are actually my voice lol)
 - 2D sprites were made in Aseprite, except for the explosion lol
 - Music by [OtoLogic](https://otologic.jp/free/bgm/electronica01.html), licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/)
 
