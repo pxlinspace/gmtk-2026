@@ -279,6 +279,7 @@ offset_top = 32.0
 offset_right = 328.0
 offset_bottom = 63.0
 grow_horizontal = 2
+mouse_filter = 2
 theme_override_fonts/normal_font = ExtResource("4_mlrvt")
 bbcode_enabled = true
 text = "world 1"
