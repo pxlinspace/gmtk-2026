@@ -1,31 +1,31 @@
 [gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://ddeovyleyvms7"]
 
 [ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_f0dfu"]
-[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="2_46jfe"]
+[ext_resource type="Texture2D" uid="uid://bqhbomp5a15fq" path="res://assets/images/items/vertical_bomb-Sheet.png" id="2_f0dfu"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_00cn6"]
-atlas = ExtResource("2_46jfe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_46jfe"]
+atlas = ExtResource("2_f0dfu")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4kva7"]
-atlas = ExtResource("2_46jfe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_8y6ex"]
+atlas = ExtResource("2_f0dfu")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_2tnfw"]
-atlas = ExtResource("2_46jfe")
+[sub_resource type="AtlasTexture" id="AtlasTexture_njk52"]
+atlas = ExtResource("2_f0dfu")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_f0dfu"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_00cn6")
+"texture": SubResource("AtlasTexture_46jfe")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4kva7")
+"texture": SubResource("AtlasTexture_8y6ex")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_2tnfw")
+"texture": SubResource("AtlasTexture_njk52")
 }],
 "loop": 1,
 "name": &"default",
@@ -34,10 +34,11 @@ animations = [{
 
 [resource]
 script = ExtResource("1_f0dfu")
+explosion_radius = 2
 explosion_countdown = 3
-explosion_damage = 2
+explosion_damage = 3
 explosion_dirs = Array[Vector3i]([Vector3i(0, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, -1)])
 item_name = "bomb"
 item_desc = "now i have become death destroyer of worlds"
-sprite_frames = SubResource("SpriteFrames_0xhi2")
+sprite_frames = SubResource("SpriteFrames_f0dfu")
 metadata/_custom_type_script = "uid://bl8flmcvknn7m"
