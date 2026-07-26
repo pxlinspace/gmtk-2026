@@ -12,7 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_yautc")
 
 [sub_resource type="Environment" id="Environment_coskb"]
 background_mode = 1
-background_color = Color(0.54599994, 0.78, 0.6162, 1)
+background_color = Color(0.09025332, 0.082600005, 0.14, 1)
 sky = SubResource("Sky_fr1um")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
@@ -30,6 +30,7 @@ adjustment_contrast = 0.75
 render_priority = 1
 transparency = 1
 shading_mode = 0
+albedo_color = Color(0.78, 0.585, 0.73125, 1)
 grow = true
 grow_amount = 2.0
 stencil_mode = 3
@@ -39,10 +40,10 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p45cm"]
 next_pass = SubResource("StandardMaterial3D_fr0fs")
-albedo_color = Color(0.2541, 0.43466493, 0.77, 1)
+albedo_color = Color(0.14250001, 0.075, 0.15, 1)
 stencil_mode = 1
 stencil_flags = 2
-stencil_color = Color(1, 1, 1, 1)
+stencil_color = Color(0.78, 0.585, 0.73125, 1)
 stencil_outline_thickness = 2.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_hpwji"]
@@ -58,7 +59,7 @@ load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c
 transparency = 1
 blend_mode = 1
 shading_mode = 2
-albedo_color = Color(1, 0.36, 0.36, 0.27450982)
+albedo_color = Color(1, 0.36, 0.36, 0.16078432)
 albedo_texture = SubResource("CompressedTexture2D_cku1s")
 texture_filter = 0
 
@@ -77,7 +78,7 @@ load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c
 transparency = 1
 blend_mode = 1
 shading_mode = 2
-albedo_color = Color(0.9146668, 0.36, 1, 0.23529412)
+albedo_color = Color(0.9146668, 0.36, 1, 0.13725491)
 albedo_texture = SubResource("CompressedTexture2D_coskb")
 uv1_scale = Vector3(-1, -1, 0)
 texture_filter = 0
