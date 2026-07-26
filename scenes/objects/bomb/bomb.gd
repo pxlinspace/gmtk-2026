@@ -3,23 +3,12 @@ class_name Bomb extends Node3D
 const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 const BOMB_SQUARE = preload("res://scenes/effects/bomb_square.tscn")
 
-const explode_dirs: Array[Vector3i] = [
-	Vector3i(1, 0, 0),
-	Vector3i(-1, 0, 0),
-	Vector3i(0, 0, 1),
-	Vector3i(0, 0, -1),
-
-	Vector3i(-1, 0, -1),
-	Vector3i(1, 0, -1),
-	Vector3i(1, 0, 1),
-	Vector3i(-1, 0, 1),
-]
-
 @onready var squares: Node3D = $Squares
 
 var explosion_radius: int = 1
 var curr_countdown: int = 0
 var explosion_damage: int = 1
+var explosion_dirs: Array[Vector3i] = []
 
 
 @onready var label: Label3D = $Label3D
@@ -61,14 +50,13 @@ func explode() -> void:
 
 func get_affected_tiles() -> Array[Tile]:
 	var affected_tiles: Array[Tile] = []
-	for dir in explode_dirs:
-		for i in explosion_radius:
-			for d in explode_dirs:
-				var check_pos := Vector3i(global_position) + dir * i + d
-				var areas := Utils.shapecast_at_pos(check_pos)
-				for area in areas:
-					if area is Tile and not area.is_disabled and area not in affected_tiles:
-						affected_tiles.append(area)
+	for dir in explosion_dirs:
+		for i in range(explosion_radius):
+			var check_pos := Vector3i(global_position) + dir * i
+			var areas := Utils.shapecast_at_pos(check_pos)
+			for area in areas:
+				if area is Tile and not area.is_disabled and area not in affected_tiles:
+					affected_tiles.append(area)
 	return affected_tiles
 
 
