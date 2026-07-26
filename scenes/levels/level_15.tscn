@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://hnkig6bb4c0o"]
+
+[ext_resource type="PackedScene" uid="uid://c2cg18hhgn46x" path="res://scenes/levels/base_level/level_world_2.tscn" id="1_ak4l1"]
+[ext_resource type="Resource" uid="uid://djsyow1572cj1" path="res://resources/levels/level_15.tres" id="2_ak4l1"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_hsgml"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_gfeu0"]
+[ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="5_6tvfy"]
+[ext_resource type="Resource" uid="uid://dpwyjccn2a4o" path="res://resources/items/bomb.tres" id="6_nqdgy"]
+
+[node name="LevelWorld2" unique_id=1990532022 instance=ExtResource("1_ak4l1")]
+level_resource = ExtResource("2_ak4l1")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(65534, 65532, 1441797, 65535, 65532, 1441797, 65535, 65533, 1441797, 0, 65533, 1441792, 65535, 65534, 1441792, 1, 65534, 1441792, 0, 65535, 1441792, 2, 65533, 1048576, 3, 65534, 1048576, 2, 65535, 1048576, 4, 65535, 1048576, 3, 0, 1048576, 1, 0, 1048576, 65535, 0, 1048576, 65534, 65535, 1048576, 0, 1, 1048576, 65534, 1, 1048576, 65535, 2, 1048576, 1, 65533, 1048577, 2, 65532, 1048577, 3, 65533, 1048577, 2, 65534, 1048577, 1, 65535, 1048577, 2, 0, 1048577, 0, 0, 1048577, 1, 1, 1048577, 65534, 0, 1048577, 65535, 65535, 1048577, 65534, 65534, 1048577, 65533, 65535, 1048577, 0, 65534, 1048578, 3, 65535, 1048578, 65535, 1, 1048578, 65534, 65533, 5)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("3_hsgml")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("4_gfeu0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="TileItem" parent="." index="13" unique_id=831780269 instance=ExtResource("5_6tvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+item_resource = ExtResource("6_nqdgy")
+
+[node name="TileItem2" parent="." index="14" unique_id=578262384 instance=ExtResource("5_6tvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3, 0, -1)
+item_resource = ExtResource("6_nqdgy")
+
+[node name="TileItem3" parent="." index="15" unique_id=374082347 instance=ExtResource("5_6tvfy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 1)
+item_resource = ExtResource("6_nqdgy")
+
+[editable path="Planet"]

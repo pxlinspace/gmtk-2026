@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://deigg6rqw3g"]
+
+[ext_resource type="PackedScene" uid="uid://c2cg18hhgn46x" path="res://scenes/levels/base_level/level_world_2.tscn" id="1_aj8n2"]
+[ext_resource type="Resource" uid="uid://byccgpln1l3gi" path="res://resources/levels/level_12.tres" id="2_aj8n2"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_vcewm"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_b73n6"]
+
+[node name="LevelWorld2" unique_id=1990532022 instance=ExtResource("1_aj8n2")]
+level_resource = ExtResource("2_aj8n2")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(65534, 65532, 1441797, 65535, 65532, 1441797, 65535, 65533, 1441797, 65534, 65533, 5)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("3_vcewm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("4_b73n6")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -4)
+
+[editable path="Planet"]

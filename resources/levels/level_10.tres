@@ -9,9 +9,7 @@ level_mode = Array[int]([2])
 has_instructions = true
 level_instructions = "Hey, those tiles at the left are out of reach!
 
-How are we supposed to drop them now?
-(merge conflict in text lol)
-[shake]Yikes, this place is infested![/shake] use the bomb to quickly defeat enemies."
+How are we supposed to drop them now?"
 level_scene = "uid://cghy5wu43l0c5"
 next_level = "uid://bwhoerkjuu2mu"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"
