@@ -33,4 +33,4 @@ signal player_gone
 signal next_level
 signal tile_dropped(tile: Tile)
 signal all_tiles_dropped
-signal item_used(item_resource: ItemResource)
+signal item_used(item_resource: ItemResource, item_bar: ItemBar)

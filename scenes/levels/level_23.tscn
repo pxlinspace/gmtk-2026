@@ -2,8 +2,50 @@
 
 [ext_resource type="PackedScene" uid="uid://b3bc17jkbe4wj" path="res://scenes/levels/base_level/level_world_3.tscn" id="1_7frcu"]
 [ext_resource type="Resource" uid="uid://c8ig3uk40v4sp" path="res://resources/levels/level_23.tres" id="2_7frcu"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_tgxr0"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_3r7cu"]
+[ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="5_3r7cu"]
 
 [node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_7frcu")]
 level_resource = ExtResource("2_7frcu")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(0, 0, 655365, 0, 65535, 655365, 65535, 0, 655365, 0, 1, 655365, 1, 0, 655365, 65534, 0, 655361, 65534, 1, 655361, 65534, 2, 655361, 65535, 2, 655361, 0, 2, 655361, 1, 2, 655361, 2, 2, 655361, 2, 1, 655361, 2, 0, 655361, 2, 65535, 655361, 2, 65534, 655361, 1, 65534, 655361, 0, 65534, 655361, 65535, 65534, 655361, 65534, 65534, 655361, 65534, 65535, 655361, 65533, 4, 655361, 65534, 4, 655361, 65535, 4, 655361, 0, 4, 655361, 1, 4, 655361, 2, 4, 655361, 3, 4, 655361, 4, 4, 655361, 4, 3, 655361, 4, 2, 655361, 4, 1, 655361, 4, 0, 655361, 4, 65535, 655361, 4, 65534, 655361, 4, 65533, 655361, 4, 65532, 655361, 3, 65532, 655361, 2, 65532, 655361, 1, 65532, 655361, 0, 65532, 655361, 65535, 65532, 655361, 65534, 65532, 655361, 65533, 65532, 655361, 65532, 4, 655361, 65532, 3, 655361, 65532, 2, 655361, 65532, 1, 655361, 65532, 0, 655361, 65532, 65535, 655361, 65532, 65534, 655361, 65532, 65533, 655361, 65532, 65532, 655361, 65534, 3, 655360, 2, 65533, 655360)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("3_tgxr0")]
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("4_3r7cu")]
+
+[node name="TreasureItem" parent="." index="13" unique_id=831780269 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 2)
+
+[node name="TreasureItem2" parent="." index="14" unique_id=1207830378 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0, -2)
+
+[node name="TreasureItem3" parent="." index="15" unique_id=599728285 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, -4)
+
+[node name="TreasureItem4" parent="." index="16" unique_id=1103631626 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, -4)
+
+[node name="TreasureItem5" parent="." index="17" unique_id=123928205 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 4)
+
+[node name="TreasureItem6" parent="." index="18" unique_id=994051578 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 4)
+
+[node name="TreasureItem7" parent="." index="19" unique_id=1018609295 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4, 0, 0)
+
+[node name="TreasureItem8" parent="." index="20" unique_id=2110518311 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0, 0)
+
+[node name="TreasureItem9" parent="." index="21" unique_id=1848320790 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4)
+
+[node name="TreasureItem10" parent="." index="22" unique_id=438668093 instance=ExtResource("5_3r7cu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 
 [editable path="Planet"]

@@ -2,8 +2,33 @@
 
 [ext_resource type="PackedScene" uid="uid://b3bc17jkbe4wj" path="res://scenes/levels/base_level/level_world_3.tscn" id="1_j0w4h"]
 [ext_resource type="Resource" uid="uid://dqu85q1w6d1mc" path="res://resources/levels/level_20.tres" id="2_j0w4h"]
+[ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_qpktt"]
+[ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_aq57r"]
+[ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="5_aq57r"]
+[ext_resource type="Resource" uid="uid://bdtgptjqi7sdr" path="res://resources/items/pogo.tres" id="6_d85wr"]
 
 [node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_j0w4h")]
 level_resource = ExtResource("2_j0w4h")
+
+[node name="LevelMap" parent="." index="5" unique_id=2083219110]
+data = {
+"cells": PackedInt32Array(0, 0, 1441797, 65535, 0, 1441794, 1, 0, 1441797, 2, 65534, 1441792, 2, 65535, 1441793, 2, 0, 1441794, 2, 1, 1441792, 2, 2, 1441792, 65535, 65534, 1441792, 65535, 65535, 1441793, 65535, 1, 1441792, 65535, 2, 1441792, 65535, 4, 1441792, 0, 4, 1441792, 1, 4, 1441792, 2, 4, 1441792, 4, 65534, 1441792, 5, 65534, 1441792, 6, 65534, 1441792, 65533, 65534, 1441792, 65532, 65534, 1441792, 65531, 65534, 1441792, 65531, 65535, 1441792, 65531, 0, 1441792, 65532, 0, 1441792, 65533, 0, 1441793, 65533, 65535, 1441792, 4, 65535, 1441792, 4, 0, 1441793, 5, 0, 1441792, 6, 0, 1441792, 6, 65535, 1441792, 3, 0, 1441792, 65534, 0, 1441792, 65534, 2, 1441792, 65534, 3, 1441792, 65534, 4, 1441792)
+}
+
+[node name="Player" parent="." index="11" unique_id=343958966 instance=ExtResource("3_qpktt")]
+
+[node name="TheHolyLight" parent="." index="12" unique_id=696309230 instance=ExtResource("4_aq57r")]
+
+[node name="TileItem" parent="." index="13" unique_id=831780269 instance=ExtResource("5_aq57r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, -2)
+item_resource = ExtResource("6_d85wr")
+
+[node name="TileItem3" parent="." index="14" unique_id=755906991 instance=ExtResource("5_aq57r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2)
+item_resource = ExtResource("6_d85wr")
+
+[node name="TileItem2" parent="." index="15" unique_id=964013392 instance=ExtResource("5_aq57r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 0, -2)
+item_resource = ExtResource("6_d85wr")
 
 [editable path="Planet"]

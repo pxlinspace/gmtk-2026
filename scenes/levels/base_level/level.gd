@@ -201,11 +201,11 @@ func update_tiles_count() -> void:
 
 func check_mission_complete() -> bool:
 	for mode in level_resource.level_mode:
-		if mode == LevelResource.LevelMode.COLLECT and treasure_collected < collectable_treasure.size():
+		if mode == LevelResource.LevelMode.COLLECT and (treasure_collected < collectable_treasure.size() or treasure_collected == 0):
 			return false
-		if mode == LevelResource.LevelMode.DEFEAT and enemies_killed < killable_enemies.size():
+		if mode == LevelResource.LevelMode.DEFEAT and (enemies_killed < killable_enemies.size() or enemies_killed == 0):
 			return false
-		if mode == LevelResource.LevelMode.DROP and tiles_dropped < total_tile_count:
+		if mode == LevelResource.LevelMode.DROP and (tiles_dropped < total_tile_count or tiles_dropped == 0):
 			return false
 
 	if not mission_complete:

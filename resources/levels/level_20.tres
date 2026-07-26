@@ -5,7 +5,7 @@
 [resource]
 script = ExtResource("1_ueqrk")
 level_name = "3-4"
-level_mode = Array[int]([1])
+level_mode = Array[int]([2])
 level_scene = "res://scenes/levels/level_20.tscn"
 next_level = "res://scenes/levels/level_21.tscn"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

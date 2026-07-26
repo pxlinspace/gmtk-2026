@@ -5,7 +5,9 @@
 [resource]
 script = ExtResource("1_yej1t")
 level_name = "3-8"
-level_mode = Array[int]([1])
+level_mode = Array[int]([0, 2])
+has_instructions = true
+level_instructions = "[shake]this is it! give it your all!!![/shake]"
 level_scene = "res://scenes/levels/level_24.tscn"
 next_level = "uid://vqba6ya4gtfx"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

@@ -50,7 +50,7 @@ func _ready() -> void:
 	beamed_down()
 
 
-func move_to_pos(new_pos: Vector3i, check_valid: bool = true) -> void:
+func move_to_pos(new_pos: Vector3i, check_valid: bool = true, advance_time: bool = true) -> void:
 	var new_tile := check_tile(new_pos)
 	if not new_tile and check_valid: return
 	step_audio.pitch_scale = randf_range(0.9, 1.2)
@@ -66,7 +66,7 @@ func move_to_pos(new_pos: Vector3i, check_valid: bool = true) -> void:
 	if prev_tile:
 		prev_tile.stepped_off.emit()
 
-	Clock.advance_time()
+	if advance_time: Clock.advance_time()
 
 
 func check_tile(pos: Vector3i) -> Tile:
@@ -307,9 +307,10 @@ func _on_restart_level() -> void:
 
 func _on_player_pogo(distance: int) -> void:
 	var new_pos := grid_pos + curr_dir * distance
-	move_to_pos(new_pos, false)
+	move_to_pos(new_pos, false, false)
 
 
-func _on_item_used(item: ItemResource) -> void:
-	if item is PogoItemResource:
+func _on_item_used(item: ItemResource, item_bar: ItemBar) -> void:
+	await get_tree().process_frame
+	if item is PogoItemResource and not item_bar.get_pogo_count() > 0:
 		pogo_square.hide()

@@ -23,12 +23,22 @@ func _on_item_received(item_resource: ItemResource) -> void:
 	var item_bar_item := item_scene.instantiate() as ItemBarItem
 	item_bar_item.item_used.connect(_on_item_used)
 	add_child(item_bar_item)
-	move_child(item_bar_item, 0)
 	item_bar_item.set_item(item_resource)
 
 	set_item_positions()
 
 
+func get_pogo_count() -> int:
+	var pogo_count := 0
+	for i in range(get_child_count()):
+		var item := get_child(i) as ItemBarItem
+		if item.item is PogoItemResource:
+			pogo_count += 1
+
+	print(pogo_count)
+	return pogo_count
+
+
 func _on_item_used(item: ItemBarItem) -> void:
-	Events.item_used.emit(item.item)
+	Events.item_used.emit(item.item, self)
 	set_item_positions()
