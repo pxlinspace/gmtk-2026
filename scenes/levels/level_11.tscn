@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bs2p7w2ydx0uk"]
 
 [ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_ntgks"]
-[ext_resource type="Resource" uid="uid://bg3u8opsnrml6" path="res://resources/levels/level_11.tres" id="2_5bask"]
+[ext_resource type="Resource" uid="uid://daofr707l88yk" path="res://resources/levels/level_4.tres" id="2_5bask"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_gr7jt"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_bk8ll"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="5_4fty2"]
@@ -23,9 +23,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 3)
 
 [node name="TreasureItem" parent="." index="9" unique_id=831780269 instance=ExtResource("5_4fty2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 7)
+item_resource = null
 
 [node name="TreasureItem2" parent="." index="10" unique_id=979020688 instance=ExtResource("5_4fty2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 12)
+item_resource = null
 
 [node name="PatternEnemy4" parent="." index="11" unique_id=1921959644 instance=ExtResource("6_1nnno")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 5)

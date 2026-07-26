@@ -58,8 +58,8 @@ func _ready() -> void:
 	Events.player_beamed_up.connect(_on_player_beamed_up)
 	Events.player_lost.connect(_on_player_lost)
 	Events.player_gone.connect(_on_player_gone)
-	
-	
+
+
 	Events.win.connect(_on_win)
 
 	timer_bar.set_speed_up(false)
@@ -135,7 +135,7 @@ func _on_level_timer_timeout() -> void:
 	Events.pre_move_missed.emit()
 	Clock.advance_time()
 	Events.move_missed.emit()
-	
+
 	tick_audio.play()
 
 	var flashbang_tween := create_tween()
@@ -157,7 +157,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		tick_audio.play()
 		await get_tree().create_timer(0.2).timeout
 		tick_audio.pitch_scale = 1.0
-		
+
 
 	if event.is_action_released("speed_up"):
 		Engine.time_scale = 1.0

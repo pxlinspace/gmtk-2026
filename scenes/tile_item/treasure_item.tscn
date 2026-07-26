@@ -5,27 +5,27 @@
 [ext_resource type="Resource" uid="uid://bymljr2vl6dec" path="res://resources/items/treasure.tres" id="3_6qobp"]
 [ext_resource type="Texture2D" uid="uid://dpje3gkn6fpst" path="res://assets/images/items/treasure-Sheet.png" id="4_6qobp"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bbwvh"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_df5c7"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(0, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_sann2"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7s1if"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(128, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmxk6"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpnjg"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(256, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_k1ykq"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_anojy"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(384, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_x8gis"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tklr"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(512, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o515h"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_d3g8k"]
 atlas = ExtResource("4_6qobp")
 region = Rect2(640, 0, 128, 128)
 
@@ -33,26 +33,26 @@ region = Rect2(640, 0, 128, 128)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bbwvh")
+"texture": SubResource("AtlasTexture_df5c7")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_sann2")
+"texture": SubResource("AtlasTexture_7s1if")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rmxk6")
+"texture": SubResource("AtlasTexture_qpnjg")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_k1ykq")
+"texture": SubResource("AtlasTexture_anojy")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_x8gis")
+"texture": SubResource("AtlasTexture_6tklr")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_o515h")
+"texture": SubResource("AtlasTexture_d3g8k")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 8.0
+"speed": 5.0
 }]
 
 [node name="TreasureItem" unique_id=831780269 groups=["treasure"] instance=ExtResource("1_ko1n8")]
@@ -61,5 +61,3 @@ item_resource = ExtResource("3_6qobp")
 
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1314168185) index="0" unique_id=765592719]
 sprite_frames = SubResource("SpriteFrames_8mmdh")
-frame = 4
-frame_progress = 0.018170442

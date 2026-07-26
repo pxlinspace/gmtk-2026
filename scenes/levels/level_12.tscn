@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dnu5sjawuyefs"]
 
 [ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_2ii7u"]
-[ext_resource type="Resource" uid="uid://baw2ihgnrmlgf" path="res://resources/levels/level_12.tres" id="2_fakti"]
+[ext_resource type="Resource" uid="uid://cka02y7boi7dp" path="res://resources/levels/level_5.tres" id="2_fakti"]
 [ext_resource type="PackedScene" uid="uid://bnda2voxgroh5" path="res://scenes/player/player.tscn" id="3_aj8n2"]
 [ext_resource type="PackedScene" uid="uid://dvilxcl0kjgsv" path="res://scenes/the_holy_light/the_holy_light.tscn" id="4_yd7i6"]
 [ext_resource type="PackedScene" uid="uid://cyak221tp008q" path="res://scenes/tile_item/treasure_item.tscn" id="5_vcewm"]
