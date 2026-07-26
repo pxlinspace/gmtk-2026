@@ -1,13 +1,31 @@
 [gd_resource type="Resource" script_class="PogoItemResource" format=3 uid="uid://bdtgptjqi7sdr"]
 
 [ext_resource type="Script" uid="uid://c2mtve35li0pb" path="res://scripts/item_resources/pogo_item_resource.gd.gd" id="1_4vi1a"]
-[ext_resource type="Texture2D" uid="uid://bq3pn5rfq7hhq" path="res://assets/images/crackle-purple.png" id="2_5x1ht"]
+[ext_resource type="Texture2D" uid="uid://b2sbahk64sxd7" path="res://assets/images/items/spring-Sheet.png" id="2_5x1ht"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8kna"]
+atlas = ExtResource("2_5x1ht")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nhi8n"]
+atlas = ExtResource("2_5x1ht")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnulc"]
+atlas = ExtResource("2_5x1ht")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4vi1a"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_5x1ht")
+"texture": SubResource("AtlasTexture_f8kna")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nhi8n")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnulc")
 }],
 "loop": 1,
 "name": &"default",

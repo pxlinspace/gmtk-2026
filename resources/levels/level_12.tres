@@ -5,9 +5,9 @@
 [resource]
 script = ExtResource("1_r1rfv")
 level_name = "2-4"
-level_mode = Array[int]([1, 2])
+level_mode = Array[int]([1])
 has_instructions = true
 level_instructions = "[shake]Yikes, this place is infested![/shake] use the bomb to quickly defeat enemies."
-level_scene = "uid://dnu5sjawuyefs"
-next_level = "uid://vqba6ya4gtfx"
+level_scene = "uid://deigg6rqw3g"
+next_level = "uid://bkduqvaexvghm"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

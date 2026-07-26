@@ -13,10 +13,12 @@
 [ext_resource type="AudioStream" uid="uid://bs553b05fnvj8" path="res://assets/audio/treasure_found.wav" id="9_5gtgg"]
 [ext_resource type="AudioStream" uid="uid://b6y0c3vvj1arv" path="res://assets/audio/panic.wav" id="10_h17s1"]
 [ext_resource type="Texture2D" uid="uid://dxr8p68ff5d1e" path="res://assets/images/next-circle.png" id="10_kvlxm"]
+[ext_resource type="Texture2D" uid="uid://uxl80bldykxt" path="res://assets/images/placeholders/collect.png" id="10_lgqa7"]
 [ext_resource type="AudioStream" uid="uid://n1lj0t4ckt8j" path="res://assets/audio/win.wav" id="11_je7p5"]
 [ext_resource type="AudioStream" uid="uid://bom0loc2wsfds" path="res://assets/audio/player_fall.wav" id="12_fm80t"]
 [ext_resource type="AudioStream" uid="uid://ct8qp2v7tmqsy" path="res://assets/audio/deltarune-explosion.mp3" id="13_gx1jg"]
 [ext_resource type="AudioStream" uid="uid://bhyfgvvbtm4tj" path="res://assets/audio/hit.wav" id="14_ugbui"]
+[ext_resource type="AudioStream" uid="uid://c17w7m0t3sboy" path="res://assets/audio/pogo.wav" id="18_uf5tr"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_a5rnb"]
 animations = [{
@@ -135,6 +137,22 @@ animations = [{
 "speed": 25.0
 }]
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vknqg"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(0.79607844, 0.85882354, 0.9882353, 1)
+albedo_texture = ExtResource("10_lgqa7")
+texture_filter = 0
+
+[sub_resource type="QuadMesh" id="QuadMesh_lg3a2"]
+material = SubResource("StandardMaterial3D_vknqg")
+size = Vector2(0.75, 0.75)
+orientation = 1
+
+[sub_resource type="Curve" id="Curve_8ydkj"]
+_data = [Vector2(0, 0), 0.0, 3.5044467, 0, 0, Vector2(0.97687864, 0.0113636255), -3.512854, 0.0, 0, 0]
+point_count = 2
+
 [node name="Player" type="Area3D" unique_id=343958966 groups=["player"]]
 script = ExtResource("1_dovo2")
 winning_treasure = SubResource("SpriteFrames_a5rnb")
@@ -179,6 +197,14 @@ sorting_offset = 2.0
 texture_filter = 0
 texture = ExtResource("8_fcs02")
 
+[node name="PogoParticles" type="CPUParticles3D" parent="Anchor" unique_id=1404694976]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 0, 0.5)
+emitting = false
+lifetime = 0.25
+mesh = SubResource("QuadMesh_lg3a2")
+gravity = Vector3(0, -1, 0)
+scale_amount_curve = SubResource("Curve_8ydkj")
+
 [node name="PogoSquare" type="Sprite3D" parent="." unique_id=1738583564]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
 cast_shadow = 0
@@ -214,4 +240,8 @@ volume_db = -11.35
 
 [node name="HitAudio" type="AudioStreamPlayer" parent="." unique_id=363125168]
 stream = ExtResource("14_ugbui")
+volume_db = -6.335
+
+[node name="PogoAudio" type="AudioStreamPlayer" parent="." unique_id=227422380]
+stream = ExtResource("18_uf5tr")
 volume_db = -6.335

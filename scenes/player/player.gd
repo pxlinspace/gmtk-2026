@@ -11,6 +11,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
 @onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
 @onready var pogo_square: Sprite3D = $PogoSquare
+@onready var pogo_particles: CPUParticles3D = $Anchor/PogoParticles
 
 @onready var step_audio: AudioStreamPlayer = $StepAudio
 @onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
@@ -19,6 +20,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var fall_audio: AudioStreamPlayer = $FallAudio
 @onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
 @onready var hit_audio: AudioStreamPlayer = $HitAudio
+@onready var pogo_audio: AudioStreamPlayer = $PogoAudio
 
 var position_tween: Tween
 var prev_tile: Tile
@@ -235,8 +237,11 @@ func animate_to_grid_position() -> void:
 	position_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	var target_pos := Vector3(grid_pos) + Vector3(0, 0, 0)
 	position_tween.tween_property(anchor, "global_position", target_pos, 0.2)
+	position_tween.tween_callback(func() -> void: pogo_particles.emitting = false)
+
 	tile_sprite.animation_player.stop()
 	tile_sprite.animation_player.play("bounce")
+
 
 
 func show_item(sprite: SpriteFrames) -> void:
@@ -306,7 +311,9 @@ func _on_restart_level() -> void:
 
 
 func _on_player_pogo(distance: int) -> void:
+	pogo_particles.emitting = true
 	var new_pos := grid_pos + curr_dir * distance
+	pogo_audio.play()
 	move_to_pos(new_pos, false, false)
 
 
