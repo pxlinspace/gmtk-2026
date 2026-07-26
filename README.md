@@ -14,12 +14,12 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] level data logic
 - [ ] level design
 - [ ] main menu
 - [ ] settings
 - [ ] boss
 - [ ] itch.io page
+- [x] level data logic
 - [x] level select
 - [x] figure out how to check what mode the level is when won in player
 - [x] music and sfx
