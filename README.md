@@ -14,9 +14,9 @@ feature set: the mechanics & mechanics in a games design. The things inside the 
 
 ## todo
 
-- [ ] level design
-- [ ] settings
-- [ ] itch.io page
+- [x] settings
+- [x] itch.io page
+- [x] level design
 - [x] main menu
 - [x] boss
 - [x] level data logic
