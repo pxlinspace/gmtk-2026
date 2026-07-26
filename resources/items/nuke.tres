@@ -1,13 +1,31 @@
 [gd_resource type="Resource" script_class="BombItemResource" format=3 uid="uid://bmm270uoe4vdl"]
 
 [ext_resource type="Script" uid="uid://bl8flmcvknn7m" path="res://scripts/item_resources/bomb_item_resource.gd" id="1_xtfc1"]
-[ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="2_xdglp"]
+[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="2_jfwot"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_00cn6"]
+atlas = ExtResource("2_jfwot")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4kva7"]
+atlas = ExtResource("2_jfwot")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2tnfw"]
+atlas = ExtResource("2_jfwot")
+region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0xhi2"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_xdglp")
+"texture": SubResource("AtlasTexture_00cn6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4kva7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2tnfw")
 }],
 "loop": 1,
 "name": &"default",

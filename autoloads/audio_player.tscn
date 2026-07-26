@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bmwydr47ebsbb" path="res://autoloads/audio_player.gd" id="1_bbogv"]
 [ext_resource type="AudioStream" uid="uid://cjjdpodlmbouv" path="res://assets/music/Specification.mp3" id="2_tcwc2"]
 [ext_resource type="AudioStream" uid="uid://dj42pepo68fsh" path="res://assets/music/tie no wa.mp3" id="3_bhtna"]
+[ext_resource type="AudioStream" uid="uid://ct8qp2v7tmqsy" path="res://assets/audio/deltarune-explosion.mp3" id="4_ip6ul"]
+[ext_resource type="AudioStream" uid="uid://u388vx0aoed" path="res://assets/audio/item_collect.wav" id="5_iwfwn"]
 
 [node name="AudioPlayer" type="Node" unique_id=981514620]
 script = ExtResource("1_bbogv")
@@ -13,4 +15,13 @@ volume_db = -18.0
 
 [node name="Levels" type="AudioStreamPlayer" parent="." unique_id=1805639285]
 stream = ExtResource("3_bhtna")
-volume_db = -18.0
+volume_db = -14.041
+
+[node name="Explosion" type="AudioStreamPlayer" parent="." unique_id=2114283593]
+stream = ExtResource("4_ip6ul")
+volume_db = -13.777
+pitch_scale = 1.14
+
+[node name="ItemCollect" type="AudioStreamPlayer" parent="." unique_id=1692397171]
+stream = ExtResource("5_iwfwn")
+volume_db = -13.656

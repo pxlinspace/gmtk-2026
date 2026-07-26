@@ -23,6 +23,7 @@ var explosion_damage: int = 1
 
 
 @onready var label: Label3D = $Label3D
+@onready var charge_audio: AudioStreamPlayer = $ChargeAudio
 
 
 func _ready() -> void:
@@ -32,6 +33,8 @@ func _ready() -> void:
 
 
 func set_countdown(new_value: int) -> void:
+	charge_audio.play()
+	charge_audio.pitch_scale += 1
 	curr_countdown = new_value
 	if curr_countdown <= 0:
 		explode()
@@ -42,6 +45,7 @@ func set_countdown(new_value: int) -> void:
 
 func explode() -> void:
 	print("explode")
+	AudioPlayer.play("Explosion")
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	get_tree().current_scene.add_child(explosion)
 	explosion.position = global_position

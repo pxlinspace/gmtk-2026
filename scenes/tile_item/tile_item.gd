@@ -18,5 +18,7 @@ func _ready() -> void:
 
 
 func _on_collect() -> void:
+	if not self is TreasureItem:
+		AudioPlayer.play("ItemCollect")
 	Events.item_gotten.emit(self)
 	queue_free()

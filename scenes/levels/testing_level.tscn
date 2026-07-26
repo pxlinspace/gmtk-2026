@@ -62,3 +62,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, 7)
 [node name="TileItem4" parent="." index="18" unique_id=2020264884 instance=ExtResource("5_sb23r")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0, 1)
 item_resource = ExtResource("10_g8sj1")
+
+[node name="TileItem5" parent="." index="23" unique_id=1457831288 instance=ExtResource("5_sb23r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+item_resource = ExtResource("8_4wh7x")
