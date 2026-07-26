@@ -10,6 +10,7 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var cam: Camera3D = $Anchor/Camera3D
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
 @onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
+@onready var pogo_square: Sprite3D = $PogoSquare
 
 @onready var step_audio: AudioStreamPlayer = $StepAudio
 @onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
@@ -34,10 +35,12 @@ func _enter_tree() -> void:
 	Events.item_gotten.connect(_on_item_gotten)
 	Events.restart_level.connect(_on_restart_level)
 	Events.player_pogo.connect(_on_player_pogo)
+	Events.item_used.connect(_on_item_used)
 
 
 func _ready() -> void:
 	item_sprite.hide()
+	pogo_square.hide()
 
 	await get_tree().process_frame
 
@@ -262,6 +265,8 @@ func _on_timestep(_curr_timestep: int) -> void:
 	if curr_tile.is_disabled and can_move:
 		uh_oh()
 
+	pogo_square.position = Vector3(curr_dir * 2) + Vector3(0.5, 0, 0.5)
+
 
 func _on_pre_move_missed() -> void:
 	if curr_tile.is_disabled:
@@ -289,6 +294,9 @@ func _on_item_gotten(tile_item: TileItem) -> void:
 	else:
 		Events.item_received.emit(item_resource)
 
+	if item_resource is PogoItemResource:
+		pogo_square.show()
+
 
 func _on_restart_level() -> void:
 	can_move = false
@@ -297,3 +305,8 @@ func _on_restart_level() -> void:
 func _on_player_pogo(distance: int) -> void:
 	var new_pos := grid_pos + curr_dir * distance
 	move_to_pos(new_pos, false)
+
+
+func _on_item_used(item: ItemResource) -> void:
+	if item is PogoItemResource:
+		pogo_square.hide()

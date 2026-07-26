@@ -28,5 +28,7 @@ func _on_item_received(item_resource: ItemResource) -> void:
 
 	set_item_positions()
 
-func _on_item_used(_item: ItemBarItem) -> void:
+
+func _on_item_used(item: ItemBarItem) -> void:
+	Events.item_used.emit(item.item)
 	set_item_positions()

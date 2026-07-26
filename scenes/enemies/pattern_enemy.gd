@@ -55,10 +55,11 @@ func animate_to_grid_position() -> void:
 func _on_pre_timestep(curr_timestep: int) -> void:
 	super._on_pre_timestep(curr_timestep)
 
+
 func die() -> void:
 	if is_dead: return
 	super.die()
-	
+
 	fall_audio.play()
 
 	arrow.hide()

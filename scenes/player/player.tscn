@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://dxdvixfds3phl" path="res://assets/audio/step.wav" id="8_qek5x"]
 [ext_resource type="AudioStream" uid="uid://bs553b05fnvj8" path="res://assets/audio/treasure_found.wav" id="9_5gtgg"]
 [ext_resource type="AudioStream" uid="uid://b6y0c3vvj1arv" path="res://assets/audio/panic.wav" id="10_h17s1"]
+[ext_resource type="Texture2D" uid="uid://dxr8p68ff5d1e" path="res://assets/images/next-circle.png" id="10_kvlxm"]
 [ext_resource type="AudioStream" uid="uid://n1lj0t4ckt8j" path="res://assets/audio/win.wav" id="11_je7p5"]
 [ext_resource type="AudioStream" uid="uid://bom0loc2wsfds" path="res://assets/audio/player_fall.wav" id="12_fm80t"]
 [ext_resource type="AudioStream" uid="uid://ct8qp2v7tmqsy" path="res://assets/audio/deltarune-explosion.mp3" id="13_gx1jg"]
@@ -177,6 +178,14 @@ transform = Transform3D(-3.715468e-08, 0.85, -3.715468e-08, 0, -3.715468e-08, -0
 sorting_offset = 2.0
 texture_filter = 0
 texture = ExtResource("8_fcs02")
+
+[node name="PogoSquare" type="Sprite3D" parent="." unique_id=1738583564]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
+cast_shadow = 0
+modulate = Color(1, 0.827451, 0.54901963, 1)
+pixel_size = 0.0078125
+texture_filter = 0
+texture = ExtResource("10_kvlxm")
 
 [node name="StepAudio" type="AudioStreamPlayer" parent="." unique_id=250032875]
 stream = ExtResource("8_qek5x")
