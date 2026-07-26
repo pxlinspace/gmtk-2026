@@ -37,3 +37,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2)
 [node name="PatternEnemy" parent="." index="14" unique_id=1295660293 instance=ExtResource("5_i0fhw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5, 0, 3)
 pattern = Array[Vector3i]([Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(-1, 0, 0)])
+
+[node name="PatternEnemy2" parent="." index="15" unique_id=882092315 instance=ExtResource("5_i0fhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7, 0, 0)
+pattern = Array[Vector3i]([Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(1, 0, 0), Vector3i(1, 0, 0), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(-1, 0, 0), Vector3i(-1, 0, 0)])
+
+[node name="PatternEnemy3" parent="." index="16" unique_id=482487234 instance=ExtResource("5_i0fhw")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+pattern = Array[Vector3i]([Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, -1), Vector3i(0, 0, 1), Vector3i(0, 0, 1), Vector3i(0, 0, 1)])
