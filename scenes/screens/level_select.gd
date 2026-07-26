@@ -10,6 +10,7 @@ var page_tween: Tween
 
 func _ready() -> void:
 	set_page(0)
+	SaveManager.load_data()
 
 
 func set_page(new_page: int) -> void:

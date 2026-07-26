@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://uxl80bldykxt" path="res://assets/images/placeholders/collect.png" id="2_3wccx"]
 [ext_resource type="Texture2D" uid="uid://5lhfsly3o6hx" path="res://assets/images/placeholders/skull.png" id="2_50k17"]
 [ext_resource type="Texture2D" uid="uid://c01fdn8mbvdjp" path="res://assets/images/textpanel.png" id="2_j3win"]
+[ext_resource type="Texture2D" uid="uid://bdhsfobhhov7p" path="res://assets/images/placeholders/lock.png" id="2_vh5hi"]
 [ext_resource type="Texture2D" uid="uid://k2vkn147a6qi" path="res://assets/images/placeholders/both.png" id="4_h7a1i"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_v4irt"]
@@ -29,6 +30,7 @@ anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 64.0
 script = ExtResource("1_v4irt")
+lock_icon = ExtResource("2_vh5hi")
 collect_icon = ExtResource("2_3wccx")
 defeat_icon = ExtResource("2_50k17")
 both_icon = ExtResource("4_h7a1i")

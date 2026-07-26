@@ -253,4 +253,5 @@ func _on_win() -> void:
 		return
 
 	Events.next_level.emit()
+	SaveManager.set_level_completed(level_resource.level_scene)	
 	SceneTransition.change_scene_to_file(level_resource.next_level)
