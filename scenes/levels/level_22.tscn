@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://bgc68hs3gvqix"]
+
+[ext_resource type="PackedScene" uid="uid://b3bc17jkbe4wj" path="res://scenes/levels/base_level/level_world_3.tscn" id="1_1ktqi"]
+[ext_resource type="Resource" uid="uid://dfbdy4buijkbm" path="res://resources/levels/level_22.tres" id="2_1ktqi"]
+
+[node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_1ktqi")]
+level_resource = ExtResource("2_1ktqi")
+
+[editable path="Planet"]

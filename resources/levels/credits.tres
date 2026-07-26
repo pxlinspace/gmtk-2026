@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://dsc7k2qa51lmw"]
+
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_7rghd"]
+
+[resource]
+script = ExtResource("1_7rghd")
+level_name = "you won!"
+level_mode = Array[int]([1])
+level_instructions = "good job!"
+level_scene = "uid://nah55n4gg0rc"
+next_level = "uid://c4214qv11sf8m"
+metadata/_custom_type_script = "uid://5kgtrn6psl6t"

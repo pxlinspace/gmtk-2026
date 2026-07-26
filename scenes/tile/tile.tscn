@@ -5,6 +5,7 @@
 [ext_resource type="Material" uid="uid://clv3e7xdx6tva" path="res://assets/materials/standard.tres" id="2_bibkx"]
 [ext_resource type="Material" uid="uid://cl1lruq5ffw4c" path="res://assets/materials/outline.tres" id="2_dvver"]
 [ext_resource type="FontFile" uid="uid://c5fvqbgdk2lgv" path="res://assets/fonts/m6x11plus.ttf" id="5_krq7o"]
+[ext_resource type="Texture2D" uid="uid://cgrud02hfa8n7" path="res://assets/images/infinity.png" id="6_krq7o"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_vb0sl"]
 
@@ -54,3 +55,10 @@ outline_size = 8
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_bibkx")
 surface_material_override/0 = ExtResource("2_dvver")
+
+[node name="Infinity" type="Sprite3D" parent="Anchor/MeshInstance" unique_id=522103583]
+transform = Transform3D(0.65, 0, 0, 0, -2.8412401e-08, 0.65, 0, -0.65, -2.8412401e-08, 0, 0.3, 0)
+visible = false
+modulate = Color(0, 0, 0, 1)
+texture_filter = 0
+texture = ExtResource("6_krq7o")
