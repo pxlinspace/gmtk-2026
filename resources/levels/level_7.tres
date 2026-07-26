@@ -1,9 +1,12 @@
-[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://cka02y7boi7dp"]
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://cjp1cv41xs4ma"]
 
 [ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_d77fa"]
 
 [resource]
 script = ExtResource("1_d77fa")
 level_name = "1-7"
-next_level = "uid://e57ttrjo0bit"
+level_mode = Array[int]([1])
+has_instructions = true
+level_instructions = "No treasure in this area! Your objective this time is to defeat all the enemies."
+next_level = "uid://bvx68t1bbtn6h"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

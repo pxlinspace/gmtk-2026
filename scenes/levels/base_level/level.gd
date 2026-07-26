@@ -27,22 +27,39 @@ const tile_scene = preload("res://scenes/tile/tile.tscn")
 @onready var level_name_label: Label = $HudLayer/LevelContainer/LevelLabel
 @onready var level_instructions_label: Label = $HudLayer/FriendContainer/PanelContainer/MarginContainer/DescriptionLabel
 
+@onready var deploy_player_audio: AudioStreamPlayer = $DeployPlayerAudio
+@onready var end_player_deploy_audio: AudioStreamPlayer = $EndPlayerDeployAudio
+@onready var tick_audio: AudioStreamPlayer = $TickAudio
+@onready var holy_light_ready_audio: AudioStreamPlayer = $HolyLightReadyAudio
+
 var collectable_treasure: Array[TreasureItem] = []
 var killable_enemies: Array[BaseEnemy] = []
 
 var treasure_collected: int = 0
 var enemies_killed: int = 0
+var mission_complete: bool = false
 var restart_value: float = 0.0
 var is_restarting: bool = false
+var player_lost: bool = false
+var is_player_beamed_up: bool = false
 
 
 func _ready() -> void:
+	AudioPlayer.stop("Menu")
+	AudioPlayer.play("Levels")
+	deploy_player_audio.play()
 	Events.timestep.connect(_on_timestep)
 	Events.treasure_received.connect(_on_treasure_received)
 	Events.toggle_pause.connect(_on_paused)
 	Events.enemy_died.connect(_on_enemy_died)
 	Events.all_treasure_gotten.connect(_on_all_treasure_gotten)
 	Events.all_enemies_killed.connect(_on_all_enemies_killed)
+	Events.player_beamed_down.connect(_on_player_beamed_down)
+	Events.player_beamed_up.connect(_on_player_beamed_up)
+	Events.player_lost.connect(_on_player_lost)
+	Events.player_gone.connect(_on_player_gone)
+	
+	
 	Events.win.connect(_on_win)
 
 	timer_bar.set_speed_up(false)
@@ -50,7 +67,6 @@ func _ready() -> void:
 
 	spawn_tiles()
 	level_timer.wait_time = level_resource.level_countdown
-	Events.player_beamed_down.connect(level_timer.start)
 
 	for node in get_tree().get_nodes_in_group("treasure"):
 		if node is TreasureItem:
@@ -119,6 +135,8 @@ func _on_level_timer_timeout() -> void:
 	Events.pre_move_missed.emit()
 	Clock.advance_time()
 	Events.move_missed.emit()
+	
+	tick_audio.play()
 
 	var flashbang_tween := create_tween()
 	flashbang.color.a = 0.6
@@ -126,17 +144,26 @@ func _on_level_timer_timeout() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event.is_action_pressed("speed_up"):
+	if event.is_action_pressed("speed_up") and not is_player_beamed_up:
 		Engine.time_scale = 3.0
 		timer_bar.set_speed_up(true)
 		Events.pre_move_missed.emit()
 		Clock.advance_time()
+		tick_audio.pitch_scale = 1.3
+		tick_audio.play()
+		await get_tree().create_timer(0.15).timeout
+		tick_audio.stop()
+		tick_audio.pitch_scale = 1.5
+		tick_audio.play()
+		await get_tree().create_timer(0.2).timeout
+		tick_audio.pitch_scale = 1.0
+		
 
 	if event.is_action_released("speed_up"):
 		Engine.time_scale = 1.0
 		timer_bar.set_speed_up(false)
 
-	if event.is_action_pressed("restart"):
+	if event.is_action_pressed("restart") and not player_lost:
 		restart_progress.show()
 		is_restarting = true
 	if event.is_action_released("restart"):
@@ -165,6 +192,10 @@ func check_mission_complete() -> bool:
 			return false
 		if mode == LevelResource.LevelMode.DEFEAT and enemies_killed < killable_enemies.size():
 			return false
+	if not mission_complete:
+		mission_complete = true
+		holy_light_ready_audio.play()
+		Events.mission_complete.emit()
 	return true
 
 
@@ -186,13 +217,33 @@ func _on_enemy_died(_enemy: BaseEnemy) -> void:
 
 func _on_all_treasure_gotten() -> void:
 	treasure_display.modulate = GOAL_COMPLETED_COLOR
-	if check_mission_complete():
-		Events.mission_complete.emit()
+	check_mission_complete()
 
 func _on_all_enemies_killed() -> void:
 	enemies_display.modulate = GOAL_COMPLETED_COLOR
-	if check_mission_complete():
-		Events.mission_complete.emit()
+	check_mission_complete()
+
+
+func _on_player_beamed_down() -> void:
+	level_timer.start()
+	end_player_deploy_audio.play()
+	tick_audio.play()
+
+
+func _on_player_beamed_up() -> void:
+	is_player_beamed_up = true
+	Engine.time_scale = 1.0
+	timer_bar.set_speed_up(false)
+
+
+func _on_player_lost() -> void:
+	player_lost = true
+	restart_progress.hide()
+	is_restarting = false
+
+
+func _on_player_gone() -> void:
+	restart_level()
 
 
 func _on_win() -> void:

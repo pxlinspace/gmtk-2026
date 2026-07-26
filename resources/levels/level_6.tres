@@ -1,11 +1,9 @@
-[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://daofr707l88yk"]
+[gd_resource type="Resource" script_class="LevelResource" format=3 uid="uid://b6xelenstgy2i"]
 
-[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_bwa2w"]
+[ext_resource type="Script" uid="uid://5kgtrn6psl6t" path="res://scripts/level_resource.gd" id="1_guh88"]
 
 [resource]
-script = ExtResource("1_bwa2w")
+script = ExtResource("1_guh88")
 level_name = "1-6"
-has_instructions = true
-level_instructions = "remember, standing still on a tile and waiting for an enemy to pass is always an option!"
-next_level = "uid://341nyg7kr7g"
+next_level = "uid://j87c2yj3022q"
 metadata/_custom_type_script = "uid://5kgtrn6psl6t"

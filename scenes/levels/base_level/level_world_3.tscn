@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://b3bc17jkbe4wj"]
+
+[ext_resource type="PackedScene" uid="uid://48mb3bvm3una" path="res://scenes/levels/base_level/level.tscn" id="1_coskb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yautc"]
+sky_top_color = Color(0.89, 0.89, 0.89, 1)
+ground_bottom_color = Color(1, 1, 1, 1)
+ground_horizon_color = Color(1, 1, 1, 1)
+
+[sub_resource type="Sky" id="Sky_fr1um"]
+sky_material = SubResource("ProceduralSkyMaterial_yautc")
+
+[sub_resource type="Environment" id="Environment_coskb"]
+background_mode = 1
+background_color = Color(0.09, 0.09, 0.09, 1)
+sky = SubResource("Sky_fr1um")
+ambient_light_source = 2
+ambient_light_color = Color(1, 1, 1, 1)
+ambient_light_energy = 0.5
+glow_bloom = 1.0
+glow_hdr_threshold = 1.12
+glow_hdr_scale = 4.0
+glow_hdr_luminance_cap = 256.0
+fog_light_color = Color(1, 1, 1, 1)
+fog_height = -0.05
+fog_height_density = 4.0
+adjustment_contrast = 0.75
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fr0fs"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+grow = true
+grow_amount = 2.0
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p45cm"]
+next_pass = SubResource("StandardMaterial3D_fr0fs")
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(1, 1, 1, 1)
+stencil_outline_thickness = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hpwji"]
+material = SubResource("StandardMaterial3D_p45cm")
+radius = 40.0
+height = 80.0
+rings = 128
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_cku1s"]
+load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v0pk"]
+transparency = 1
+blend_mode = 2
+shading_mode = 2
+albedo_color = Color(0, 0, 0, 1)
+albedo_texture = SubResource("CompressedTexture2D_cku1s")
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_hn0ce"]
+lightmap_size_hint = Vector2i(1258, 630)
+material = SubResource("StandardMaterial3D_1v0pk")
+radius = 41.0
+height = 82.0
+radial_segments = 80
+rings = 160
+
+[sub_resource type="SphereMesh" id="SphereMesh_j5mad"]
+lightmap_size_hint = Vector2i(1258, 630)
+material = SubResource("StandardMaterial3D_1v0pk")
+radius = 41.0
+height = 82.0
+radial_segments = 80
+rings = 160
+
+[node name="LevelWorld3" unique_id=1990532022 instance=ExtResource("1_coskb")]
+
+[node name="WorldEnvironment" parent="." index="3" unique_id=2124536568]
+environment = SubResource("Environment_coskb")
+
+[node name="Base" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="1" unique_id=1387446432]
+mesh = SubResource("SphereMesh_hpwji")
+
+[node name="Clouds" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="2" unique_id=1065715332]
+mesh = SubResource("SphereMesh_hn0ce")
+
+[node name="Clouds2" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="3" unique_id=625053106]
+mesh = SubResource("SphereMesh_j5mad")
+
+[editable path="Planet"]

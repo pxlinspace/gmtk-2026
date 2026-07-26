@@ -2,19 +2,39 @@
 
 [ext_resource type="Script" uid="uid://dstc60kx5smrn" path="res://scenes/objects/bomb/bomb.gd" id="1_aj2di"]
 [ext_resource type="PackedScene" uid="uid://uq1460g6p3xy" path="res://scenes/components/tile_sprite.tscn" id="2_nu1y8"]
-[ext_resource type="Texture2D" uid="uid://cqwh521lgwawk" path="res://assets/images/placeholders/bomb.png" id="3_s3m63"]
+[ext_resource type="Texture2D" uid="uid://wq88deur1iqo" path="res://assets/images/items/bomb-Sheet.png" id="3_02van"]
 [ext_resource type="FontFile" uid="uid://c5fvqbgdk2lgv" path="res://assets/fonts/m6x11plus.ttf" id="4_gmufi"]
 [ext_resource type="Texture2D" uid="uid://nvrvstcmipjj" path="res://assets/images/placeholders/item-timer-background.png" id="5_02van"]
+[ext_resource type="AudioStream" uid="uid://dp2pkqfn8iffm" path="res://assets/audio/bomb_sizzle.wav" id="6_0l2wl"]
+[ext_resource type="AudioStream" uid="uid://02161ajg83be" path="res://assets/audio/bomb_charge.wav" id="7_doxbc"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_02van"]
+atlas = ExtResource("3_02van")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0l2wl"]
+atlas = ExtResource("3_02van")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_doxbc"]
+atlas = ExtResource("3_02van")
+region = Rect2(256, 128, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_s3m63"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_s3m63")
+"texture": SubResource("AtlasTexture_02van")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0l2wl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_doxbc")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 16.0
 }]
 
 [node name="Bomb" type="Node3D" unique_id=1314808327]
@@ -24,7 +44,7 @@ script = ExtResource("1_aj2di")
 sprite_frames = SubResource("SpriteFrames_s3m63")
 
 [node name="Label3D" type="Label3D" parent="." unique_id=259888467]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0.3)
 sorting_offset = 1.0
 billboard = 2
 texture_filter = 0
@@ -35,9 +55,19 @@ font_size = 116
 outline_size = 0
 
 [node name="Sprite3D" type="Sprite3D" parent="." unique_id=280544446]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, 0.3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1.5, 0.3)
 billboard = 2
 texture_filter = 0
 texture = ExtResource("5_02van")
 
 [node name="Squares" type="Node3D" parent="." unique_id=465219942]
+
+[node name="SizzleAudio" type="AudioStreamPlayer" parent="." unique_id=67359575]
+stream = ExtResource("6_0l2wl")
+volume_db = -7.0
+autoplay = true
+
+[node name="ChargeAudio" type="AudioStreamPlayer" parent="." unique_id=1822374809]
+stream = ExtResource("7_doxbc")
+volume_db = -5.0
+pitch_scale = 0.5

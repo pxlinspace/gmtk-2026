@@ -11,10 +11,19 @@ const EXPLOSION_EFFECT = preload("uid://raq4p4c8uiwg")
 @onready var item_sprite: TileSprite = $Anchor/ItemSprite
 @onready var impact_sprite: TileSprite = $Anchor/ImpactSprite
 
+@onready var step_audio: AudioStreamPlayer = $StepAudio
+@onready var treasure_found_audio: AudioStreamPlayer = $TreasureFoundAudio
+@onready var panic_audio: AudioStreamPlayer = $PanicAudio
+@onready var win_audio: AudioStreamPlayer = $WinAudio
+@onready var fall_audio: AudioStreamPlayer = $FallAudio
+@onready var explosion_audio: AudioStreamPlayer = $ExplosionAudio
+@onready var hit_audio: AudioStreamPlayer = $HitAudio
+
 var position_tween: Tween
 var prev_tile: Tile
 var curr_tile: Tile
 var can_move: bool = false
+var fell_down: bool = false
 var curr_dir: Vector3i = Vector3i.ZERO
 
 
@@ -41,7 +50,8 @@ func _ready() -> void:
 func move_to_pos(new_pos: Vector3i, check_valid: bool = true) -> void:
 	var new_tile := check_tile(new_pos)
 	if not new_tile and check_valid: return
-
+	step_audio.pitch_scale = randf_range(0.9, 1.2)
+	step_audio.play()
 	prev_tile = curr_tile
 	curr_tile = new_tile
 
@@ -66,6 +76,8 @@ func check_tile(pos: Vector3i) -> Tile:
 
 
 func check_curr_tile() -> void:
+	if fell_down:
+		return
 	var areas := Utils.shapecast_at_pos(grid_pos)
 	for area in areas:
 		if area is TheHolyLight and area.is_active:
@@ -80,37 +92,53 @@ func check_curr_tile() -> void:
 func uh_oh() -> void:
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
+	panic_audio.play()
 	print("uh oh")
 
 
 func fall_down() -> void:
 	Events.toggle_pause.emit(true)
+	Events.player_lost.emit()
+	fell_down = true
 	can_move = false
 	print("you died!")
+	fall_audio.play()
 
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_DISABLED
 	tile_sprite.look_at(cam.global_position)
 	tile_sprite.center()
+	tile_sprite.stop()
+	tile_sprite.play("panic")
+	tile_sprite.animation_player.play("panic")
+	
 
 	var fall_tween := create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_IN).set_parallel()
 	fall_tween.tween_property(tile_sprite, "global_position:y", -10.0, 1.5)
 	fall_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 1.5).set_trans(Tween.TRANS_LINEAR)
 	fall_tween.tween_property(tile_sprite, "modulate:a", 0.0, 1.0)
+	
+	await get_tree().create_timer(1.0).timeout
+	Events.player_gone.emit()
 
 
 func die() -> void:
 	Events.toggle_pause.emit(true)
+	Events.player_lost.emit()
 	can_move = false
 	tile_sprite.play("panic")
 	tile_sprite.animation_player.play("panic")
 	impact_sprite.show()
 	impact_sprite.play("default")
 	Events.cam_shake.emit(0.4)
+	
+	hit_audio.play()
 
 	await get_tree().create_timer(0.5).timeout
 
 	impact_sprite.hide()
 	impact_sprite.stop()
+	
+	explosion_audio.play()
 
 	var explosion := EXPLOSION_EFFECT.instantiate()
 	anchor.add_child(explosion)
@@ -128,6 +156,8 @@ func die() -> void:
 	die_tween.tween_property(tile_sprite, "global_position:y", 5.0, 2.5)
 	die_tween.tween_property(tile_sprite, "global_rotation_degrees:z", 720.0, 2.0)
 	print("you died!")
+	await get_tree().create_timer(1).timeout
+	Events.player_gone.emit()
 
 
 func beamed_down() -> void:
@@ -148,10 +178,16 @@ func beamed_down() -> void:
 
 
 func win() -> void:
+	Events.player_beamed_up.emit()
 	Events.toggle_pause.emit(true)
+	win_audio.play()
 	can_move = false
 	item_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
-	show_item(winning_treasure)
+	#show_item(winning_treasure)
+	tile_sprite.animation_player.stop()
+	tile_sprite.animation_player.play("bounce")
+	tile_sprite.flip_h = false
+	tile_sprite.play("item_gotten")
 	tile_sprite.billboard = BaseMaterial3D.BILLBOARD_FIXED_Y
 	var fade_tween := create_tween().set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN).set_parallel()
 	fade_tween.tween_property(tile_sprite, "position:y", 3, 1.5)
@@ -211,7 +247,8 @@ func show_item(sprite: SpriteFrames) -> void:
 
 
 func _on_timestep(_curr_timestep: int) -> void:
-	tile_sprite.play("default")
+	if can_move:
+		tile_sprite.play("default")
 
 	check_curr_tile()
 
@@ -222,7 +259,7 @@ func _on_timestep(_curr_timestep: int) -> void:
 
 	curr_tile.stepped_on.emit()
 
-	if curr_tile.is_disabled:
+	if curr_tile.is_disabled and can_move:
 		uh_oh()
 
 
@@ -241,6 +278,9 @@ func _on_move_missed() -> void:
 func _on_item_gotten(tile_item: TileItem) -> void:
 	var item_resource := tile_item.item_resource
 	var is_treasure := tile_item is TreasureItem
+	
+	if is_treasure:
+		treasure_found_audio.play()
 
 	await show_item(item_resource.sprite_frames)
 

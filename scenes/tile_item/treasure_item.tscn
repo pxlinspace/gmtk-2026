@@ -3,17 +3,56 @@
 [ext_resource type="PackedScene" uid="uid://bs6ah8pia0x8m" path="res://scenes/tile_item/tile_item.tscn" id="1_ko1n8"]
 [ext_resource type="Script" uid="uid://bknx5ts48sfc6" path="res://scenes/tile_item/treasure_item.gd" id="2_yq8up"]
 [ext_resource type="Resource" uid="uid://bymljr2vl6dec" path="res://resources/items/treasure.tres" id="3_6qobp"]
-[ext_resource type="Texture2D" uid="uid://cu5t552vp8avn" path="res://assets/images/placeholders/flag.png" id="3_s760d"]
+[ext_resource type="Texture2D" uid="uid://dpje3gkn6fpst" path="res://assets/images/items/treasure-Sheet.png" id="4_6qobp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbwvh"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sann2"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rmxk6"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k1ykq"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8gis"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o515h"]
+atlas = ExtResource("4_6qobp")
+region = Rect2(640, 0, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8mmdh"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_s760d")
+"texture": SubResource("AtlasTexture_bbwvh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sann2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rmxk6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k1ykq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8gis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o515h")
 }],
 "loop": 1,
 "name": &"default",
-"speed": 5.0
+"speed": 8.0
 }]
 
 [node name="TreasureItem" unique_id=831780269 groups=["treasure"] instance=ExtResource("1_ko1n8")]
@@ -22,3 +61,5 @@ item_resource = ExtResource("3_6qobp")
 
 [node name="TileSprite" parent="Anchor" parent_id_path=PackedInt32Array(1314168185) index="0" unique_id=765592719]
 sprite_frames = SubResource("SpriteFrames_8mmdh")
+frame = 4
+frame_progress = 0.018170442

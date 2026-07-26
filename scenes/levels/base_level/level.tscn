@@ -15,6 +15,10 @@
 [ext_resource type="Texture2D" uid="uid://dflcq87hhfkc0" path="res://assets/images/textpanel-purple.png" id="11_i5dd8"]
 [ext_resource type="Texture2D" uid="uid://bbs2vykcoeq4j" path="res://assets/images/star.png" id="12_kbcxf"]
 [ext_resource type="PackedScene" uid="uid://d4cgpsqbwv3ob" path="res://scenes/objects/planet/planet.tscn" id="15_3p64w"]
+[ext_resource type="AudioStream" uid="uid://ct750cqh5cnj7" path="res://assets/audio/deploy_player.wav" id="16_3rnp5"]
+[ext_resource type="AudioStream" uid="uid://cp4ks06s144i7" path="res://assets/audio/tick.wav" id="17_k2b3o"]
+[ext_resource type="AudioStream" uid="uid://d4mr3mkl7w2mt" path="res://assets/audio/endplayerdeploy.wav" id="17_ns8qr"]
+[ext_resource type="AudioStream" uid="uid://bpvjwyyysnrhc" path="res://assets/audio/holylightready.wav" id="19_spowp"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_hfd2d"]
 texture = ExtResource("7_v2fu8")
@@ -351,6 +355,21 @@ draw_pass_1 = SubResource("QuadMesh_cyt5c")
 [node name="LevelMap" parent="." unique_id=2083219110 instance=ExtResource("7_c3o0d")]
 
 [node name="Planet" parent="." unique_id=1852319701 instance=ExtResource("15_3p64w")]
-transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, -45, 0)
+transform = Transform3D(1, 0, 0, 0, 0.8660253, 0.49999997, 0, -0.49999997, 0.8660253, 0, -45, 0)
+
+[node name="DeployPlayerAudio" type="AudioStreamPlayer" parent="." unique_id=1898262187]
+stream = ExtResource("16_3rnp5")
+volume_db = -7.655
+
+[node name="EndPlayerDeployAudio" type="AudioStreamPlayer" parent="." unique_id=590615429]
+stream = ExtResource("17_ns8qr")
+volume_db = -7.655
+
+[node name="TickAudio" type="AudioStreamPlayer" parent="." unique_id=1029704510]
+stream = ExtResource("17_k2b3o")
+
+[node name="HolyLightReadyAudio" type="AudioStreamPlayer" parent="." unique_id=1754531676]
+stream = ExtResource("19_spowp")
+volume_db = -6.863
 
 [connection signal="timeout" from="LevelTimer" to="." method="_on_level_timer_timeout"]

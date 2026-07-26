@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://b2hd71fafhp3i"]
 
 [ext_resource type="Script" uid="uid://cqeuq43k4c5ja" path="res://autoloads/scene_transition.gd" id="1_8c6xq"]
+[ext_resource type="AudioStream" uid="uid://d3614r3s4qsg6" path="res://assets/audio/fade_in.wav" id="2_on86r"]
+[ext_resource type="AudioStream" uid="uid://daa1fnp0xnkii" path="res://assets/audio/fade_out.wav" id="3_rhfbs"]
 
 [sub_resource type="Animation" id="Animation_on86r"]
 length = 0.001
@@ -120,3 +122,11 @@ offset_left = 1024.0
 offset_right = 1536.001
 offset_bottom = 576.0
 color = Color(0.30980393, 0.2901961, 0.4, 1)
+
+[node name="InAudio" type="AudioStreamPlayer" parent="." unique_id=1448981629]
+stream = ExtResource("2_on86r")
+volume_db = 5.0
+
+[node name="OutAudio" type="AudioStreamPlayer" parent="." unique_id=470636131]
+stream = ExtResource("3_rhfbs")
+volume_db = 8.0
