@@ -88,6 +88,7 @@ script = ExtResource("1_25jul")
 [node name="Title" parent="CanvasLayer" unique_id=799425050 instance=ExtResource("2_25jul")]
 offset_top = 115.0
 offset_bottom = 155.0
+metadata/_edit_use_anchors_ = true
 
 [node name="ButtonContainer" type="VBoxContainer" parent="CanvasLayer" unique_id=374446603]
 anchors_preset = 4
@@ -99,6 +100,7 @@ offset_right = 387.0
 offset_bottom = 264.0
 grow_vertical = 2
 script = ExtResource("3_0urj7")
+metadata/_edit_use_anchors_ = true
 
 [node name="PlayButton" parent="CanvasLayer/ButtonContainer" unique_id=1810188404 instance=ExtResource("3_enpo5")]
 layout_mode = 2

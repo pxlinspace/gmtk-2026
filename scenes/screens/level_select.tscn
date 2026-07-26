@@ -71,28 +71,6 @@ metadata/_edit_horizontal_guides_ = [576.0]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=509956800]
 
-[node name="BackButton" parent="CanvasLayer" unique_id=1810188404 instance=ExtResource("2_0ycd8")]
-offset_left = 32.0
-offset_top = 512.0
-offset_right = 224.0
-offset_bottom = 552.0
-text = "back to menu"
-
-[node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1613407680]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -328.0
-offset_top = 32.0
-offset_right = 328.0
-offset_bottom = 63.0
-grow_horizontal = 2
-theme_override_fonts/normal_font = ExtResource("4_mlrvt")
-bbcode_enabled = true
-text = "world 1"
-fit_content = true
-horizontal_alignment = 1
-
 [node name="Container" type="Control" parent="CanvasLayer" unique_id=1655165858]
 layout_mode = 3
 anchors_preset = 15
@@ -223,6 +201,28 @@ offset_bottom = 76.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 48
 text = ">"
+
+[node name="BackButton" parent="CanvasLayer" unique_id=1810188404 instance=ExtResource("2_0ycd8")]
+offset_left = 32.0
+offset_top = 512.0
+offset_right = 224.0
+offset_bottom = 552.0
+text = "back to menu"
+
+[node name="WorldLabel" type="RichTextLabel" parent="CanvasLayer" unique_id=1613407680]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -328.0
+offset_top = 32.0
+offset_right = 328.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_fonts/normal_font = ExtResource("4_mlrvt")
+bbcode_enabled = true
+text = "world 1"
+fit_content = true
+horizontal_alignment = 1
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=962208782]
 transform = Transform3D(-4.371139e-08, -0.8660254, -0.50000006, 0, -0.50000006, 0.8660254, -1, 3.7855173e-08, 2.1855696e-08, 0, 2, 0)
