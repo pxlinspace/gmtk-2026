@@ -12,7 +12,7 @@ sky_material = SubResource("ProceduralSkyMaterial_yautc")
 
 [sub_resource type="Environment" id="Environment_coskb"]
 background_mode = 1
-background_color = Color(0.09, 0.09, 0.09, 1)
+background_color = Color(0.54599994, 0.78, 0.6162, 1)
 sky = SubResource("Sky_fr1um")
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
@@ -39,6 +39,7 @@ metadata/_stencil_owned = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p45cm"]
 next_pass = SubResource("StandardMaterial3D_fr0fs")
+albedo_color = Color(0.2541, 0.43466493, 0.77, 1)
 stencil_mode = 1
 stencil_flags = 2
 stencil_color = Color(1, 1, 1, 1)
@@ -55,9 +56,9 @@ load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1v0pk"]
 transparency = 1
-blend_mode = 2
+blend_mode = 1
 shading_mode = 2
-albedo_color = Color(0, 0, 0, 1)
+albedo_color = Color(1, 0.36, 0.36, 0.27450982)
 albedo_texture = SubResource("CompressedTexture2D_cku1s")
 texture_filter = 0
 
@@ -69,9 +70,21 @@ height = 82.0
 radial_segments = 80
 rings = 160
 
-[sub_resource type="SphereMesh" id="SphereMesh_j5mad"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_coskb"]
+load_path = "res://.godot/imported/planet_clouds_v2.png-7be9e1523d95a2bd6197232c2a165628.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hpwji"]
+transparency = 1
+blend_mode = 1
+shading_mode = 2
+albedo_color = Color(0.9146668, 0.36, 1, 0.23529412)
+albedo_texture = SubResource("CompressedTexture2D_coskb")
+uv1_scale = Vector3(-1, -1, 0)
+texture_filter = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_cku1s"]
 lightmap_size_hint = Vector2i(1258, 630)
-material = SubResource("StandardMaterial3D_1v0pk")
+material = SubResource("StandardMaterial3D_hpwji")
 radius = 41.0
 height = 82.0
 radial_segments = 80
@@ -89,6 +102,6 @@ mesh = SubResource("SphereMesh_hpwji")
 mesh = SubResource("SphereMesh_hn0ce")
 
 [node name="Clouds2" parent="Planet" parent_id_path=PackedInt32Array(1852319701) index="3" unique_id=625053106]
-mesh = SubResource("SphereMesh_j5mad")
+mesh = SubResource("SphereMesh_cku1s")
 
 [editable path="Planet"]
